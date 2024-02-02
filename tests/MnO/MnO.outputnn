@@ -1,0 +1,103 @@
+MnO_RT_SPG225_PRB_V1_P236_1970                                                 
+F                            2
+             RELA
+  8.401155  8.401155  8.401155 90.000000 90.000000 90.000000
+       1    0.00000000   0.00000000   0.00000000
+                1
+Mn         NPT=  781  R0=0.00005000 RMT=    2.2400   Z: 25.0
+                     1.0000000 0.0000000 0.0000000
+                     0.0000000 1.0000000 0.0000000
+                     0.0000000 0.0000000 1.0000000
+       2    0.50000000   0.50000000   0.50000000
+                1
+O          NPT=  781  R0=0.00010000 RMT=    1.9300   Z:  8.0
+                     1.0000000 0.0000000 0.0000000
+                     0.0000000 1.0000000 0.0000000
+                     0.0000000 0.0000000 1.0000000
+ Bravais Matrix:
+        0.00000        0.50000        0.50000
+        0.50000        0.00000        0.50000
+        0.50000        0.50000        0.00000
+  
+ Bond-Valence Sums are calculated for current lattice parameters
+ and rescaled ones by 1 %. (You can put scaling into  .latcalib)
+
+ ATOM:  1  EQUIV.  1  Mn         AT   0.00000   0.00000   0.00000
+ RMT(  1)=2.24000 AND RMT(  2)=1.93000
+ SUMS TO 4.17000  LT.  NN-DIST= 4.20058
+ ATOM:  2  O         AT  0.0000  0.0000 -0.5000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  2  O         AT  0.0000 -0.5000  0.0000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  2  O         AT  0.5000  0.0000  0.0000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  2  O         AT -0.5000  0.0000  0.0000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  2  O         AT  0.0000  0.5000  0.0000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  2  O         AT  0.0000  0.0000  0.5000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  1  Mn        AT  0.0000 -0.5000 -0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT  0.5000  0.0000 -0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT  0.5000 -0.5000  0.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT -0.5000  0.0000 -0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT  0.0000  0.5000 -0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT -0.5000 -0.5000  0.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT  0.5000  0.5000  0.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT  0.0000 -0.5000  0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT  0.5000  0.0000  0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT -0.5000  0.5000  0.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT -0.5000  0.0000  0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT  0.0000  0.5000  0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  0.5000 -0.5000 -0.5000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  2  O         AT -0.5000 -0.5000 -0.5000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  2  O         AT  0.5000  0.5000 -0.5000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  2  O         AT  0.5000 -0.5000  0.5000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  2  O         AT -0.5000  0.5000 -0.5000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  2  O         AT -0.5000 -0.5000  0.5000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  2  O         AT  0.5000  0.5000  0.5000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  2  O         AT -0.5000  0.5000  0.5000 IS  7.27561 A.U.   3.85009 ANG
+Atom   1 equiv  1 Mn         Bond-Valence Sum     1.72    1.83
+
+ ATOM:  2  EQUIV.  1  O          AT   0.50000   0.50000   0.50000
+ RMT(  2)=1.93000 AND RMT(  1)=2.24000
+ SUMS TO 4.17000  LT.  NN-DIST= 4.20058
+ ATOM:  1  Mn        AT  0.5000  0.5000  0.0000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  1  Mn        AT  0.5000  0.0000  0.5000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  1  Mn        AT  1.0000  0.5000  0.5000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  1  Mn        AT  0.0000  0.5000  0.5000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  1  Mn        AT  0.5000  1.0000  0.5000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  1  Mn        AT  0.5000  0.5000  1.0000 IS  4.20058 A.U.   2.22285 ANG
+ ATOM:  2  O         AT  0.5000  0.0000  0.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  1.0000  0.5000  0.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  1.0000  0.0000  0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  0.0000  0.5000  0.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  0.5000  1.0000  0.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  0.0000  0.0000  0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  1.0000  1.0000  0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  0.5000  0.0000  1.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  1.0000  0.5000  1.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  0.0000  1.0000  0.5000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  0.0000  0.5000  1.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  2  O         AT  0.5000  1.0000  1.0000 IS  5.94051 A.U.   3.14358 ANG
+ ATOM:  1  Mn        AT  1.0000  0.0000  0.0000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  1  Mn        AT  0.0000  0.0000  0.0000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  1  Mn        AT  1.0000  1.0000  0.0000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  1  Mn        AT  1.0000  0.0000  1.0000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  1  Mn        AT  0.0000  1.0000  0.0000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  1  Mn        AT  0.0000  0.0000  1.0000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  1  Mn        AT  1.0000  1.0000  1.0000 IS  7.27561 A.U.   3.85009 ANG
+ ATOM:  1  Mn        AT  0.0000  1.0000  1.0000 IS  7.27561 A.U.   3.85009 ANG
+Atom   2 equiv  1 O          Bond-Valence Sum     1.72    1.83
+
+
+SHELL STRUCTURE for all ATOMS:
+ATOM  | DISTANCE   #of NEIGHBORS   Z |
+  1 | 4.201  6   8.0| 5.941 12  25.0| 7.276  8   8.0| 8.401  6  25.0|
+  2 | 4.201  6  25.0| 5.941 12   8.0| 7.276  8  25.0| 8.401  6   8.0|
+ 
+
+LISTING of INDEX of all EQUIVALENT ATOMS:
+ 
+ ATOM:   1 and ATOM:   1 are equivalent
+ 
+ ATOM:   2 and ATOM:   2 are equivalent
+ 
+
+ ATOM KIND:   1  OLD and NEW MULTIPLICITY:     1   1
+
+ ATOM KIND:   2  OLD and NEW MULTIPLICITY:     1   1

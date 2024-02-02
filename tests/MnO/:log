@@ -1,0 +1,81 @@
+>   (init_lapw) options: 
+Wed May 23 23:14:51 EDT 2018> (x_lapw) nn -f MnO
+Wed May 23 23:14:53 EDT 2018> (x) nn
+Wed May 23 23:15:02 EDT 2018> (x) sgroup
+Wed May 23 23:15:06 EDT 2018> (x) symmetry
+Wed May 23 23:15:53 EDT 2018> (x) lstart
+Wed May 23 23:16:45 EDT 2018> (x) kgen
+Wed May 23 23:16:55 EDT 2018> (x) dstart -p
+>   (run_lapw) options: 
+Wed May 23 23:17:12 EDT 2018> (x) lapw0
+Wed May 23 23:17:13 EDT 2018> (x) lapw1
+Wed May 23 23:17:13 EDT 2018> (x) lapw2
+Wed May 23 23:17:13 EDT 2018> (x) lcore
+Wed May 23 23:17:14 EDT 2018> (x) mixer
+Wed May 23 23:17:14 EDT 2018> (x) lapw0
+Wed May 23 23:17:15 EDT 2018> (x) lapw1
+Wed May 23 23:17:15 EDT 2018> (x) lapw2
+Wed May 23 23:17:15 EDT 2018> (x) lcore
+Wed May 23 23:17:16 EDT 2018> (x) mixer
+Wed May 23 23:17:16 EDT 2018> (x) lapw0
+Wed May 23 23:17:17 EDT 2018> (x) lapw1
+Wed May 23 23:17:17 EDT 2018> (x) lapw2
+Wed May 23 23:17:17 EDT 2018> (x) lcore
+Wed May 23 23:17:18 EDT 2018> (x) mixer
+Wed May 23 23:17:18 EDT 2018> (x) lapw0
+Wed May 23 23:17:19 EDT 2018> (x) lapw1
+Wed May 23 23:17:19 EDT 2018> (x) lapw2
+Wed May 23 23:17:19 EDT 2018> (x) lcore
+Wed May 23 23:17:20 EDT 2018> (x) mixer
+Wed May 23 23:17:20 EDT 2018> (x) lapw0
+Wed May 23 23:17:21 EDT 2018> (x) lapw1
+Wed May 23 23:17:21 EDT 2018> (x) lapw2
+Wed May 23 23:17:21 EDT 2018> (x) lcore
+Wed May 23 23:17:22 EDT 2018> (x) mixer
+Wed May 23 23:17:22 EDT 2018> (x) lapw0
+Wed May 23 23:17:23 EDT 2018> (x) lapw1
+Wed May 23 23:17:23 EDT 2018> (x) lapw2
+Wed May 23 23:17:23 EDT 2018> (x) lcore
+Wed May 23 23:17:24 EDT 2018> (x) mixer
+Wed May 23 23:17:24 EDT 2018> (x) lapw0
+Wed May 23 23:17:25 EDT 2018> (x) lapw1
+Wed May 23 23:17:25 EDT 2018> (x) lapw2
+Wed May 23 23:17:25 EDT 2018> (x) lcore
+Wed May 23 23:17:26 EDT 2018> (x) mixer
+Wed May 23 23:17:26 EDT 2018> (x) lapw0
+Wed May 23 23:17:27 EDT 2018> (x) lapw1
+Wed May 23 23:17:27 EDT 2018> (x) lapw2
+Wed May 23 23:17:28 EDT 2018> (x) lcore
+Wed May 23 23:17:28 EDT 2018> (x) mixer
+Wed May 23 23:17:28 EDT 2018> (x) lapw0
+Wed May 23 23:17:29 EDT 2018> (x) lapw1
+Wed May 23 23:17:29 EDT 2018> (x) lapw2
+Wed May 23 23:17:30 EDT 2018> (x) lcore
+Wed May 23 23:17:30 EDT 2018> (x) mixer
+Wed May 23 23:17:45 EDT 2018> (x) kgen
+>   (run_lapw) options: 
+>   (run_lapw) options: -NI
+Wed May 23 23:18:22 EDT 2018> (x) lapw0
+Wed May 23 23:18:24 EDT 2018> (x) lapw1
+Wed May 23 23:18:24 EDT 2018> (x) lapw2
+Wed May 23 23:18:25 EDT 2018> (x) lcore
+Wed May 23 23:18:25 EDT 2018> (x) mixer
+Wed May 23 23:18:25 EDT 2018> (x) lapw0
+Wed May 23 23:18:26 EDT 2018> (x) lapw1
+Wed May 23 23:18:27 EDT 2018> (x) lapw2
+Wed May 23 23:18:28 EDT 2018> (x) lcore
+Wed May 23 23:18:28 EDT 2018> (x) mixer
+Wed May 23 23:18:28 EDT 2018> (x) lapw0
+Wed May 23 23:18:29 EDT 2018> (x) lapw1
+Wed May 23 23:18:30 EDT 2018> (x) lapw2
+Wed May 23 23:18:30 EDT 2018> (x) lcore
+Wed May 23 23:18:30 EDT 2018> (x) mixer
+Tue May 29 23:54:56 EDT 2018> (x) kgen
+Tue May 29 23:55:27 EDT 2018> (x) kgen -f MnO
+>   (run_lapw) options: -NI
+>   (run_lapw) options: -NI
+Tue May 29 23:56:16 EDT 2018> (x) lapw0
+Tue May 29 23:56:17 EDT 2018> (x) lapw1
+Tue May 29 23:56:17 EDT 2018> (x) lapw2
+Tue May 29 23:56:18 EDT 2018> (x) lcore
+Tue May 29 23:56:18 EDT 2018> (x) mixer

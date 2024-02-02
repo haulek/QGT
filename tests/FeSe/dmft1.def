@@ -1,0 +1,25 @@
+  2, 'FeSe.indmf1'       , 'old'     , 'formatted'  , 0   
+  4, 'FeSe.inso'         , 'unknown' , 'formatted'  , 0   
+  5, 'FeSe.indmfl'       , 'old'     , 'formatted'  , 0   
+  6, 'FeSe.outputdmf1'   , 'unknown' , 'formatted'  , 0   
+  7, 'FeSe.in1c'         , 'unknown' , 'formatted'  , 0   
+  8, 'FeSe.scf2'         , 'unknown' , 'formatted'  , 0   
+  9, './FeSe.vector'     , 'old'     , 'unformatted', 9000
+ 10, './FeSe.vectordn'   , 'unknown' , 'unformatted', 9000
+ 14, 'FeSe.klist'        , 'old'     , 'formatted'  , 0   
+ 18, 'FeSe.vsp'          , 'old'     , 'formatted'  , 0   
+ 19, 'FeSe.vspdn'        , 'unknown' , 'formatted'  , 0   
+ 20, 'FeSe.struct'       , 'old'     , 'formatted'  , 0   
+ 21, 'FeSe.scfdmft1'     , 'unknown' , 'formatted'  , 0   
+ 22, 'FeSe.rotlm'        , 'unknown' , 'formatted'  , 0   
+500, 'FeSe.cdos'         , 'unknown' , 'formatted'  , 0   
+ 59, 'FeSe.energydn'     , 'unknown' , 'formatted'  , 0   
+ 60, 'FeSe.energy'       , 'old'     , 'formatted'  , 0   
+ 81, 'sig.inp1'          , 'old'     , 'formatted'  , 0   
+181, 'FeSe.gc1'          , 'unknown' , 'formatted'  , 0   
+281, 'FeSe.dlt1'         , 'unknown' , 'formatted'  , 0   
+381, 'FeSe.Eimp1'        , 'unknown' , 'formatted'  , 0   
+ 82, 'sig.inp2'          , 'old'     , 'formatted'  , 0   
+182, 'FeSe.gc2'          , 'unknown' , 'formatted'  , 0   
+282, 'FeSe.dlt2'         , 'unknown' , 'formatted'  , 0   
+382, 'FeSe.Eimp2'        , 'unknown' , 'formatted'  , 0   

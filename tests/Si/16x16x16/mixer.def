@@ -1,0 +1,13 @@
+ 5,'Si.inm',       'old',    'formatted',0
+ 6,'Si.outputm',   'unknown','formatted',0
+ 7,'Si.inc',       'old',    'formatted',0
+10,'Si.clmsum_old','unknown','formatted',0
+17,'Si.clmval',    'unknown','formatted',0
+18,'Si.clmsc',     'unknown','formatted',0
+19,'Si.clmcor',    'unknown','formatted',0
+20,'Si.struct',    'old',    'formatted',0
+21,'Si.scfm',      'unknown','formatted',0
+22,'Si.scf',       'unknown','formatted',0
+31,'Si.broyd1',    'unknown','unformatted',164896
+32,'Si.broyd2',    'unknown','unformatted',164896
+51,'Si.clmsum',    'unknown','formatted',0

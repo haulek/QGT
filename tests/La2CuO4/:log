@@ -1,0 +1,13 @@
+>   (init) options: 
+Tue Mar 15 13:53:57 EDT 2011> (x_lapw) nn -f La2CuO4
+Tue Mar 15 13:53:59 EDT 2011> (x) nn
+Tue Mar 15 13:54:05 EDT 2011> (x) sgroup
+Tue Mar 15 13:54:22 EDT 2011> (x) symmetry
+Tue Mar 15 13:54:28 EDT 2011> (x) lstart
+Tue Mar 15 13:54:52 EDT 2011> (x) kgen
+Tue Mar 15 13:55:00 EDT 2011> (x) dstart
+Tue Mar 15 13:55:49 EDT 2011> (x) kgen
+Tue Mar 15 13:56:14 EDT 2011> (x) kgen
+Tue Mar 15 13:56:27 EDT 2011> (x) kgen
+Tue Mar 15 13:56:51 EDT 2011> (x) kgen
+Tue Mar 15 14:17:35 EDT 2011> (x) -f La2CuO4 tetra

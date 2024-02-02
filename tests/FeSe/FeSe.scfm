@@ -1,0 +1,121 @@
+:CINT001 Core Integral Atom   1   11.998598
+:CINT002 Core Integral Atom   2   17.999775
+
+       DENSITY AT NUCLEUS
+        JATOM        VALENCE       SEMI-CORE          CORE           TOTAL
+:RTO001:   1        5.625151        0.000000    15215.115276    15220.740427
+:RTO002:   2       58.859126        0.000000    40787.634119    40846.493245
+     
+       CHARGES OF NEW CHARGE DENSITY
+:NTO   : INTERSTITIAL CHARGE =     6.339470
+:NTO001: CHARGE SPHERE  1    =    24.943108
+:NTO002: CHARGE SPHERE  2    =    31.885521
+
+:NEC01: NUCLEAR AND ELECTRONIC CHARGE    120.00000   119.99673
+     
+       CHARGES OF OLD CHARGE DENSITY
+:OTO   : INTERSTITIAL CHARGE =     6.345010
+:OTO001: CHARGE SPHERE  1    =    24.940553
+:OTO002: CHARGE SPHERE  2    =    31.886942
+
+:NEC02: NUCLEAR AND ELECTRONIC CHARGE    120.00000   120.00000
+     
+       CONVERGENCE TEST
+:DTO001: DIFFERENCE IN SPHERE  1 =  0.0035925
+:DTO002: DIFFERENCE IN SPHERE  2 =  0.0009719
+
+:DIS  :  CHARGE DISTANCE       (  0.003592 for atom    1 spin 1)       0.002282
+ 
+******************************************************
+* MULTISECANT MIXING VER7 RELEASE 7.1.2              *
+* Standard Mode with controls                        *
+* Upper Bound on PW scaling active                   *
+* Regularization       1.000E-04                     *
+* Greed Lower Bound    2.500E-02                     *
+* Trust Upper Limit    1.200E+01                     *
+* Charge change trust active                         *
+* Max Number of Memory Steps    8                    *
+******************************************************
+ 
+ :WARN :  Number of PWs changed, you may want to restart broyden after iteration
+          11         212         210
+:PLANE:  INTERSTITIAL TOTAL      1.19510 DISTAN  4.371E-02 % 
+:CHARG:  CLM CHARGE   /ATOM    157.74629 DISTAN  1.302E-02 % 
+ 
+Step History
+      DMIX        Red     Pred      Trust     Lambda    MagRel    MagAbs     Beta
+  4  6.57E-02  7.46E-01  7.50E-01  5.35E-01  1.14E+00  2.18E-01  9.16E-01  1.00E+00
+  5  7.75E-02  4.50E-01  4.95E-01  1.11E+00  9.15E-01  5.35E-01  1.66E+00  1.00E+00
+  6  1.02E-01  1.84E-01  2.34E-01  1.76E+00  6.81E-01  9.04E-01  1.24E+00  1.00E+00
+  7  1.44E-01  6.60E-01  9.84E-01  1.58E+00  1.02E+00  2.57E-01  6.84E-02  1.00E+00
+  8  2.08E-01  3.68E-01  5.06E-01  2.49E+00  5.56E-01  4.17E-01  7.51E-02  1.00E+00
+  9  3.07E-01  2.34E+00  3.40E-01  1.28E+00  1.00E+00  7.31E-01  4.89E-02  1.00E+00
+ 10  2.82E-01  6.87E-01  2.63E-01  1.84E+00  1.47E+00  1.24E-01  2.06E-02  8.00E-01
+ 11  3.18E-01  5.22E-01  4.50E-01  2.02E+00  1.28E+00  6.06E-01  6.93E-02  1.00E+00
+ 12  3.50E-01 -1.00E+00  2.47E-01 -1.00E+01  1.00E+00  5.06E-01  3.03E-02  7.60E-01
+  
+:NORMS:  1/Froebius, Min, Max, Used   0.8236E+00  0.5334E+00  0.1006E+01  0.9578E+00
+:INFO :  Number of Memory Steps    8 Skipping    3
+:INFO :  SLambda=    1.4302528  Max    1.4302528
+
+Eigenvalues, unscaled except for SY+YY
+   #     SY Real        SY Imag          SS             YY         SY+YY Real      SY+YY Imag
+   1   3.500001E+00   0.000000E+00   4.035424E+00   4.398603E+00   9.017279E+00   0.000000E+00
+   2   1.289585E+00   0.000000E+00   1.124550E+00   2.506092E+00   4.741923E+00   0.000000E+00
+   3   5.395945E-01   0.000000E+00   2.414122E-01   5.998342E-01   1.369251E+00   0.000000E+00
+   4   5.646244E-02   0.000000E+00   1.898440E-02   4.137314E-01   4.914332E-01   0.000000E+00
+   5   2.014157E-02   0.000000E+00   4.568122E-03   6.917907E-02   1.001416E-01   0.000000E+00
+   6   6.169759E-03   0.000000E+00   1.462644E-03   1.225344E-02   2.007162E-02   0.000000E+00
+   7   1.326127E-04   0.000000E+00   5.338373E-05   3.038070E-04   5.497256E-04   0.000000E+00
+   8   1.081622E-06   0.000000E+00   3.783054E-07   3.145870E-06   5.085080E-06   0.000000E+00
+ 
+:INFO :  Singular value  9.158E+00 Weight  1.000E+00 Projection  3.997E-04
+:INFO :  Singular value  4.942E+00 Weight  1.000E+00 Projection  2.395E-02
+:INFO :  Singular value  1.320E+00 Weight  1.000E+00 Projection  6.334E-03
+:INFO :  Singular value  4.865E-01 Weight  1.000E+00 Projection -2.046E-02
+:INFO :  Singular value  9.973E-02 Weight  1.000E+00 Projection -1.690E-02
+:INFO :  Singular value  2.022E-02 Weight  9.995E-01 Projection -5.058E-02
+:INFO :  Singular value  5.428E-04 Weight  6.036E-01 Projection  3.283E-04
+:INFO :  Singular value  5.082E-06 Weight  1.335E-04 Projection  5.643E-06
+:RANK :  ACTIVE   6.60/8  =  82.54 %
+ 
+:DLIM :  Beta Active  6.840E-01
+:TRUST:  Step 2.21E+00  Charge 3.50E-02 (e)
+:DIRM :  MEMORY  8/8  RESCALE   16.65 RED  0.67 PRED  0.25 NEXT  0.32 BETA  0.68
+:DIRP :  |MSR1|= 1.989E-03 |PRATT|= 8.699E-03 ANGLE=  25.6 DEGREES
+:DIRQ :  |MSR1|= 7.703E-03 |PRATT|= 4.109E-02 ANGLE=  28.5 DEGREES
+:DIRT :  |MSR1|= 7.955E-03 |PRATT|= 4.200E-02 ANGLE=  28.5 DEGREES
+:MIX  :   MSE1   REGULARIZATION: 4.40E-04  GREED: 0.3500  Newton 1.00 0.189                
+     
+       CHARGES OF MIXED CHARGE DENSITY
+:CTO   : INTERSTITIAL CHARGE =     6.344867
+:CTO001: CHARGE SPHERE  1    =    24.940754
+:CTO002: CHARGE SPHERE  2    =    31.886812
+
+:NEC03: NUCLEAR AND ELECTRONIC CHARGE    120.00000   120.00000
+
+PW CHANGE     H    K    L      Current       Change    Residue
+:PTO001:      0    0    0  3.72073984E-02 -2.137E-06 -1.320E-05
+:PTO002:      0    0   -1  1.19281129E-02 -1.183E-06 -1.870E-06
+:PTO004:     -1    0   -1 -8.37320123E-02  4.819E-06  2.764E-05
+:PTO005:      0    0   -2 -1.18630634E-02  1.046E-06  3.762E-06
+:PTO006:     -1   -1    0 -2.40794925E-02  2.115E-06  1.665E-05
+:PTO007:     -1   -1   -1  1.46070780E-02 -3.444E-06 -6.793E-06
+:PTO008:     -1    0   -2  8.90312868E-03 -1.589E-06 -1.063E-05
+:PTO009:     -1   -1   -2  1.77435579E-02 -6.483E-06 -1.690E-05
+:PTO010:     -2    0    0 -8.38719509E-03  5.248E-07  4.190E-07
+:PTO011:      0    0   -3  7.97251308E-04 -5.895E-07 -3.721E-06
+:PTO012:     -2    0   -1  7.69031346E-03  8.644E-07 -2.851E-06
+:PTO014:     -1    0   -3  6.66220510E-03 -2.593E-06 -5.983E-06
+
+:ENE  : *WARNING** TOTAL ENERGY IN Ry =       -14790.69235869
+
+       TOTAL FORCE IN mRy/a.u. = |F|     Fx             Fy             Fz     with/without FOR in case.in2
+:FOR001:   1.ATOM          0.000          0.000          0.000          0.000 partial forces
+:FOR002:   2.ATOM        140.653          0.000          0.000       -140.653 partial forces
+       TOTAL FORCE WITH RESPECT TO GLOBAL CARTESIAN COORDINATES:
+:FCA001:   1.ATOM                         0.000          0.000          0.000 partial forces
+:FCA002:   2.ATOM                         0.000          0.000       -140.653 partial forces
+       TOTAL FORCE WITH RESPECT TO THE GLOBAL COORDINATE SYSTEM:
+:FGL001:   1.ATOM                 0.000000000     0.000000000     0.000000000 partial forces
+:FGL002:   2.ATOM                 0.000000000     0.000000000  -140.653008184 partial forces

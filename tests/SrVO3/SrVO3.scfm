@@ -1,0 +1,80 @@
+:CINT001 Core Integral Atom   1   10.000000
+:CINT002 Core Integral Atom   2   27.999946
+:CINT003 Core Integral Atom   3    2.000000
+
+       DENSITY AT NUCLEUS
+        JATOM        VALENCE       SEMI-CORE          CORE           TOTAL
+:RTO001:   1      118.635652        0.000000     9865.904941     9984.540593
+:RTO002:   2      163.491936        0.000000    72195.840938    72359.332874
+:RTO003:   3       15.071304        0.000000      304.053531      319.124835
+     
+       CHARGES OF NEW CHARGE DENSITY
+:NTO   : INTERSTITIAL CHARGE =     6.308042
+:NTO001: CHARGE SPHERE  1    =    20.349664
+:NTO002: CHARGE SPHERE  2    =    35.869539
+:NTO003: CHARGE SPHERE  3    =     7.490895
+
+:NEC01: NUCLEAR AND ELECTRONIC CHARGE     85.00000    84.99993
+     
+       CHARGES OF OLD CHARGE DENSITY
+:OTO   : INTERSTITIAL CHARGE =     6.308191
+:OTO001: CHARGE SPHERE  1    =    20.349612
+:OTO002: CHARGE SPHERE  2    =    35.869549
+:OTO003: CHARGE SPHERE  3    =     7.490883
+
+:NEC02: NUCLEAR AND ELECTRONIC CHARGE     85.00000    85.00000
+     
+       CONVERGENCE TEST
+:DTO001: DIFFERENCE IN SPHERE  1 =  0.0000983
+:DTO002: DIFFERENCE IN SPHERE  2 =  0.0000900
+:DTO003: DIFFERENCE IN SPHERE  3 =  0.0000515
+
+:DIS  :  CHARGE DISTANCE       ( 0.0000983 for atom    1 spin 1)      0.0000686
+:BIG check (qbig,qrms,qtot)    0.328D-04   0.507D-04   0.686D-04
+ 
+******************************************************
+* MULTISECANT MIXING VER3 OPTIONS                    *
+* Unpredicted Step Limit   0.100000                  *
+* Regularization   0.000500                          *
+* Standard Increase/Decrease Bounds                  *
+* Plane Wave SQRT Dynamic Rescaling                  *
+* Max Number of Memory Steps    8                    *
+******************************************************
+ 
+  1.166051480085050E-011           5
+:PLANE:  INTERSTITIAL TOTAL     15.94609 DISTAN  0.107D-03 % 
+:CHARG:  CLM CHARGE   TOTAL      5.19534 DISTAN  0.435D-03 % 
+:REDuction and DMIX in Broyd:    1.0999    0.2000
+:INFO :  Dynamic rescale   0.218D+01  0.100D+01  0.500D+01
+:INFO :  Number of Memory Steps    5 Skipping    0
+:INFO :  Bounds         0.161D+00  0.200D+00  0.125D+00  0.125D+00
+:DIRM :  MEMORY 5/8 RESCALE  2.182 RED  0.309 PRED  0.245 NEXT  0.801
+:INFO :  DMIXM and Projections     0.125D+00  0.801D+00
+:DIRP :  |BROYD|= 0.293D-04 |PRATT|= 0.182D-04 ANGLE=   9.0 DEGREES
+:DIRB :  |BROYD|= 0.135D-03 |PRATT|= 0.107D-03 ANGLE=  20.8 DEGREES
+:MIX  :   MSEC1  REGULARIZATION: 5.00E-04  GREED: 0.125
+     
+       CHARGES OF MIXED CHARGE DENSITY
+:CTO   : INTERSTITIAL CHARGE =     6.308182
+:CTO001: CHARGE SPHERE  1    =    20.349618
+:CTO002: CHARGE SPHERE  2    =    35.869552
+:CTO003: CHARGE SPHERE  3    =     7.490883
+
+:NEC03: NUCLEAR AND ELECTRONIC CHARGE     85.00000    85.00000
+
+PW CHANGE     H    K    L       Current     Change     Residue
+:PTO001:      0    0    0  7.23099397E-02 -2.227E-10 -1.265E-07
+:PTO002:     -1    0    0 -2.35723529E-02  2.128E-07  1.075E-06
+:PTO003:     -1   -1    0  1.16322191E-01  2.251E-07  1.433E-06
+:PTO004:     -1   -1   -1  1.38315111E-01  1.038E-07  4.149E-07
+:PTO005:     -2    0    0  1.15524527E-01  1.110E-07  5.412E-07
+:PTO006:     -2   -1    0 -3.35210160E-02  2.503E-08  1.525E-07
+:PTO007:     -2   -1   -1  6.14422184E-02  1.692E-07  5.417E-07
+:PTO008:     -2   -2    0  6.53235738E-02  3.449E-08  8.943E-08
+:PTO009:     -3    0    0 -5.80997786E-03 -3.092E-08 -1.588E-07
+:PTO010:     -2   -2   -1 -1.37239104E-02 -1.633E-07 -8.436E-07
+:PTO011:     -3   -1    0  1.90226529E-02 -8.034E-08 -5.433E-07
+:PTO012:     -3   -1   -1  2.03248165E-02 -7.664E-08 -2.883E-07
+
+:ENE  : ********** TOTAL ENERGY IN Ry =        -8710.45864899
+

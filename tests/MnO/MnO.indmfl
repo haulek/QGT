@@ -1,0 +1,22 @@
+5 15 1 5                              # hybridization band index nemin and nemax, renormalize for interstitials, projection type
+0 0.025 0.025 200 -3.000000 1.000000  # matsubara, broadening-corr, broadening-noncorr, nomega, omega_min, omega_max (in eV)
+1                                     # number of correlated atoms
+1     1   0                           # iatom, nL, locrot
+  2   7   1                           # L, qsplit, cix
+#================ # Siginds and crystal-field transformations for correlated orbitals ================
+1     5   2       # Number of independent kcix blocks, max dimension, max num-independent-components
+1     5   2       # cix-num, dimension, num-independent-components
+#---------------- # Independent components are --------------
+'eg' 't2g' 
+#---------------- # Sigind follows --------------------------
+1 0 0 0 0
+0 1 0 0 0
+0 0 2 0 0
+0 0 0 2 0
+0 0 0 0 2
+#---------------- # Transformation matrix follows -----------
+ 0.00000000  0.00000000    0.00000000  0.00000000    1.00000000  0.00000000    0.00000000  0.00000000    0.00000000  0.00000000  
+ 0.70710679  0.00000000    0.00000000  0.00000000    0.00000000  0.00000000    0.00000000  0.00000000    0.70710679  0.00000000  
+ 0.00000000  0.00000000    0.70710679  0.00000000    0.00000000  0.00000000   -0.70710679  0.00000000    0.00000000  0.00000000  
+ 0.00000000  0.00000000    0.00000000  0.70710679    0.00000000  0.00000000    0.00000000  0.70710679    0.00000000  0.00000000  
+-0.00000000 -0.70710679    0.00000000  0.00000000    0.00000000  0.00000000    0.00000000  0.00000000    0.00000000  0.70710679  

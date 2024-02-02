@@ -1,0 +1,27 @@
+ 2,'FeSe.nsh',    'unknown','formatted',0
+ 3,'FeSe.in1',   'unknown','formatted',0
+ 4,'FeSe.inso',           'unknown','formatted',0
+ 5,'FeSe.in2',   'old',    'formatted',0
+ 6,'FeSe.output2','unknown','formatted',0
+ 7,'FeSe.vorb','unknown','formatted',0
+ 8,'FeSe.clmval','unknown','formatted',0
+10,'./FeSe.vector', 'unknown','unformatted',9000
+13,'FeSe.recprlist',      'unknown','unformatted',9000
+14,'FeSe.kgen',        'unknown','formatted',0
+15,'FeSe.tmp',       'unknown','unformatted',0
+16,'FeSe.qtl',       'unknown','formatted',0
+17,'FeSe.weightaver','unknown','formatted',0
+18,'FeSe.vsp',       'old',    'formatted',0
+19,'FeSe.vns',       'unknown','formatted',0
+20,'FeSe.struct',         'old',    'formatted',0
+21,'FeSe.scf2','unknown','formatted',0
+922,'FeSe.rotlm',   'unknown',    'formatted',0
+23,'FeSe.radwf',   'unknown',    'formatted',0
+26,'FeSe.weight',   'unknown','formatted',0
+27,'FeSe.weightdn',   'unknown','formatted',0
+29,'FeSe.energydn','unknown','formatted',0
+30,'FeSe.energy', 'unknown','formatted',0
+32,'FeSe.qdmft',   'unknown',    'formatted',0
+34,'FeSe.oubwin',   'unknown',    'formatted',0
+231,'FeSe.dmftsym',   'unknown',    'formatted',0
+

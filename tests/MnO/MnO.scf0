@@ -1,0 +1,34 @@
+ Flat Integration
+ New Mode for Coulomb Integral
+ Consistent 3/8+Simpson combinations
+ Extension of core to zero
+ LDM version in phi
+ Fifth-order quadrature in outwin
+
+
+            ---------
+:ITE013: 13. ITERATION
+            ---------
+
+:NATO :    2 INDEPENDENT AND    2 TOTAL ATOMS IN UNITCELL
+       SUBSTANCE: MnO_RT_SPG225_PRB_V1_P236_1970                              
+
+       LATTICE                      = F   
+:POT  : POTENTIAL OPTION EX_PBE EC_PBE VX_PBE VC_PBE
+:LAT  : LATTICE CONSTANTS=  8.40115  8.40115  8.40115    1.571    1.571    1.571
+:VOL  : UNIT CELL VOLUME =     148.23713
+       MODE OF CALCULATION IS       = RELA
+       NON-SPINPOLARIZED CALCULATION
+:IFFT  : FFT-parameters:   72   72   72 Factor: 2.00
+       ATOMNUMBER=  1 Mn         VCOUL-ZERO =  0.33396E+00
+       ATOMNUMBER=  2 O          VCOUL-ZERO =  0.49958E+00
+:FIT001: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  1  0.1497492E-01
+:FIT001: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  1  0.1497492E-01
+:FIT002: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  2  0.1656302E-03
+:FIT002: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  2  0.1656302E-03
+:DEN  : DENSITY INTEGRAL  =         -1043.08119460   (Ry)
+       ELS_POTENTIAL_AT Z=0 and Z=0.5:  -2.21917  -2.21917
+       ELS_POTENTIAL_AT Y=0 and Y=0.5:   0.00000   0.00000
+:VZERO:v0,v0c,v0x  -3.25242  -2.21917  -1.03325 v5,v5c,v5x  -3.25242  -2.21917  -1.03325
+:VZERY:v0,v0c,v0x  -0.77041   0.00000  -0.77041 v5,v5c,v5x  -0.77041   0.00000  -0.77041
+:VZERX:v0,v0c,v0x  -0.77041   0.00000  -0.77041 v5,v5c,v5x  -0.77041   0.00000  -0.77041

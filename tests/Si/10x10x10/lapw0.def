@@ -1,0 +1,27 @@
+ 3,'Si.rhopw',   'unknown','formatted',0
+ 4,'Si.inm',     'unknown','formatted',0
+ 5,'Si.in0',     'old',    'formatted',0
+ 6,'Si.output0', 'unknown','formatted',0
+ 7,'Si.vorbup',  'unknown','formatted',0
+ 8,'Si.clmsum',  'old',    'formatted',0
+ 9,'Si.vtotal',  'unknown','formatted',0
+10,'Si.vcoul',   'unknown','formatted',0
+11,'Si.r2v',     'unknown','formatted',0
+12,'Si.clmup',   'unknown','formatted',0
+13,'Si.clmdn',   'unknown','formatted',0
+14,'Si.mbjmix',     'unknown','formatted',0
+16,'Si.vsp','unknown','formatted',0
+17,'Si.vspdn',   'unknown','formatted',0
+18,'Si.vns','unknown','formatted',0
+19,'Si.vnsdn',   'unknown','formatted',0
+20,'Si.struct',  'old',    'formatted',0         
+21,'Si.scf0',    'unknown','formatted',0
+28,'Si.vrespsum','unknown','formatted',0
+29,'Si.vrespup', 'unknown','formatted',0
+30,'Si.vrespdn', 'unknown','formatted',0
+50,'Si.eeceup', 'unknown','formatted',0
+51,'Si.eecedn', 'unknown','formatted',0
+62,'Si.grr',    'unknown','formatted',0
+63,'/opt/apps/ompi/wien/wien2k_19/SRC_lapw0/xc_funcs.h','unknown','formatted',0
+64,'Si.r2v_nonloc',     'unknown','formatted',0
+61,'Si.in0abp',     'unknown','formatted',0

@@ -1,0 +1,20 @@
+
+Calculating FeSe in /mnt/wk19/haule/SummerSchool2018/FeSe/FeSe
+on rupc02 with PID 370633
+using WIEN2k_16.1 (Release 12/12/2016) in /opt/apps/ompi/wien/wien2k_16
+
+
+    start 	(Wed May 30 12:36:54 EDT 2018) with lapw0 (40/99 to go)
+
+    cycle 1 	(Wed May 30 12:36:54 EDT 2018) 	(40/99 to go)
+
+>   lapw0 	(12:36:54) 0.652u 0.016s 0:00.69 95.6%	0+0k 0+784io 0pf+0w
+>   lapw1      	(12:36:55) 2.443u 0.230s 0:02.73 97.8%	0+0k 8+26360io 0pf+0w
+>   lapw2      	(12:36:58) 1.952u 0.129s 0:02.11 98.1%	0+0k 0+1480io 0pf+0w
+>   lcore	(12:37:00) 0.010u 0.009s 0:00.03 33.3%	0+0k 0+248io 0pf+0w
+>   mixer 	(12:37:00) 0.045u 0.009s 0:00.08 50.0%	0+0k 0+1208io 0pf+0w
+:ENERGY convergence:  1 0.0001 .0000235950000000
+:CHARGE convergence:  0 0.0000 .003592
+ec cc and fc_conv 1 1 1
+
+>   stop

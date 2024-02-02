@@ -1,0 +1,42 @@
+
+Calculating SrVO3 in /mnt/wk19/haule/materials/newDMFT/SummerSchool2016/LDA/SrVO3
+on rupc09.rutgers.edu with PID 21198
+using WIEN2k_14.2 (Release 15/10/2014) in /home/haule//wien2k_14
+
+
+    start 	(Tue May 17 13:46:40 EDT 2016) with lapw0 (40/99 to go)
+
+    cycle 1 	(Tue May 17 13:46:40 EDT 2016) 	(40/99 to go)
+
+>   lapw0 	(13:46:40) 1.704u 0.459s 0:02.16 99.5%	0+0k 0+696io 0pf+0w
+>   lapw1      	(13:46:43) 9.102u 0.666s 0:05.09 191.7%	0+0k 32+30944io 0pf+0w
+>   lapw2      	(13:46:48) 3.027u 0.259s 0:01.73 189.0%	0+0k 0+688io 0pf+0w
+>   lcore	(13:46:50) 0.009u 0.006s 0:00.01 0.0%	0+0k 0+344io 0pf+0w
+>   mixer 	(13:46:50) 0.015u 0.009s 0:00.02 50.0%	0+0k 0+968io 0pf+0w
+:ENERGY convergence:  0 0 .0000077450000000
+:CHARGE convergence:  0 0.0001 .0001607
+ec cc and fc_conv 1 0 1
+
+    cycle 2 	(Tue May 17 13:46:50 EDT 2016) 	(39/98 to go)
+
+>   lapw0 	(13:46:50) 2.230u 0.056s 0:02.28 100.0%	0+0k 0+656io 0pf+0w
+>   lapw1      	(13:46:52) 9.400u 0.882s 0:05.48 187.5%	0+0k 0+22456io 0pf+0w
+>   lapw2      	(13:46:58) 2.078u 0.133s 0:01.25 176.0%	0+0k 0+688io 0pf+0w
+>   lcore	(13:46:59) 0.009u 0.005s 0:00.01 0.0%	0+0k 0+344io 0pf+0w
+>   mixer 	(13:46:59) 0.018u 0.013s 0:00.03 66.6%	0+0k 0+968io 0pf+0w
+:ENERGY convergence:  0 0 .0000031600000000
+:CHARGE convergence:  0 0.0001 .0001319
+ec cc and fc_conv 1 0 1
+
+    cycle 3 	(Tue May 17 13:46:59 EDT 2016) 	(38/97 to go)
+
+>   lapw0 	(13:46:59) 1.761u 0.324s 0:02.08 100.0%	0+0k 0+6216io 0pf+0w
+>   lapw1      	(13:47:02) 9.616u 0.902s 0:05.49 191.4%	0+0k 0+24872io 0pf+0w
+>   lapw2      	(13:47:07) 2.524u 0.232s 0:01.45 189.6%	0+0k 0+688io 0pf+0w
+>   lcore	(13:47:09) 0.007u 0.008s 0:00.01 0.0%	0+0k 0+344io 0pf+0w
+>   mixer 	(13:47:09) 0.039u 0.028s 0:00.06 83.3%	0+0k 0+968io 0pf+0w
+:ENERGY convergence:  0 0 .0000035100000000
+:CHARGE convergence:  1 0.0001 -.0000017
+ec cc and fc_conv 1 1 1
+
+>   stop

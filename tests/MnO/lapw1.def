@@ -1,0 +1,11 @@
+  4, 'MnO.klist_band', 'old'     , 'formatted'  , 0   
+  5, 'MnO.in1'      , 'old'     , 'formatted'  , 0   
+  6, 'MnO.output1'  , 'unknown' , 'formatted'  , 0   
+ 10, './MnO.vector' , 'unknown' , 'unformatted', 9000
+ 11, 'MnO.energy'   , 'unknown' , 'formatted'  , 0   
+ 18, 'MnO.vsp'      , 'old'     , 'formatted'  , 0   
+ 19, 'MnO.vns'      , 'unknown' , 'formatted'  , 0   
+ 20, 'MnO.struct'   , 'old'     , 'formatted'  , 0   
+ 21, 'MnO.scf1'     , 'unknown' , 'formatted'  , 0   
+ 55, 'MnO.vec'      , 'unknown' , 'formatted'  , 0   
+ 71, 'MnO.nsh'      , 'unknown' , 'formatted'  , 0   

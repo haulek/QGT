@@ -1,0 +1,24 @@
+ Ordering of DOS in QTL file for: La2CuO4                                                     
+
+ atom   1 ordering of projected DOS 
+s,                                                                
+p,px,py,pz, real basis                                            
+d,dz2,d(x2-y2),dxy,dxz,dyz, real basis                            
+f,A2,x(T1),y(T1),z(T1),ksi(T2),eta(T2),zeta(T2), real basis       
+               A2=xyz  x(T1)=x(x2-3r2/5)  y(T1)=y(y2-3r2/5)  z(T1)=z(z2-3r2/5)      
+             ksi(T2)=x(y2-z2)   eta(T2)=y(z2-y2)   zeta(T2)=z(x2-y2)              
+ 
+ atom   2 ordering of projected DOS 
+s,                                                                
+p,px,py,pz, real basis                                            
+d,dz2,d(x2-y2),dxy,dxz,dyz, real basis                            
+ 
+ atom   3 ordering of projected DOS 
+s,                                                                
+p,px,py,pz, real basis                                            
+ 
+ atom   4 ordering of projected DOS 
+s,                                                                
+p,px,py,pz, real basis                                            
+ 
+ Data for interstital DOS correspond to atom index    5

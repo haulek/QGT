@@ -1,0 +1,118 @@
+ NORB, SHIFT IPRINT           5  0.000000000000000E+000           0
+1                                        Fe  2+    
+
+     NOMBRE D ITERATIONS   1
+
+     PRECISIO N SUR LES ENERGIES 5.00E-09
+
+                       FONCTIONS D ONDE 1.00E-09
+
+                       POTENTIEL 1.00E-09
+
+ L INTEGRATION EST FAITE EN 781 POINTS LE PREMIER EST EGAL A  0.0001/26 ET LE PAS A  0.0138
+
+ DANS LE SOUS PROGRAMME RESLD LA PRECISION RELATIVE A OBTENIR SUR L ENERGIE EST  1.00E-13 ET LE NOMBRE D ESSAIS  30
+
+IDEP=  1     ICUT=  1     IPRAT=  0
+
+     ORBITALE     OCCUPATION     ENERGIE DE DEPART
+
+       1S             2.00         -1.6900000E+02
+       2S             2.00         -4.2250000E+01
+       2P*            2.00         -4.2250000E+01
+       2P             4.00         -4.2250000E+01
+       3S             2.00         -1.8777778E+01
+0  LE PROCEDE DE PRATT EST UTILISE
+
+1                                        Fe  2+    
+
+ ITER    DVMAX          R              VN-1             VN          DEMAX      DPMAX         PN-1             PN
+ eigenwert von            1 Zustand  -256.130761902063     
+ eigenwert von            2 Zustand  -29.5964971481779     
+ eigenwert von            3 Zustand  -25.4976537798846     
+ eigenwert von            4 Zustand  -25.0400392031249     
+ eigenwert von            5 Zustand  -2.98053291458009     
+    1   1.42E+01    6.244282E-01   -9.803961E+00   -2.400264E+01   8.41E-01  -1.00E+00    0.000000E+00    1.005195E+00
+ NOMBRE D ITERATIONS SUPERIEUR A   1
+1                                        Fe  2+    
+
+            ENERGIE            (R4)              (R2)              (R)               (R-1)             (R-3)
+
+  1S     -2.5613076E+02     5.4641493E-05     4.6103669E-03     5.8552184E-02     2.5932977E+01
+  2S     -2.9596497E+01     1.2460741E-02     8.4456670E-02     2.6734511E-01     5.5675653E+00
+  2P*    -2.5497654E+01     9.2293914E-03     6.7240962E-02     2.3369747E-01     5.5215559E+00
+  2P     -2.5040039E+01     9.6388373E-03     6.8869877E-02     2.3674449E-01     5.4230944E+00     4.6849817E+02
+  3S     -2.9805329E+00     9.6570449E-01     7.6667941E-01     8.1392768E-01     1.7481149E+00
+0     ET=-9.8276683E+02     EC= 1.3687008E+03     EE= 2.6700103E+02     EX=-3.8415754E+01     EN=-2.5800529E+03
+1                                        Fe  2+    
+
+0                                               INTEGRALES DE RECOUVREMENT
+
+                                  2S   1S           0.0000000
+                                  3S   1S          -0.0000000
+                                  3S   2S           0.0000000
+ NORB, SHIFT IPRINT           7  0.000000000000000E+000           0
+1                                        Se  2-    
+
+     NOMBRE D ITERATIONS   1
+
+     PRECISIO N SUR LES ENERGIES 5.00E-09
+
+                       FONCTIONS D ONDE 1.00E-09
+
+                       POTENTIEL 1.00E-09
+
+ L INTEGRATION EST FAITE EN 781 POINTS LE PREMIER EST EGAL A  0.0001/34 ET LE PAS A  0.0137
+
+ DANS LE SOUS PROGRAMME RESLD LA PRECISION RELATIVE A OBTENIR SUR L ENERGIE EST  1.00E-13 ET LE NOMBRE D ESSAIS  30
+
+IDEP=  1     ICUT=  1     IPRAT=  0
+
+     ORBITALE     OCCUPATION     ENERGIE DE DEPART
+
+       1S             2.00         -2.8900000E+02
+       2S             2.00         -7.2250000E+01
+       2P*            2.00         -7.2250000E+01
+       2P             4.00         -7.2250000E+01
+       3S             2.00         -3.2111111E+01
+       3P*            2.00         -3.2111111E+01
+       3P             4.00         -3.2111111E+01
+0  LE PROCEDE DE PRATT EST UTILISE
+
+1                                        Se  2-    
+
+ ITER    DVMAX          R              VN-1             VN          DEMAX      DPMAX         PN-1             PN
+ eigenwert von            1 Zustand  -458.256804240975     
+ eigenwert von            2 Zustand  -58.5860598925866     
+ eigenwert von            3 Zustand  -52.5737536461842     
+ eigenwert von            4 Zustand  -51.0421196385180     
+ eigenwert von            5 Zustand  -7.45168500814315     
+ eigenwert von            6 Zustand  -5.39524829736618     
+ eigenwert von            7 Zustand  -5.17901819666316     
+    1   1.53E+01    7.869313E-01   -6.301118E+00   -2.159285E+01   8.39E-01  -1.00E+00    0.000000E+00    1.013348E+00
+ NOMBRE D ITERATIONS SUPERIEUR A   1
+1                                        Se  2-    
+
+            ENERGIE            (R4)              (R2)              (R)               (R-1)             (R-3)
+
+ integrand and fcore at rmt   -1.226222708045438E-003   1152.98092792033     
+ integrand and fcore at rmt-1 -1.425918382845686E-003   1152.97716130193     
+ integrand and fcore at rmt-2 -1.652235447179690E-003   1152.97070388520     
+  2  1  > COR  0.1152981E+01  0.0000000E+00  0.0000000E+00  0.1152981E+01
+  1S     -4.5825680E+02     1.7710824E-05     2.6226377E-03     4.4137385E-02     3.4515317E+01
+  2S     -5.8586060E+01     3.5638098E-03     4.5354028E-02     1.9598621E-01     7.6722407E+00
+  2P*    -5.2573754E+01     2.4625856E-03     3.4920701E-02     1.6863674E-01     7.6455294E+00
+  2P     -5.1042120E+01     2.6513861E-03     3.6381791E-02     1.7243644E-01     7.4091812E+00     1.1757258E+03
+  3S     -7.4516850E+00     2.3257366E-01     3.8118106E-01     5.7512137E-01     2.4963149E+00
+  3P*    -5.3952483E+00     2.7362189E-01     3.9956787E-01     5.8319347E-01     2.3782202E+00
+  3P     -5.1790182E+00     2.9403039E-01     4.1421963E-01     5.9389804E-01     2.3208659E+00     1.6737676E+02
+0     ET=-1.9077383E+03     EC= 2.6584890E+03     EE= 5.3890119E+02     EX=-6.1723757E+01     EN=-5.0434047E+03
+1                                        Se  2-    
+
+0                                               INTEGRALES DE RECOUVREMENT
+
+                                  2S   1S           0.0000000
+                                  3S   1S          -0.0000000
+                                  3S   2S           0.0000000
+                                  3P*  2P*          0.0000000
+                                  3P   2P           0.0000000

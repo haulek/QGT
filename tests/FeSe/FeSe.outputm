@@ -1,0 +1,74 @@
+ JATOM =            1   J =            1
+  ESX  =  -2.0490460952E+03 OCC =   2.0000000000E+00  2.0000000000E+00
+   ESUM,EKIN =   -6318.76155145000       0.000000000000000E+000
+ JATOM =            1   J =            2
+  ESX  =  -2.3677197718E+02 OCC =   2.0000000000E+00  2.0000000000E+00
+   ESUM,EKIN =   -8367.80764666600       0.000000000000000E+000
+ JATOM =            1   J =            3
+  ESX  =  -2.0398123024E+02 OCC =   2.0000000000E+00  2.0000000000E+00
+   ESUM,EKIN =   -8604.57962385000       0.000000000000000E+000
+ JATOM =            1   J =            4
+  ESX  =  -4.0064062725E+02 OCC =   4.0000000000E+00  4.0000000000E+00
+   ESUM,EKIN =   -8808.56085409000       0.000000000000000E+000
+ JATOM =            1   J =            5
+  ESX  =  -2.3844263316E+01 OCC =   2.0000000000E+00  2.0000000000E+00
+   ESUM,EKIN =   -9209.20148133800       0.000000000000000E+000
+ JATOM =            2   J =            1
+  ESX  =  -3.6660544339E+03 OCC =   2.0000000000E+00  2.0000000000E+00
+   ESUM,EKIN =   -9233.04574465400       0.000000000000000E+000
+ JATOM =            2   J =            2
+  ESX  =  -4.6868847914E+02 OCC =   2.0000000000E+00  2.0000000000E+00
+   ESUM,EKIN =   -12899.1001785820       0.000000000000000E+000
+ JATOM =            2   J =            3
+  ESX  =  -4.2059002917E+02 OCC =   2.0000000000E+00  2.0000000000E+00
+   ESUM,EKIN =   -13367.7886577220       0.000000000000000E+000
+ JATOM =            2   J =            4
+  ESX  =  -8.1667391422E+02 OCC =   4.0000000000E+00  4.0000000000E+00
+   ESUM,EKIN =   -13788.3786868900       0.000000000000000E+000
+ JATOM =            2   J =            5
+  ESX  =  -5.9613480064E+01 OCC =   2.0000000000E+00  2.0000000000E+00
+   ESUM,EKIN =   -14605.0526011060       0.000000000000000E+000
+ JATOM =            2   J =            6
+  ESX  =  -4.3161986380E+01 OCC =   2.0000000000E+00  2.0000000000E+00
+   ESUM,EKIN =   -14664.6660811700       0.000000000000000E+000
+ JATOM =            2   J =            7
+  ESX  =  -8.2864291144E+01 OCC =   4.0000000000E+00  4.0000000000E+00
+   ESUM,EKIN =   -14707.8280675500       0.000000000000000E+000
+   ESUM =   -14790.6923586940     
+ 12. ITERATION
+
+
+       DENSITY AT NUCLEUS
+        JATOM        VALENCE       SEMI-CORE          CORE           TOTAL
+:RTO001:   1        5.625151        0.000000    15215.115276    15220.740427
+:RTO002:   2       58.859126        0.000000    40787.634119    40846.493245
+ Allocating CLM-arrays            3  MB
+ Allocating nwav-arrays           0  MB
+ Allocating cfft-array            0  MB
+:NTO   : INTERSTITIAL CHARGE =     6.339470
+
+:NEC01: NUCLEAR AND ELECTRONIC CHARGE    120.00000   119.99673
+:OTO   : INTERSTITIAL CHARGE =     6.345010
+
+:NEC02: NUCLEAR AND ELECTRONIC CHARGE    120.00000   120.00000
+ Number of PWs changed, you may want to restart broyden after iteration
+          11
+ 
+ Allocating PS:            0  MB
+ Allocating SB:            0  MB
+ Allocating Y,S:           1  MB
+ 
+:MIX  :   MSE1   REGULARIZATION: 4.40E-04  GREED: 0.3500  Newton 1.00 0.189                
+:CTO   : INTERSTITIAL CHARGE =     6.344867
+
+:NEC03: NUCLEAR AND ELECTRONIC CHARGE    120.00000   120.00000
+
+:ENE  : *WARNING** TOTAL ENERGY IN Ry =       -14790.69235869
+
+  
+Time all        CPU  4.000E-02   Wall  6.667E-02 Threading  0.60 Nett 100.0 %
+Time to setup   CPU  2.000E-02   Wall  2.592E-02 Threading  0.77 Nett  38.9 %
+Time for MSEC   CPU  2.000E-02   Wall  3.482E-02 Threading  0.57 Nett  52.2 %
+Time for Hist   CPU  1.000E-02   Wall  1.973E-02 Threading  0.51 Nett  29.6 %
+Time for Scale  CPU  1.000E-02   Wall  1.181E-02 Threading  0.85 Nett  17.7 %
+Time for output CPU  0.000E+00   Wall  5.934E-03 Threading  0.00 Nett   8.9 %

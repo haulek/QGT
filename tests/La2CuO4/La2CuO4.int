@@ -1,0 +1,14 @@
+Title
+ -0.50 0.002 1.500 0.003   EMIN, DE, EMAX, Gauss-broadening(>de)
+    11                     NUMBER OF DOS-CASES specified below
+    0    1   total         atom, case=column in qtl-header, label
+    1    1   La-tot  
+    2    7   Ni-d
+    2    8   Ni-dz2
+    2    9   Ni-d(x2-y2)
+    2    10  Ni-dxy
+    2    11  Ni-dxz
+    2    12  Ni-dyz
+    3    1   O1-tot
+    4    1   O2-tot
+    5    1   inter

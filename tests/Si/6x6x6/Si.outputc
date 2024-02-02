@@ -1,0 +1,48 @@
+ NORB, SHIFT IPRINT           4  0.000000000000000E+000           0
+1                                        Si1       
+
+     NOMBRE D ITERATIONS   1
+
+     PRECISIO N SUR LES ENERGIES 5.00E-09
+
+                       FONCTIONS D ONDE 1.00E-09
+
+                       POTENTIEL 1.00E-09
+
+ L INTEGRATION EST FAITE EN 781 POINTS LE PREMIER EST EGAL A  0.0001/14 ET LE PAS A  0.0128
+
+ DANS LE SOUS PROGRAMME RESLD LA PRECISION RELATIVE A OBTENIR SUR L ENERGIE EST  1.00E-13 ET LE NOMBRE D ESSAIS  30
+
+IDEP=  1     ICUT=  1     IPRAT=  0
+
+     ORBITALE     OCCUPATION     ENERGIE DE DEPART
+
+       1S             2.00         -4.9000000E+01
+       2S             2.00         -1.2250000E+01
+       2P*            2.00         -1.2250000E+01
+       2P             4.00         -1.2250000E+01
+0  LE PROCEDE DE PRATT EST UTILISE
+
+1                                        Si1       
+
+ ITER    DVMAX          R              VN-1             VN          DEMAX      DPMAX         PN-1             PN
+ eigenwert von            1 Zustand  -65.2166953574366     
+ eigenwert von            2 Zustand  -4.72428210837329     
+ eigenwert von            3 Zustand  -3.12447028725546     
+ eigenwert von            4 Zustand  -3.10072937321520     
+    1   2.29E+00    7.721010E-01   -4.160367E+00   -6.450161E+00   7.47E-01  -1.00E+00    0.000000E+00    1.003869E+00
+ NOMBRE D ITERATIONS SUPERIEUR A   1
+1                                        Si1       
+
+            ENERGIE            (R4)              (R2)              (R)               (R-1)             (R-3)
+
+  1S     -6.5216695E+01     7.2072389E-04     1.6677464E-02     1.1127923E-01     1.3639485E+01
+  2S     -4.7242821E+00     2.7688484E-01     3.8607692E-01     5.6820148E-01     2.5804370E+00
+  2P*    -3.1244703E+00     2.9774011E-01     3.6401158E-01     5.3673268E-01     2.4676561E+00
+  2P     -3.1007294E+00     3.0225471E-01     3.6689887E-01     5.3896416E-01     2.4545599E+00     4.7851567E+01
+0     ET=-2.6137843E+02     EC= 3.0812967E+02     EE= 1.0866720E+02     EX=-1.7467765E+01     EN=-6.6070753E+02
+1                                        Si1       
+
+0                                               INTEGRALES DE RECOUVREMENT
+
+                                  2S   1S           0.0000000

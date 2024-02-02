@@ -1,0 +1,21 @@
+  2, 'SrVO3.indmf1'      , 'old'     , 'formatted'  , 0   
+  4, 'SrVO3.inso'        , 'unknown' , 'formatted'  , 0   
+  5, 'SrVO3.indmfl'      , 'old'     , 'formatted'  , 0   
+  6, 'SrVO3.outputdmf1'  , 'unknown' , 'formatted'  , 0   
+  7, 'SrVO3.in1c'        , 'unknown' , 'formatted'  , 0   
+  8, 'SrVO3.scf2'        , 'unknown' , 'formatted'  , 0   
+  9, './SrVO3.vector'    , 'old'     , 'unformatted', 9000
+ 10, './SrVO3.vectordn'  , 'unknown' , 'unformatted', 9000
+ 14, 'SrVO3.klist'       , 'old'     , 'formatted'  , 0   
+ 18, 'SrVO3.vsp'         , 'old'     , 'formatted'  , 0   
+ 19, 'SrVO3.vspdn'       , 'unknown' , 'formatted'  , 0   
+ 20, 'SrVO3.struct'      , 'old'     , 'formatted'  , 0   
+ 21, 'SrVO3.scfdmft1'    , 'unknown' , 'formatted'  , 0   
+ 22, 'SrVO3.rotlm'       , 'unknown' , 'formatted'  , 0   
+500, 'SrVO3.cdos'        , 'unknown' , 'formatted'  , 0   
+ 59, 'SrVO3.energydn'    , 'unknown' , 'formatted'  , 0   
+ 60, 'SrVO3.energy'      , 'old'     , 'formatted'  , 0   
+ 81, 'sig.inp1'          , 'old'     , 'formatted'  , 0   
+181, 'SrVO3.gc1'         , 'unknown' , 'formatted'  , 0   
+281, 'SrVO3.dlt1'        , 'unknown' , 'formatted'  , 0   
+381, 'SrVO3.Eimp1'       , 'unknown' , 'formatted'  , 0   

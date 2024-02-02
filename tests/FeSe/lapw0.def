@@ -1,0 +1,27 @@
+ 3,'FeSe.rhopw',   'unknown','formatted',0
+ 4,'FeSe.inm',     'unknown','formatted',0
+ 5,'FeSe.in0',     'old',    'formatted',0
+ 6,'FeSe.output0', 'unknown','formatted',0
+ 7,'FeSe.vorbup',  'unknown','formatted',0
+ 8,'FeSe.clmsum',  'old',    'formatted',0
+ 9,'FeSe.vtotal',  'unknown','formatted',0
+10,'FeSe.vcoul',   'unknown','formatted',0
+11,'FeSe.r2v',     'unknown','formatted',0
+12,'FeSe.clmup',   'unknown','formatted',0
+13,'FeSe.clmdn',   'unknown','formatted',0
+14,'FeSe.mbjmix',     'unknown','formatted',0
+16,'FeSe.vsp','unknown','formatted',0
+17,'FeSe.vspdn',   'unknown','formatted',0
+18,'FeSe.vns','unknown','formatted',0
+19,'FeSe.vnsdn',   'unknown','formatted',0
+20,'FeSe.struct',  'old',    'formatted',0         
+21,'FeSe.scf0',    'unknown','formatted',0
+28,'FeSe.vrespsum','unknown','formatted',0
+29,'FeSe.vrespup', 'unknown','formatted',0
+30,'FeSe.vrespdn', 'unknown','formatted',0
+50,'FeSe.eeceup', 'unknown','formatted',0
+51,'FeSe.eecedn', 'unknown','formatted',0
+62,'FeSe.grr',    'unknown','formatted',0
+63,'/opt/apps/ompi/wien/wien2k_16/SRC_lapw0/xc_funcs.h','unknown','formatted',0
+64,'FeSe.r2v_nonloc',     'unknown','unformatted',0
+61,'FeSe.in0abp',     'unknown','formatted',0

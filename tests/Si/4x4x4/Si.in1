@@ -1,0 +1,6 @@
+WFFIL  EF=.38340711920000000055   (WFFIL, WFPRI, ENFIL, SUPWF) 
+  9.00       10    4 (R-MT*K-MAX; MAX L IN WF, V-NMT
+  0.30    2  0      (GLOBAL E-PARAMETER WITH n OTHER CHOICES, global APW/LAPW)
+ 0    0.30      0.000 CONT 1
+ 1    0.30      0.000 CONT 1
+K-VECTORS FROM UNIT:4  -10.0       1.5    10   emin / de (emax=Ef+de) / nband

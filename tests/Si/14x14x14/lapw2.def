@@ -1,0 +1,26 @@
+ 2,'Si.nsh',    'unknown','unformatted',0
+ 3,'Si.in1',   'unknown','formatted',0
+ 4,'Si.inso',           'unknown','formatted',0
+ 5,'Si.in2',   'old',    'formatted',0
+ 6,'Si.output2','unknown','formatted',0
+ 7,'Si.vorb','unknown','formatted',0
+ 8,'Si.clmval','unknown','formatted',0
+10,'./Si.vector', 'unknown','unformatted',9000
+13,'Si.recprlist',      'unknown','unformatted',9000
+14,'Si.kgen',        'unknown','formatted',0
+15,'Si.tmp',       'scratch','unformatted',0
+16,'Si.qtl',       'unknown','formatted',0
+17,'Si.weightaver','unknown','formatted',0
+18,'Si.vsp',       'old',    'formatted',0
+19,'Si.vns',       'unknown','formatted',0
+20,'Si.struct',         'old',    'formatted',0
+21,'Si.scf2','unknown','formatted',0
+922,'Si.rotlm',   'unknown',    'formatted',0
+23,'Si.radwf',   'unknown',    'formatted',0
+26,'Si.weight',   'unknown','formatted',0
+27,'Si.weightdn',   'unknown','formatted',0
+29,'Si.energydn','unknown','formatted',0
+30,'Si.energy', 'unknown','formatted',0
+32,'Si.qdmft',   'unknown',    'formatted',0
+34,'Si.oubwin',   'unknown',    'formatted',0
+231,'Si.dmftsym',   'unknown',    'formatted',0

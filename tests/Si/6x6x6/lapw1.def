@@ -1,0 +1,12 @@
+ 4,'Si.klist',          'unknown','formatted',0
+ 5,'Si.in1',   'old',    'formatted',0
+ 6,'Si.output1','unknown','formatted',0
+10,'./Si.vector', 'unknown','unformatted',9000
+11,'Si.energy', 'unknown','formatted',0
+18,'Si.vsp',       'old',    'formatted',0
+19,'Si.vns',       'unknown','formatted',0
+20,'Si.struct',         'old',    'formatted',0
+21,'Si.scf1',   'unknown','formatted',0
+55,'Si.vec',            'unknown','formatted',0
+71,'Si.nsh',    'unknown','unformatted',0
+200,'./Si.storeHinv', 'replace','unformatted',9000

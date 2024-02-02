@@ -1,0 +1,33 @@
+
+          ATOMIC SPHERE DEPENDENT PARAMETERS FOR ATOM  Mn        
+:e__0001: OVERALL ENERGY PARAMETER IS    0.2800
+          OVERALL BASIS SET ON ATOM IS LAPW
+:E1_0001: E( 1)=    0.2800
+             APW+lo
+:E1_0001: E( 1)=   -3.0745   E(BOTTOM)=   -3.164   E(TOP)=   -2.985  1  2   170
+             LOCAL ORBITAL
+:E2_0001: E( 2)=    0.4112   E(BOTTOM)=    0.072   E(TOP)=    0.750  0  1   134
+             APW+lo
+:E0_0001: E( 0)=    0.2800
+             APW+lo
+
+          ATOMIC SPHERE DEPENDENT PARAMETERS FOR ATOM  O         
+:e__0002: OVERALL ENERGY PARAMETER IS    0.2800
+          OVERALL BASIS SET ON ATOM IS LAPW
+:E0_0002: E( 0)=    0.6800
+             APW+lo
+:E0_0002: E( 0)=   -0.9621   E(BOTTOM)=   -1.626   E(TOP)=   -0.298  1  2   170
+             LOCAL ORBITAL
+:E1_0002: E( 1)=    0.2800
+             APW+lo
+
+       K=   1.00000   0.50000   0.00000   W         
+:RKM  : MATRIX SIZE   133LOs:  17  RKM= 6.96  WEIGHT= 0.00  PGR:    
+       EIGENVALUES ARE:
+:EIG00001:      -3.0561432   -3.0561432   -3.0550825   -0.9334961    0.0363093
+:EIG00006:       0.0363093    0.0601531    0.4393796    0.4393796    0.4880295
+:EIG00011:       0.4945198    0.5487051    1.0719650    1.1509366    1.1509366
+:EIG00016:       1.3606442    1.9355610    1.9355610
+       ********************************************************
+
+:KPT   :      NUMBER OF K-POINTS:  1064

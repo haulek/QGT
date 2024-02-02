@@ -1,0 +1,1003 @@
+ ******Program QTL: projected DOS or population matrix******
+ Running QTL on           17  processors
+  
+ Projected density of states calculation for  4 atoms
+ Energy window:   -9.0000 < E <      3.000
+
+
+
+
+                              --------------------------------------------------
+                                 S T R U C T U R A L   I N F O R M A T I O N
+                              --------------------------------------------------
+
+
+   SUBSTANCE                    = La2CuO4                                                                         
+
+   LATTICE                      = B   
+   LATTICE CONSTANTS ARE        =    7.1556370   7.1556370  24.8083250
+   NUMBER OF ATOMS IN UNITCELL  =   4
+   MODE OF CALCULATION IS       = RELA
+  BR1,  BR2
+   0.87807   0.00000   0.00000      0.00000   0.87807   0.87807
+   0.00000   0.87807   0.00000      0.87807   0.00000   0.87807
+   0.00000   0.00000   0.25327      0.25327   0.25327   0.00000
+ IORD=          16
+ atom  1; type   1; qsplit=  2; for L=  0  1  2  3
+ Symmetrization over eq. k-points is not performed
+ allowed for invariant DOS
+ L=  0. Unitary transformation to real basis
+  Real part of unitary matrix
+   1.0000
+  Imaginary part of unitary matrix
+   0.0000
+ L=  1. Unitary transformation to real basis
+  Real part of unitary matrix
+   0.7071   0.0000   0.7071
+   0.0000   0.0000   0.0000
+   0.0000   1.0000   0.0000
+  Imaginary part of unitary matrix
+   0.0000   0.0000   0.0000
+   0.7071   0.0000  -0.7071
+   0.0000   0.0000   0.0000
+ L=  2. Unitary transformation to real basis
+  Real part of unitary matrix
+   0.7071   0.0000   0.0000   0.0000   0.7071
+   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.7071   0.0000   0.7071   0.0000
+   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.0000   1.0000   0.0000   0.0000
+  Imaginary part of unitary matrix
+   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.7071   0.0000   0.0000   0.0000  -0.7071
+   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.7071   0.0000  -0.7071   0.0000
+   0.0000   0.0000   0.0000   0.0000   0.0000
+ L=  3. Unitary transformation to real basis
+  Real part of unitary matrix
+   0.7071   0.0000   0.0000   0.0000   0.0000   0.0000   0.7071
+   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.7071   0.0000   0.0000   0.0000   0.7071   0.0000
+   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.0000   0.7071   0.0000   0.7071   0.0000   0.0000
+   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.0000   0.0000   1.0000   0.0000   0.0000   0.0000
+  Imaginary part of unitary matrix
+   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.7071   0.0000   0.0000   0.0000   0.0000   0.0000  -0.7071
+   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.7071   0.0000   0.0000   0.0000  -0.7071   0.0000
+   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.0000   0.7071   0.0000  -0.7071   0.0000   0.0000
+   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+ atom  2; type   2; qsplit=  2; for L=  0  1  2
+ Symmetrization over eq. k-points is not performed
+ allowed for invariant DOS
+ L=  0. Unitary transformation to real basis
+  Real part of unitary matrix
+   1.0000
+  Imaginary part of unitary matrix
+   0.0000
+ L=  1. Unitary transformation to real basis
+  Real part of unitary matrix
+   0.7071   0.0000   0.7071
+   0.0000   0.0000   0.0000
+   0.0000   1.0000   0.0000
+  Imaginary part of unitary matrix
+   0.0000   0.0000   0.0000
+   0.7071   0.0000  -0.7071
+   0.0000   0.0000   0.0000
+ L=  2. Unitary transformation to real basis
+  Real part of unitary matrix
+   0.7071   0.0000   0.0000   0.0000   0.7071
+   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.7071   0.0000   0.7071   0.0000
+   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.0000   1.0000   0.0000   0.0000
+  Imaginary part of unitary matrix
+   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.7071   0.0000   0.0000   0.0000  -0.7071
+   0.0000   0.0000   0.0000   0.0000   0.0000
+   0.0000   0.7071   0.0000  -0.7071   0.0000
+   0.0000   0.0000   0.0000   0.0000   0.0000
+ atom  3; type   3; qsplit=  2; for L=  0  1
+ Symmetrization over eq. k-points is not performed
+ allowed for invariant DOS
+ L=  0. Unitary transformation to real basis
+  Real part of unitary matrix
+   1.0000
+  Imaginary part of unitary matrix
+   0.0000
+ L=  1. Unitary transformation to real basis
+  Real part of unitary matrix
+   0.7071   0.0000   0.7071
+   0.0000   0.0000   0.0000
+   0.0000   1.0000   0.0000
+  Imaginary part of unitary matrix
+   0.0000   0.0000   0.0000
+   0.7071   0.0000  -0.7071
+   0.0000   0.0000   0.0000
+ atom  4; type   4; qsplit=  2; for L=  0  1
+ Symmetrization over eq. k-points is not performed
+ allowed for invariant DOS
+ L=  0. Unitary transformation to real basis
+  Real part of unitary matrix
+   1.0000
+  Imaginary part of unitary matrix
+   0.0000
+ L=  1. Unitary transformation to real basis
+  Real part of unitary matrix
+   0.7071   0.0000   0.7071
+   0.0000   0.0000   0.0000
+   0.0000   1.0000   0.0000
+  Imaginary part of unitary matrix
+   0.0000   0.0000   0.0000
+   0.7071   0.0000  -0.7071
+   0.0000   0.0000   0.0000
+  Calculation for atom           1
+
+          ATOMIC PARAMETERS FOR La        
+
+           ENERGY PARAMETERS ARE  -1.64  -0.27   0.53   0.53
+
+           L     U(R)          U'(R)         DU/DE        DU'/DE      NORM-U'
+           0  0.210732E+00 -0.321471E+00 -0.282929E+00 -0.435022E+00
+           1 -0.251168E+00  0.398022E+00  0.227534E+00  0.366599E+00
+           2  0.506136E+00 -0.527111E-01 -0.124220E+00 -0.347926E+00
+           3  0.364027E+00  0.737332E-01 -0.436244E+00 -0.590155E+00
+LO COEFFICIENT: l,A,B,C   0          0.97058     0.72291     0.00000     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   0          0.69822     0.00000     0.37903     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   1          0.95917     1.05880     0.00000     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   1          0.27974     0.00000    -1.27006     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   2          0.86503     3.52460     0.00000     0.00000
+ 
+ L1=           0  L2=           0
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           1           3                 1           1  0.696840621267938     
+           2           2                 1           1  0.110916760595113     
+           2           3                 1           1  0.237696261172156     
+           3           1                 1           1  0.696840621267938     
+           3           2                 1           1  0.237696261172156     
+           3           3                 1           1   1.00000000000000     
+ L1=           1  L2=           1
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           1           3                 1           1  0.972874883167513     
+           2           2                 1           1  7.136302409119576E-002
+           2           3                 1           1  6.176496484408870E-002
+           3           1                 1           1  0.972874883167513     
+           3           2                 1           1  6.176496484408870E-002
+           3           3                 1           1   1.00000000000000     
+ L1=           2  L2=           2
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           2           2                 1           1  2.026255993637764E-002
+ L1=           3  L2=           3
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           2           2                 1           1  0.385412683029809     
+ ILOOP            1
+ opening 
+ La2CuO4.vector_1                                                               
+  
+ ILOOP            2
+ opening 
+ La2CuO4.vector_2                                                               
+  
+ ILOOP            3
+ opening 
+ La2CuO4.vector_3                                                               
+  
+ ILOOP            4
+ opening 
+ La2CuO4.vector_4                                                               
+  
+ ILOOP            5
+ opening 
+ La2CuO4.vector_5                                                               
+  
+ ILOOP            6
+ opening 
+ La2CuO4.vector_6                                                               
+  
+ ILOOP            7
+ opening 
+ La2CuO4.vector_7                                                               
+  
+ ILOOP            8
+ opening 
+ La2CuO4.vector_8                                                               
+  
+ ILOOP            9
+ opening 
+ La2CuO4.vector_9                                                               
+  
+ ILOOP           10
+ opening 
+ La2CuO4.vector_10                                                              
+  
+ ILOOP           11
+ opening 
+ La2CuO4.vector_11                                                              
+  
+ ILOOP           12
+ opening 
+ La2CuO4.vector_12                                                              
+  
+ ILOOP           13
+ opening 
+ La2CuO4.vector_13                                                              
+  
+ ILOOP           14
+ opening 
+ La2CuO4.vector_14                                                              
+  
+ ILOOP           15
+ opening 
+ La2CuO4.vector_15                                                              
+  
+ ILOOP           16
+ opening 
+ La2CuO4.vector_16                                                              
+  
+ ILOOP           17
+ opening 
+ La2CuO4.vector_17                                                              
+  
+ NUMBER OF K-POINTS:         102
+           1          92 bands
+           2          89 bands
+           3          91 bands
+           4          91 bands
+           5          93 bands
+           6          93 bands
+           7          90 bands
+           8          91 bands
+           9          90 bands
+          10          92 bands
+          11          93 bands
+          12          91 bands
+          13          91 bands
+          14          91 bands
+          15          92 bands
+          16          92 bands
+          17          90 bands
+          18          91 bands
+          19          91 bands
+          20          92 bands
+          21          92 bands
+          22          91 bands
+          23          91 bands
+          24          92 bands
+          25          92 bands
+          26          92 bands
+          27          91 bands
+          28          91 bands
+          29          91 bands
+          30          91 bands
+          31          91 bands
+          32          91 bands
+          33          91 bands
+          34          93 bands
+          35          93 bands
+          36          92 bands
+          37          91 bands
+          38          92 bands
+          39          93 bands
+          40          91 bands
+          41          92 bands
+          42          92 bands
+          43          92 bands
+          44          91 bands
+          45          91 bands
+          46          92 bands
+          47          92 bands
+          48          91 bands
+          49          91 bands
+          50          92 bands
+          51          91 bands
+          52          91 bands
+          53          92 bands
+          54          91 bands
+          55          91 bands
+          56          91 bands
+          57          91 bands
+          58          91 bands
+          59          91 bands
+          60          92 bands
+          61          91 bands
+          62          91 bands
+          63          92 bands
+          64          92 bands
+          65          90 bands
+          66          91 bands
+          67          91 bands
+          68          92 bands
+          69          92 bands
+          70          92 bands
+          71          93 bands
+          72          93 bands
+          73          93 bands
+          74          92 bands
+          75          92 bands
+          76          91 bands
+          77          91 bands
+          78          91 bands
+          79          91 bands
+          80          91 bands
+          81          91 bands
+          82          92 bands
+          83          90 bands
+          84          91 bands
+          85          92 bands
+          86          91 bands
+          87          91 bands
+          88          92 bands
+          89          93 bands
+          90          92 bands
+          91          91 bands
+          92          91 bands
+          93          91 bands
+          94          91 bands
+          95          90 bands
+          96          91 bands
+          97          91 bands
+          98          93 bands
+          99          92 bands
+         100          91 bands
+         101          91 bands
+         102          93 bands
+  Calculation for atom           2
+
+          ATOMIC PARAMETERS FOR Cu        
+
+           ENERGY PARAMETERS ARE   0.53   0.53   0.49   0.53
+
+           L     U(R)          U'(R)         DU/DE        DU'/DE      NORM-U'
+           0 -0.733044E+00  0.129767E+00  0.950075E-01  0.369158E+00
+           1  0.831859E+00  0.294612E+00 -0.669952E-01 -0.363874E+00
+           2  0.235345E+00 -0.264072E+00 -0.531016E+00 -0.606670E+00
+           3  0.106396E+01  0.134132E+01 -0.549286E-01 -0.335173E+00
+LO COEFFICIENT: l,A,B,C   0          0.85216     6.57500     0.00000     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   1          0.69008     8.56856     0.00000     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   1          0.11406     0.00000     0.97993     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   2          0.97340     0.43141     0.00000     0.00000
+ 
+ L1=           0  L2=           0
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           1           3                 1           1 -0.228776256565482     
+           2           2                 1           1  6.333854800669399E-003
+           2           3                 1           1 -6.159516040216297E-002
+           3           1                 1           1 -0.228776256565482     
+           3           2                 1           1 -6.159516040216297E-002
+           3           3                 1           1  0.761342772879717     
+ L1=           1  L2=           1
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           1           3                 1           1  0.119578211337156     
+           2           2                 1           1  7.134061037641300E-003
+           2           3                 1           1 -5.715779738250448E-002
+           3           1                 1           1  0.119578211337156     
+           3           2                 1           1 -5.715779738250448E-002
+           3           3                 1           1   1.00000000000000     
+ L1=           2  L2=           2
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           2           2                 1           1  0.282094590683244     
+ L1=           3  L2=           3
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           2           2                 1           1  1.866026189154434E-003
+ ILOOP            1
+ opening 
+ La2CuO4.vector_1                                                               
+  
+ ILOOP            2
+ opening 
+ La2CuO4.vector_2                                                               
+  
+ ILOOP            3
+ opening 
+ La2CuO4.vector_3                                                               
+  
+ ILOOP            4
+ opening 
+ La2CuO4.vector_4                                                               
+  
+ ILOOP            5
+ opening 
+ La2CuO4.vector_5                                                               
+  
+ ILOOP            6
+ opening 
+ La2CuO4.vector_6                                                               
+  
+ ILOOP            7
+ opening 
+ La2CuO4.vector_7                                                               
+  
+ ILOOP            8
+ opening 
+ La2CuO4.vector_8                                                               
+  
+ ILOOP            9
+ opening 
+ La2CuO4.vector_9                                                               
+  
+ ILOOP           10
+ opening 
+ La2CuO4.vector_10                                                              
+  
+ ILOOP           11
+ opening 
+ La2CuO4.vector_11                                                              
+  
+ ILOOP           12
+ opening 
+ La2CuO4.vector_12                                                              
+  
+ ILOOP           13
+ opening 
+ La2CuO4.vector_13                                                              
+  
+ ILOOP           14
+ opening 
+ La2CuO4.vector_14                                                              
+  
+ ILOOP           15
+ opening 
+ La2CuO4.vector_15                                                              
+  
+ ILOOP           16
+ opening 
+ La2CuO4.vector_16                                                              
+  
+ ILOOP           17
+ opening 
+ La2CuO4.vector_17                                                              
+  
+ NUMBER OF K-POINTS:         102
+           1          92 bands
+           2          89 bands
+           3          91 bands
+           4          91 bands
+           5          93 bands
+           6          93 bands
+           7          90 bands
+           8          91 bands
+           9          90 bands
+          10          92 bands
+          11          93 bands
+          12          91 bands
+          13          91 bands
+          14          91 bands
+          15          92 bands
+          16          92 bands
+          17          90 bands
+          18          91 bands
+          19          91 bands
+          20          92 bands
+          21          92 bands
+          22          91 bands
+          23          91 bands
+          24          92 bands
+          25          92 bands
+          26          92 bands
+          27          91 bands
+          28          91 bands
+          29          91 bands
+          30          91 bands
+          31          91 bands
+          32          91 bands
+          33          91 bands
+          34          93 bands
+          35          93 bands
+          36          92 bands
+          37          91 bands
+          38          92 bands
+          39          93 bands
+          40          91 bands
+          41          92 bands
+          42          92 bands
+          43          92 bands
+          44          91 bands
+          45          91 bands
+          46          92 bands
+          47          92 bands
+          48          91 bands
+          49          91 bands
+          50          92 bands
+          51          91 bands
+          52          91 bands
+          53          92 bands
+          54          91 bands
+          55          91 bands
+          56          91 bands
+          57          91 bands
+          58          91 bands
+          59          91 bands
+          60          92 bands
+          61          91 bands
+          62          91 bands
+          63          92 bands
+          64          92 bands
+          65          90 bands
+          66          91 bands
+          67          91 bands
+          68          92 bands
+          69          92 bands
+          70          92 bands
+          71          93 bands
+          72          93 bands
+          73          93 bands
+          74          92 bands
+          75          92 bands
+          76          91 bands
+          77          91 bands
+          78          91 bands
+          79          91 bands
+          80          91 bands
+          81          91 bands
+          82          92 bands
+          83          90 bands
+          84          91 bands
+          85          92 bands
+          86          91 bands
+          87          91 bands
+          88          92 bands
+          89          93 bands
+          90          92 bands
+          91          91 bands
+          92          91 bands
+          93          91 bands
+          94          91 bands
+          95          90 bands
+          96          91 bands
+          97          91 bands
+          98          93 bands
+          99          92 bands
+         100          91 bands
+         101          91 bands
+         102          93 bands
+  Calculation for atom           3
+
+          ATOMIC PARAMETERS FOR O         
+
+           ENERGY PARAMETERS ARE  -0.54   0.53   0.53   0.53
+
+           L     U(R)          U'(R)         DU/DE        DU'/DE      NORM-U'
+           0 -0.372533E+00  0.607168E+00  0.292161E+00  0.486332E+00
+           1  0.416574E+00 -0.501969E+00 -0.313145E+00 -0.483475E+00
+           2  0.110614E+01  0.938004E+00 -0.721567E-01 -0.385352E+00
+           3  0.132713E+01  0.209353E+01 -0.447276E-01 -0.340732E+00
+LO COEFFICIENT: l,A,B,C   0          0.95930     1.22320     0.00000     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   0          0.10106     0.00000    -1.09700     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   1          0.94450     1.25647     0.00000     0.00000
+ 
+ L1=           0  L2=           0
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           1           3                 1           1  0.963483652374957     
+           2           2                 1           1  5.329174316511301E-002
+           2           3                 1           1  6.178009098417475E-002
+           3           1                 1           1  0.963483652374957     
+           3           2                 1           1  6.178009098417475E-002
+           3           3                 1           1   1.00000000000000     
+ L1=           1  L2=           1
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           1           3                 1           1 -0.800342369132274     
+           2           2                 1           1  6.835481066483552E-002
+           2           3                 1           1 -7.685283384689538E-002
+           3           1                 1           1 -0.800342369132274     
+           3           2                 1           1 -7.685283384689538E-002
+           3           3                 1           1  0.888561895414080     
+ L1=           2  L2=           2
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           2           2                 1           1  2.569749559169026E-003
+ L1=           3  L2=           3
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           2           2                 1           1  7.767133621436641E-004
+ ILOOP            1
+ opening 
+ La2CuO4.vector_1                                                               
+  
+ ILOOP            2
+ opening 
+ La2CuO4.vector_2                                                               
+  
+ ILOOP            3
+ opening 
+ La2CuO4.vector_3                                                               
+  
+ ILOOP            4
+ opening 
+ La2CuO4.vector_4                                                               
+  
+ ILOOP            5
+ opening 
+ La2CuO4.vector_5                                                               
+  
+ ILOOP            6
+ opening 
+ La2CuO4.vector_6                                                               
+  
+ ILOOP            7
+ opening 
+ La2CuO4.vector_7                                                               
+  
+ ILOOP            8
+ opening 
+ La2CuO4.vector_8                                                               
+  
+ ILOOP            9
+ opening 
+ La2CuO4.vector_9                                                               
+  
+ ILOOP           10
+ opening 
+ La2CuO4.vector_10                                                              
+  
+ ILOOP           11
+ opening 
+ La2CuO4.vector_11                                                              
+  
+ ILOOP           12
+ opening 
+ La2CuO4.vector_12                                                              
+  
+ ILOOP           13
+ opening 
+ La2CuO4.vector_13                                                              
+  
+ ILOOP           14
+ opening 
+ La2CuO4.vector_14                                                              
+  
+ ILOOP           15
+ opening 
+ La2CuO4.vector_15                                                              
+  
+ ILOOP           16
+ opening 
+ La2CuO4.vector_16                                                              
+  
+ ILOOP           17
+ opening 
+ La2CuO4.vector_17                                                              
+  
+ NUMBER OF K-POINTS:         102
+           1          92 bands
+           2          89 bands
+           3          91 bands
+           4          91 bands
+           5          93 bands
+           6          93 bands
+           7          90 bands
+           8          91 bands
+           9          90 bands
+          10          92 bands
+          11          93 bands
+          12          91 bands
+          13          91 bands
+          14          91 bands
+          15          92 bands
+          16          92 bands
+          17          90 bands
+          18          91 bands
+          19          91 bands
+          20          92 bands
+          21          92 bands
+          22          91 bands
+          23          91 bands
+          24          92 bands
+          25          92 bands
+          26          92 bands
+          27          91 bands
+          28          91 bands
+          29          91 bands
+          30          91 bands
+          31          91 bands
+          32          91 bands
+          33          91 bands
+          34          93 bands
+          35          93 bands
+          36          92 bands
+          37          91 bands
+          38          92 bands
+          39          93 bands
+          40          91 bands
+          41          92 bands
+          42          92 bands
+          43          92 bands
+          44          91 bands
+          45          91 bands
+          46          92 bands
+          47          92 bands
+          48          91 bands
+          49          91 bands
+          50          92 bands
+          51          91 bands
+          52          91 bands
+          53          92 bands
+          54          91 bands
+          55          91 bands
+          56          91 bands
+          57          91 bands
+          58          91 bands
+          59          91 bands
+          60          92 bands
+          61          91 bands
+          62          91 bands
+          63          92 bands
+          64          92 bands
+          65          90 bands
+          66          91 bands
+          67          91 bands
+          68          92 bands
+          69          92 bands
+          70          92 bands
+          71          93 bands
+          72          93 bands
+          73          93 bands
+          74          92 bands
+          75          92 bands
+          76          91 bands
+          77          91 bands
+          78          91 bands
+          79          91 bands
+          80          91 bands
+          81          91 bands
+          82          92 bands
+          83          90 bands
+          84          91 bands
+          85          92 bands
+          86          91 bands
+          87          91 bands
+          88          92 bands
+          89          93 bands
+          90          92 bands
+          91          91 bands
+          92          91 bands
+          93          91 bands
+          94          91 bands
+          95          90 bands
+          96          91 bands
+          97          91 bands
+          98          93 bands
+          99          92 bands
+         100          91 bands
+         101          91 bands
+         102          93 bands
+  Calculation for atom           4
+
+          ATOMIC PARAMETERS FOR O         
+
+           ENERGY PARAMETERS ARE  -0.46   0.53   0.53   0.53
+
+           L     U(R)          U'(R)         DU/DE        DU'/DE      NORM-U'
+           0 -0.370791E+00  0.605021E+00  0.293375E+00  0.488327E+00
+           1  0.437948E+00 -0.462443E+00 -0.308383E+00 -0.493166E+00
+           2  0.111268E+01  0.976643E+00 -0.714842E-01 -0.385002E+00
+           3  0.133148E+01  0.212921E+01 -0.444587E-01 -0.340387E+00
+LO COEFFICIENT: l,A,B,C   0          0.95969     1.21293     0.00000     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   0          0.18052     0.00000    -1.17386     0.00000
+ 
+LO COEFFICIENT: l,A,B,C   1          0.93925     1.33387     0.00000     0.00000
+ 
+ L1=           0  L2=           0
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           1           3                 1           1  0.968678231069035     
+           2           2                 1           1  5.369228390023548E-002
+           2           3                 1           1  5.751252044867095E-002
+           3           1                 1           1  0.968678231069035     
+           3           2                 1           1  5.751252044867095E-002
+           3           3                 1           1   1.00000000000000     
+ L1=           1  L2=           1
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           1           3                 1           1 -0.795351156648370     
+           2           2                 1           1  6.621629226396215E-002
+           2           3                 1           1 -7.899589808240919E-002
+           3           1                 1           1 -0.795351156648370     
+           3           2                 1           1 -7.899589808240919E-002
+           3           3                 1           1  0.888561895414080     
+ L1=           2  L2=           2
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           2           2                 1           1  2.518787444279441E-003
+ L1=           3  L2=           3
+ RADIAL INTEGRALS:
+           1           1                 1           1   1.00000000000000     
+           2           2                 1           1  7.663626290833021E-004
+ ILOOP            1
+ opening 
+ La2CuO4.vector_1                                                               
+  
+ ILOOP            2
+ opening 
+ La2CuO4.vector_2                                                               
+  
+ ILOOP            3
+ opening 
+ La2CuO4.vector_3                                                               
+  
+ ILOOP            4
+ opening 
+ La2CuO4.vector_4                                                               
+  
+ ILOOP            5
+ opening 
+ La2CuO4.vector_5                                                               
+  
+ ILOOP            6
+ opening 
+ La2CuO4.vector_6                                                               
+  
+ ILOOP            7
+ opening 
+ La2CuO4.vector_7                                                               
+  
+ ILOOP            8
+ opening 
+ La2CuO4.vector_8                                                               
+  
+ ILOOP            9
+ opening 
+ La2CuO4.vector_9                                                               
+  
+ ILOOP           10
+ opening 
+ La2CuO4.vector_10                                                              
+  
+ ILOOP           11
+ opening 
+ La2CuO4.vector_11                                                              
+  
+ ILOOP           12
+ opening 
+ La2CuO4.vector_12                                                              
+  
+ ILOOP           13
+ opening 
+ La2CuO4.vector_13                                                              
+  
+ ILOOP           14
+ opening 
+ La2CuO4.vector_14                                                              
+  
+ ILOOP           15
+ opening 
+ La2CuO4.vector_15                                                              
+  
+ ILOOP           16
+ opening 
+ La2CuO4.vector_16                                                              
+  
+ ILOOP           17
+ opening 
+ La2CuO4.vector_17                                                              
+  
+ NUMBER OF K-POINTS:         102
+           1          92 bands
+           2          89 bands
+           3          91 bands
+           4          91 bands
+           5          93 bands
+           6          93 bands
+           7          90 bands
+           8          91 bands
+           9          90 bands
+          10          92 bands
+          11          93 bands
+          12          91 bands
+          13          91 bands
+          14          91 bands
+          15          92 bands
+          16          92 bands
+          17          90 bands
+          18          91 bands
+          19          91 bands
+          20          92 bands
+          21          92 bands
+          22          91 bands
+          23          91 bands
+          24          92 bands
+          25          92 bands
+          26          92 bands
+          27          91 bands
+          28          91 bands
+          29          91 bands
+          30          91 bands
+          31          91 bands
+          32          91 bands
+          33          91 bands
+          34          93 bands
+          35          93 bands
+          36          92 bands
+          37          91 bands
+          38          92 bands
+          39          93 bands
+          40          91 bands
+          41          92 bands
+          42          92 bands
+          43          92 bands
+          44          91 bands
+          45          91 bands
+          46          92 bands
+          47          92 bands
+          48          91 bands
+          49          91 bands
+          50          92 bands
+          51          91 bands
+          52          91 bands
+          53          92 bands
+          54          91 bands
+          55          91 bands
+          56          91 bands
+          57          91 bands
+          58          91 bands
+          59          91 bands
+          60          92 bands
+          61          91 bands
+          62          91 bands
+          63          92 bands
+          64          92 bands
+          65          90 bands
+          66          91 bands
+          67          91 bands
+          68          92 bands
+          69          92 bands
+          70          92 bands
+          71          93 bands
+          72          93 bands
+          73          93 bands
+          74          92 bands
+          75          92 bands
+          76          91 bands
+          77          91 bands
+          78          91 bands
+          79          91 bands
+          80          91 bands
+          81          91 bands
+          82          92 bands
+          83          90 bands
+          84          91 bands
+          85          92 bands
+          86          91 bands
+          87          91 bands
+          88          92 bands
+          89          93 bands
+          90          92 bands
+          91          91 bands
+          92          91 bands
+          93          91 bands
+          94          91 bands
+          95          90 bands
+          96          91 bands
+          97          91 bands
+          98          93 bands
+          99          92 bands
+         100          91 bands
+         101          91 bands
+         102          93 bands
+
+
+   =====>>> CPU TIME SUMMARY
+
+            TOTAL       :     20.3

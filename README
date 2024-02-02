@@ -1,0 +1,32 @@
+To run the code, prepare case.klist_band and start with:
+
+>path_gqt1.py
+
+which prepares new case.klist_band
+
+Next execute wien2k with the new klist:
+
+>x lapw1 -band
+
+Then run:
+
+>path_gqt2.py
+
+to produce ovelaps M_mmn
+
+Finally, comment out the two lines in path_gqt2.py:
+
+    #Back_Rename_klist()
+    #Compute_mmn(nbs=0,nbe=0)
+
+and possibly give arguments of which bands to group to
+
+    Compute_QGT()
+
+and execute path_gqt2.py again.
+
+Finally, plot results with
+
+>pband1.py
+
+

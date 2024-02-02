@@ -1,0 +1,50 @@
+
+
+            ---------
+:ITE020: 20. ITERATION
+            ---------
+
+:NATO :    3 INDEPENDENT AND    5 TOTAL ATOMS IN UNITCELL
+       SUBSTANCE: blebleble                                                   
+
+       LATTICE                      = P   
+:POT  : POTENTIAL OPTION EX_PBE EC_PBE VX_PBE VC_PBE
+:LAT  : LATTICE CONSTANTS=  7.25844  7.25844  7.25844    1.571    1.571    1.571
+:VOL  : UNIT CELL VOLUME =     382.41024
+       MODE OF CALCULATION IS       = RELA
+       NON-SPINPOLARIZED CALCULATION
+:IFFT  : FFT-parameters:   60   60   60 Factor: 2.00
+       ATOMNUMBER=  1 V          VCOUL-ZERO =  0.35007E-01
+       ATOMNUMBER=  2 Sr         VCOUL-ZERO =  0.42359E+00
+       ATOMNUMBER=  3 O          VCOUL-ZERO =  0.57386E+00
+:EFG003:                        EFG         =     2.61960   *10**21  V / m**2
+                               V20  TOT/SRF=     2.26864     0.98304
+                               V22  TOT/SRF=     0.00000     0.00000
+                               V22M TOT/SRF=     0.00000     0.00000
+                               V21  TOT/SRF=     0.00000     0.00000
+                               V21M TOT/SRF=     0.00000     0.00000
+
+             -1.30980    0.00000    0.00000       -1.30980    0.00000    0.00000
+              0.00000   -1.30980    0.00000        0.00000   -1.30980    0.00000
+              0.00000    0.00000    2.61960        0.00000    0.00000    2.61960
+
+         MAIN DIRECTIONS OF THE EFG   1.0000  0.0000  0.0000
+                                      0.0000  1.0000  0.0000
+                                      0.0000  0.0000  1.0000
+:ANG003:  ANGLE WITH OLD X-AXIS =         0.0
+
+:ETA003:                         ASYMM. ETA =     0.00000
+
+
+:FIT001: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  1  0.1528082E-01
+:FIT001: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  1  0.1528082E-01
+:FIT002: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  2  0.4880947E-02
+:FIT002: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  2  0.4880947E-02
+:FIT003: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  3  0.1123517E-02
+:FIT003: LUSE= 13 SIGMA OF V-XC FIT FOR ATOM  3  0.1123517E-02
+:DEN  : DENSITY INTEGRAL  =         -3643.70396421   (Ry)
+       ELS_POTENTIAL_AT Z=0 and Z=0.5:   0.00000   0.00000
+       ELS_POTENTIAL_AT Y=0 and Y=0.5:   0.00000   0.00000
+:VZERO:v0,v0c,v0x  -0.81417   0.00000  -0.81417 v5,v5c,v5x  -0.81417   0.00000  -0.81417
+:VZERY:v0,v0c,v0x  -0.81417   0.00000  -0.81417 v5,v5c,v5x  -0.81417   0.00000  -0.81417
+:VZERX:v0,v0c,v0x  -2.91267  -1.92156  -0.99111 v5,v5c,v5x  -3.73115  -2.39733  -1.33381
