@@ -7,26 +7,34 @@ which prepares new case.klist_band
 Next execute wien2k with the new klist:
 
 >x lapw1 -band
+or using eDMFT
+>x_dmftp.py lapw1 --band
 
 Then run:
 
->path_gqt2.py
+>mpirun -n 6 path_gqt2.py
 
 to produce ovelaps M_mmn
 
-Finally, comment out the two lines in path_gqt2.py:
-
-    #Back_Rename_klist()
-    #Compute_mmn(nbs=0,nbe=0)
-
-and possibly give arguments of which bands to group to
-
-    Compute_QGT()
-
-and execute path_gqt2.py again.
-
-Finally, plot results with
+Next you can plot results by
 
 >pband1.py
+
+With this, each band is treated as separate unit.
+If you want to combine bands, you can execute:
+
+> path_gqt3.py
+
+Then choose which bands to combine, and than execute
+
+>pband1.py
+
+You can prepare "ppar.dat", which can define the following variables:
+"""
+Logarithmic = True
+maxv = None
+Qcolor = [False,True,False]
+ymin,ymax = -8.7,8.7
+"""
 
 
