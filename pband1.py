@@ -48,25 +48,32 @@ if __name__ == '__main__':
     qgt = _qgt_[2:,:]
     xk = Ene[0,:]
     Ene = Ene[1:,:]
+    maxv = None
     
-    Logarithmic = False #True
-    #Qcolor = [True for i in range(len(nbs_nbe))]
-    Qcolor = [True,False]
-    ymin,ymax = -12,12
-    #ymin,ymax = -6,6
+    Logarithmic = True
+    Qcolor = [True for i in range(len(nbs_nbe))]
+    #Qcolor = [False,True,False]
+    #ymin,ymax = -12,12
+    ymin,ymax = -7.4,7.4
     #ymin,ymax=-3,3
     #ymin,ymax=-2.,2.6
     #ymin,ymax=-2.5,2.5
     cmap = mpl.cm.jet
 
-
+    if os.path.isfile('ppar.dat'):
+        exec(open("ppar.dat").read())
+        print('Logarithmic=', Logarithmic)
+        print('maxv=', maxv)
+        #print('Qcolor=', Qcolor)
+        print('ymin,ymax=', ymin,ymax)
+    
     ne = 100
     
     ne = min(min(ne,len(Ene)), int(round((len(qgt))/3)))
     
     print('shape(Ene)=', shape(Ene))
     print('shape(gqt)=', shape(qgt))
-    print(Qcolor)
+    print('Qcolor=', Qcolor)
 
     miv,mav = 1e10,0
     for i in range(len(nbs_nbe)):
@@ -75,11 +82,10 @@ if __name__ == '__main__':
             miv = min(miv,m)
             m = max(qgt[3*nbs_nbe[i,0]:3*nbs_nbe[i,1],:].ravel())
             mav = max(mav,m)
-            
-    #miv = min(qgt[:3*ne,:].ravel())
-    #mav = max(qgt[:3*ne,:].ravel())
     
-    #mav=5
+    if maxv is not None:
+        mav=maxv
+        
     print('min=', miv,'max=', mav, 'ne=', ne)
 
     QColor=[]
@@ -89,14 +95,14 @@ if __name__ == '__main__':
         else:
             QColor += [False for j in range(nbs_nbe[i,0],nbs_nbe[i,1])]
             
-    fig,ax = subplots(nrows=4,ncols=1,figsize=(15,10),
+    fig,ax = subplots(nrows=4,ncols=1,figsize=(7,10), # (15,10)
                         gridspec_kw={'width_ratios': [1], 'height_ratios': [10,10,10,1], 'wspace' : 0.3, 'hspace' : 0.2})
     for i in range(0,ne):
         if (QColor[i]):
             if Logarithmic:
-                rx = log(1+qgt[3*i+0,:])/log(1+mav)
-                ry = log(1+qgt[3*i+1,:])/log(1+mav)
-                rz = log(1+qgt[3*i+2,:])/log(1+mav)
+                rx = log(qgt[3*i+0,:])/log(mav)
+                ry = log(qgt[3*i+1,:])/log(mav)
+                rz = log(qgt[3*i+2,:])/log(mav)
             else:
                 rx = qgt[3*i+0,:]/mav
                 ry = qgt[3*i+1,:]/mav
