@@ -1,0 +1,360 @@
+\documentclass[onecolumn, prb,preprintnumbers,amsmath,amssymb,floatfix]{revtex4}
+\usepackage[linktocpage,bookmarksopen,bookmarksnumbered]{hyperref}
+%\usepackage[backend=biber,style=nature]{biblatex}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+
+\bibliographystyle{naturemag}
+
+\usepackage{amsmath,graphics,epsfig,color,verbatim,ulem}
+\usepackage{braket}
+\newcommand{\eps}{\epsilon} \renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta} \newcommand{\vR}{{\mathbf{R}}}
+\renewcommand{\vr}{{\mathbf{r}}} 
+\newcommand{\vk}{{\mathbf{k}}}
+\newcommand{\vp}{{\mathbf{p}}}
+\newcommand{\vG}{{\mathbf{G}}}
+\newcommand{\vK}{{\mathbf{K}}} \newcommand{\vq}{{\mathbf{q}}}
+\newcommand{\vQ}{{\mathbf{Q}}} \newcommand{\vPhi}{{\mathbf{\Phi}}}
+\newcommand{\vS}{{\mathbf{S}}} \newcommand{\cG}{{\cal G}}
+\newcommand{\cF}{{\cal F}} \newcommand{\cD}{{\cal D}}
+\newcommand{\Tr}{\mathrm{Tr}} \newcommand{\npsi}{\underline{\psi}}
+\newcommand{\vA}{{\mathbf{A}}} \newcommand{\vE}{{\mathbf{E}}}
+\newcommand{\vj}{{\mathbf{j}}} \newcommand{\vv}{{\mathbf{v}}}
+\newcommand{\kb}{k_B} \newcommand{\cellvol}{}
+\newcommand{\trace}{\mbox{Tr}} \newcommand{\ra}{\rangle }
+\newcommand{\la}{\langle } \newcommand{\om}{\omega}
+\renewcommand{\Im}{\mathrm{Im}} \newcommand{\up}{\uparrow}
+\newcommand{\down}{\downarrow}
+\newcommand{\nphi}{\underline{\phi}}
+\newcommand{\tIm}{\overline{\Im}}
+\newcommand{\cb}{{\cal B}}
+\usepackage{multirow}
+
+\addtolength{\itemsep}{-0.05in}
+
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{cancel}
+\newcolumntype{C}[1]{>{\Centering}m{#1}}
+\renewcommand\tabularxcolumn[1]{C{#1}}
+\usepackage{multibib}
+%\addbibresource{biblatex-nature.bib}
+
+%% the natbib package works better than cite
+%\usepackage[square,numbers,comma,sort&compress]{natbib}
+%\usepackage[square,numbers,sort]{natbib}
+
+\begin{document}
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+% You may need to change the horizontal offset to do what you
+% want.  Setting \hoffset to a negative value moves all printed
+% material to the left on all pages; setting it to a positive value
+% moves all printed material to the right on all pages; not setting
+% it keeps all printed material in it's default position.  \voffset
+% is the vertical offset: use negative value for up; don't set if
+% you want to use default position; use positive for down.
+% \hoffset = -0.2truein
+% \voffset = -0.2truein
+
+\title{Quantum Geometric Tensor notes}
+
+Quantum Geometric Tensor is defined by
+\begin{eqnarray}
+&&  M_{\mu\nu}^{\cb}(\vk)  =2\sum_{i\in \cb}
+\braket{\frac{\partial}{\partial k_{\mu}}\psi_{\vk i}|(1-\sum_{j\in \cb}\ket{\psi_{\vk j}}\bra{\psi_{\vk j}})|\frac{\partial}{\partial k_{\nu}}\psi_{\vk i}}\\
+&&  g_{\mu\nu}(\vk) = \frac{1}{2}(M_{\mu\nu}(\vk)+M_{\nu\mu}(\vk))\\
+\end{eqnarray}
+The Berry curvature is
+\begin{equation}
+\Omega_{\mu\nu} = i(M_{\mu\nu}-M_{\nu\mu}) 
+\end{equation}
+
+How is quantum metric related to distance between Bloch states? We have
+\begin{eqnarray}
+1-|\braket{\psi_{\vk n}|\psi_{\vk+d\vk,n}}|^2 =\frac{1}{2}\sum_{\mu\nu} M_{\mu\nu}^n(\vk) dk_\mu dk_\nu
+\end{eqnarray}  
+To derive this, you need to take into account both the first and the second derivative of the wave function, i.e.,
+\begin{eqnarray}
+  \psi_{\vk+d\vk,n}\approx \psi_{\vk,n} +
+ \sum_{\mu}\frac{\partial}{\partial k_\mu}\psi_{\vk,n}dk_\mu +
+ \frac{1}{2}\sum_{\mu\nu}\frac{\partial^2}{\partial k_\mu\partial k_\nu}\psi_{\vk,n}dk_\mu dk\nu
+\end{eqnarray}
+and then the straightforward expansion leads to the above formula.
+
+
+The definition is gauge invariant, in the sense that redefining single particle wave functions by an arbitrary phase
+$$\widetilde{\psi}_{\vk i}(\vr)=e^{i\beta_i(\vk)}\psi_{\vk i}(\vr)$$ does not change the result. This is crucial for implementation, as the phase of eigenvectors is arbitrary, chosen by the diagonalization routine.
+
+We check the gauge invariance by
+\begin{eqnarray}
+  \frac{\partial}{\partial k_{\nu}}\widetilde{\psi}_{\vk i}(\vr)=
+  e^{i\beta_i(\vk)} ({i\beta_i(\vk)}+\frac{\partial}{\partial k_{\nu}})\psi_{\vk i}(\vr)
+\end{eqnarray}  
+which means
+\begin{eqnarray}
+ \frac{1}{2} M_{\mu\nu}^{\cb}(\vk)  =
+\sum_{i,j\in \cb}
+  \braket{\frac{\partial}{\partial k_{\mu}}\widetilde{\psi}_{\vk i}|(1-\sum_{j\in \cb}\ket{\widetilde{\psi}_{\vk j}}\bra{\widetilde{\psi}_{\vk j}})|\frac{\partial}{\partial k_{\nu}}\widetilde{\psi}_{\vk i}}=
+\\
+\braket{({i\beta_i(\vk)}+\frac{\partial}{\partial k_{\mu}}) \psi_{\vk i}|(1-\sum_{j\in \cb}  \ket{\psi_{\vk j}}\bra{\psi_{\vk j}})|  ({i\beta_i(\vk)}+\frac{\partial}{\partial k_{\nu}})\psi_{\vk i}}=\\
+=\braket{\frac{\partial}{\partial k_{\mu}} \psi_{\vk i}|(1-\sum_{j\in \cb}  \ket{\psi_{\vk j}}\bra{\psi_{\vk j}})|\frac{\partial}{\partial k_{\nu}}\psi_{\vk i}}\\
++({-i\beta_i(\vk)})({i\beta_i(\vk)})  \braket{\psi_{\vk i}|(1-\sum_{j\in \cb}  \ket{\psi_{\vk j}}\bra{\psi_{\vk j}})| \psi_{\vk i}}\\
+{-i\beta_i(\vk)}\braket{ \psi_{\vk i}|(1-\sum_{j\in \cb}  \ket{\psi_{\vk j}}\bra{\psi_{\vk j}})| \frac{\partial}{\partial k_{\nu}}\psi_{\vk i}}\\
++{i\beta_i(\vk)}\braket{\frac{\partial}{\partial k_{\mu}} \psi_{\vk i}|(1-\sum_{j\in \cb}  \ket{\psi_{\vk j}}\bra{\psi_{\vk j}})|\psi_{\vk i}}
+\end{eqnarray}
+The last three terms vanish because
+$$\braket{\phi|(1-\sum_{j\in \cb}  \ket{\psi_{\vk j}}\bra{\psi_{\vk j}})|\psi_{\vk i}}=
+\braket{\phi|\psi_{\vk i}}
+-\braket{\phi|\psi_{\vk i}}\braket{\psi_{\vk i}|\psi_{\vk i}}=0$$
+%
+This shows that we could use periodic part of the Bloch functions $u_{\vk i}(\vr)$ instead of $\psi_{\vk i}(\vr)=e^{i\vk\vr}u_{\vk i}(\vr)$. This is crucial when we take finite differences, because
+$\braket{\psi_{\vk i}|\psi_{\vk+\vq,i}}=0$ unless $\vq=0$, while 
+$\braket{u_{\vk i}|u_{\vk+\vq,i}}\ne 0$.
+
+Next we choose a finite difference approximation for the derivatives, and produce the formula
+
+
+\begin{eqnarray}
+\frac{1}{2} M_{\mu\nu}^{\cb}(\vk)  &=&\frac{1}{\Delta_\mu\Delta_\nu}\sum_{i\in \cb}\braket{ u_{\vk+\Delta_\mu,i}-u_{\vk,i}|(1-\sum_{j\in \cb}\ket{u_{\vk j}}\bra{u_{\vk j}})|u_{\vk+\Delta_\nu i}-u_{\vk,i}}\\
+&=&  \frac{1}{\Delta_\mu\Delta_\nu}\sum_{i\in \cb}\braket{ u_{\vk+\Delta_\mu,i}|(1-\sum_{j\in \cb}\ket{u_{\vk j}}\bra{u_{\vk j}})|u_{\vk+\Delta_\nu i}}
+\end{eqnarray}
+
+Note that the rest of the terms generated by the above formula all vanish for the same reason as we shown above. The terms are:
+\begin{eqnarray}
+&-&  \frac{1}{\Delta_\mu\Delta_\nu}\sum_{i\in \cb}\braket{ u_{\vk+\Delta_\mu,i}|(1-\sum_{j\in \cb}\ket{u_{\vk j}}\bra{u_{\vk j}})|u_{\vk,i}}=0\\
+&-&  \frac{1}{\Delta_\mu\Delta_\nu}\sum_{i\in \cb}\braket{ u_{\vk,i}|(1-\sum_{j\in \cb}\ket{u_{\vk j}}\bra{u_{\vk j}})|u_{\vk+\Delta_\nu i}}=0\\
+&+&  \frac{1}{\Delta_\mu\Delta_\nu}\sum_{i\in \cb}\braket{u_{\vk,i}|(1-\sum_{j\in \cb}\ket{u_{\vk j}}\bra{u_{\vk j}})|u_{\vk,i}}=0
+\end{eqnarray}
+
+In cartesian coordinates $\Delta_1=\Delta \vec{e}_{x}$, the above formula takes the form
+\begin{eqnarray}
+\frac{1}{2} M_{\mu\mu}^{\cb}(\vk)  =
+  \frac{1}{\Delta_\mu\Delta_\nu}\sum_{i \in\cb}
+  \left(1  -\sum_{j\in\cb} |\braket{ u_{\vk+\Delta_\mu,i}|u_{\vk j}}|^2\right)
+\end{eqnarray}
+and hence the diagonal components of the quantum geometric tensor are:
+
+\begin{eqnarray}
+g_{\mu\mu}(\vk)  =
+  \frac{2}{\Delta_\mu\Delta_\nu}\sum_{i \in \cb}
+  \left(1  -\sum_{j\in\cb} |\braket{ u_{\vk+\Delta_\mu,i}|u_{\vk j}}|^2\right)
+\label{Eq:20}
+\end{eqnarray}
+The off diagonal terms are
+\begin{eqnarray}
+g_{\mu\nu}(\vk)  =
+  \frac{1}{\Delta_\mu\Delta_\nu}\sum_{i \in\cb}
+  \left(
+    \braket{u_{\vk+\Delta_\mu,i}|u_{\vk+\Delta_\nu,i}}
+  +\braket{u_{\vk+\Delta_\nu,i}|u_{\vk+\Delta_\mu,i}}
+  -\sum_{j\in\cb}
+  (\braket{ u_{\vk+\Delta_\mu,i}|u_{\vk j}}\braket{u_{\vk j}| u_{\vk+\Delta_\nu,i}}+
+  \braket{ u_{\vk+\Delta_\nu,i}|u_{\vk j}}\braket{u_{\vk j}| u_{\vk+\Delta_\mu,i}})
+  \right)
+\end{eqnarray}
+or
+\begin{eqnarray}
+g_{\mu\nu}(\vk)  =
+  \frac{2}{\Delta_\mu\Delta_\nu}\sum_{i \in\cb}
+  \textrm{Re}\left(
+    \braket{u_{\vk+\Delta_\mu,i}|u_{\vk+\Delta_\nu,i}}
+  -\sum_{j\in\cb}
+  \braket{ u_{\vk+\Delta_\mu,i}|u_{\vk j}}\braket{u_{\vk j}| u_{\vk+\Delta_\nu,i}}
+  \right)
+\end{eqnarray}
+
+For degeneracies at momentum point $\vk$ and some set of bands, an arbitrary unitary transformation between these bands should not change the result.
+$$\ket{\widetilde{u}_{\vk i}} = \sum_{i'\in dg}U_{i i'}(\vk) \ket{u_{\vk i'}} $$
+
+To make the formula for $g_{\mu\nu}$ invariant, we need to enlarge the space of $\cb$, so that it contains all degenerate bands.
+For the diagonal components, it is easy to show that the formula is invariant
+\begin{eqnarray}
+g_{\mu\mu}(\vk)  =
+  \frac{2}{\Delta_\mu\Delta_\nu}\sum_{i' \in \cb}
+  \left(1  -\sum_{jj'j''i'i''\in\cb}
+%  (U^\dagger(\vk) U(\vk))_{j'' j'} (U(\vk+\Delta_{\mu}) U^\dagger(\vk+\Delta_{\mu}))_{i' i''}
+  U_{jj'}(\vk)U^*_{jj''}(\vk) U_{i i'}^*(\vk+\Delta_{\mu})U_{i i''}(\vk+\Delta_\mu)
+  \braket{ u_{\vk+\Delta_\mu,i'}|u_{\vk j'}}\braket{u_{\vk j''}| u_{\vk+\Delta_\mu,i''}}\right)
+\end{eqnarray}
+
+
+Then 
+\begin{eqnarray}
+g_{\mu\nu}(\vk)  =
+  \frac{2}{\Delta_\mu\Delta_\nu}\sum_{i,i',i''\in \cb}\textrm{Re}
+  \left(U^*_{i i'}(\vk+\Delta_\mu)U_{i i''}(\vk+\Delta_\nu)
+  \left(\braket{u_{\vk+\Delta_\mu,i'}|u_{\vk+\Delta_\nu,i''}}
+  \right.\right.
+\\  
+  \left.\left.
+  -\sum_{j,j',j''\in\cb}
+  U^*_{j,j''}(\vk)U_{jj'}(\vk)\braket{ u_{\vk+\Delta_\mu,i'}|u_{\vk j'}}\braket{u_{\vk j''}| u_{\vk+\Delta_\nu,i''}}
+  \right)\right)
+\end{eqnarray}
+The diagonal is clearly invariant, because $U^\dagger U=1$. The off diagonal terms don't look invariant because we have
+$$(U^\dagger(\vk+\Delta_\mu)U(\vk+\Delta_\nu))_{i'i''}$$ and unitary transformation at different points are not related.
+
+
+The solution is to use symmetrized formula, which is gauge invariant.
+We start by writing the symmetrized formula using projectors:
+\begin{eqnarray}
+g_{\mu\nu}(\vk)  =  \sum_{i j \in\cb}\Tr\left(\partial_\mu P_i(\vk) \partial_\nu P_j(\vk) \right)
+\label{Eq:26}
+\end{eqnarray}  
+where projector is
+$$P_i(\vk) =\ket{\psi_{\vk i}}\bra{\psi_{\vk i}}$$
+We will first show that this formula is equivalent to above given
+formula. After that we will discretize it and show an invariant form
+of the QGT.
+We have
+\begin{eqnarray}
+&&  g_{\mu\nu}(\vk)  =  \sum_{i j \in\cb}\Tr\left(
+  \left(\ket{\partial_\mu \psi_{\vk i}}\bra{\psi_{\vk i}}+\ket{\psi_{\vk i}}\bra{\partial_\mu \psi_{\vk i}}\right)
+  \left(\ket{\partial_\nu \psi_{\vk j}}\bra{\psi_{\vk j}} +\ket{\psi_{\vk j}}\bra{\partial_\nu\psi_{\vk j}}\right)
+  \right)\\
+ && =
+\sum_{ij\in\cb}\Tr\left(
+  \ket{\partial_\mu \psi_{\vk i}}\braket{\psi_{\vk i} |\partial_\nu \psi_{\vk j}}\bra{\psi_{\vk j}} 
+  +\ket{\partial_\mu \psi_{\vk i}}\braket{\psi_{\vk i}|\psi_{\vk j}}\bra{\partial_\nu\psi_{\vk j}}
+  +\ket{\psi_{\vk i}}\braket{\partial_\mu \psi_{\vk i}|\partial_\nu \psi_{\vk j}}\bra{\psi_{\vk j}}
+  +\ket{\psi_{\vk i}}\braket{\partial_\mu \psi_{\vk i}|\psi_{\vk j}}\bra{\partial_\nu\psi_{\vk j}}
+  \right)
+    \nonumber\\
+  &&=
+\sum_{ij\in\cb}\Tr\left(
+  \braket{\psi_{\vk i} |\partial_\nu \psi_{\vk j}}\braket{\psi_{\vk j}|\partial_\mu \psi_{\vk i}}
+  +\braket{\psi_{\vk i}|\psi_{\vk j}}\braket{\partial_\nu\psi_{\vk j}|\partial_\mu \psi_{\vk i}}
+  +\braket{\partial_\mu \psi_{\vk i}|\partial_\nu \psi_{\vk j}}\braket{\psi_{\vk j}|\psi_{\vk i}}
+  +\braket{\partial_\mu \psi_{\vk i}|\psi_{\vk j}}\braket{\partial_\nu\psi_{\vk j}|\psi_{\vk i}}
+     \right)\nonumber\\
+  &&=\sum_{ij\in\cb}\left(
+    \delta_{ij} (\braket{\partial_\nu\psi_{\vk j}|\partial_\mu \psi_{\vk i}}+\braket{\partial_\mu \psi_{\vk i}|\partial_\nu \psi_{\vk j}})
+  + \braket{\psi_{\vk i} |\partial_\nu \psi_{\vk j}}\braket{\psi_{\vk j}|\partial_\mu \psi_{\vk i}}
+  + \braket{\partial_\mu \psi_{\vk i}|\psi_{\vk j}}\braket{\partial_\nu\psi_{\vk j}|\psi_{\vk i}}
+     \right)\nonumber
+ \end{eqnarray}
+Because $\partial_\mu (\braket{\psi_{\vk i}|\psi_{\vk j}})=0$ we have
+$\braket{\partial_\mu\psi_{\vk i}|\psi_{\vk j}}=-\braket{\psi_{\vk i}|\partial_\mu\psi_{\vk j}}$
+hence the last line is
+\begin{eqnarray}
+  &&  g_{\mu\nu}(\vk)  =\sum_{i\in\cb}   \braket{\partial_\nu\psi_{\vk i}|\partial_\mu \psi_{\vk i}}+\braket{\partial_\mu \psi_{\vk i}|\partial_\nu \psi_{\vk i}}
+-\sum_{ij\in\cb}\braket{\partial_\nu\psi_{\vk i} | \psi_{\vk j}}\braket{\psi_{\vk j}|\partial_\mu \psi_{\vk i}}
+-\braket{\partial_\mu \psi_{\vk i}|\psi_{\vk j}}\braket{\psi_{\vk j}|\partial_\nu\psi_{\vk i}}\\
+  &&=\sum_{i\in\cb}
+     \braket{\partial_\nu\psi_{\vk i}|\left(1-\sum_{j\in\cb} \ket{\psi_{\vk j}}\bra{\psi_{\vk j}}\right)|\partial_\mu \psi_{\vk i}}
+   +\braket{\partial_\mu \psi_{\vk i}|\left(1-\sum_{j\in\cb}\ket{\psi_{\vk j}}\bra{\psi_{\vk j}}\right)|\partial_\nu \psi_{\vk i}}
+\end{eqnarray}     
+which concludes the proof that $g_{\mu\nu}$ with projectors is
+equivalent to original definition.
+
+Next we discretize the formula ~\ref{Eq:26}:
+\begin{eqnarray}
+&&g_{\mu\nu}(\vk)  =  \frac{1}{\Delta_\nu\Delta_\mu}\sum_{i j \in\cb}\Tr\left(
+  \left(\ket{u_{\vk+\Delta_\mu, i}}\bra{u_{\vk+\Delta_\mu, i}}-\ket{u_{\vk i}}\bra{u_{\vk i}}\right)
+  \left(\ket{u_{\vk+\Delta_\nu,j}}\bra{u_{\vk+\Delta_\nu,j}} -\ket{u_{\vk j}}\bra{u_{\vk j}}\right)
+  \right)\\
+  &&=  \frac{1}{\Delta_\nu\Delta_\mu}\sum_{i j \in\cb}
+     \delta_{ij}+
+    |\braket{u_{\vk+\Delta_\mu, i}|u_{\vk+\Delta_\nu,j}}|^2
+   -|\braket{u_{\vk+\Delta_\nu,j}|u_{\vk i}}|^2 
+   -|\braket{u_{\vk+\Delta_\mu, i}|u_{\vk j}}|^2
+\end{eqnarray}
+This last equation is clearly gauge invariant. The diagonal part is
+equal to the above derived Eq.~\ref{Eq:20}
+\begin{eqnarray}
+  g_{\mu\mu}(\vk)  =\frac{2}{\Delta_\nu\Delta_\mu}\sum_{i j \in\cb}
+\delta_{ij}-|\braket{u_{\vk+\Delta_\mu,j}|u_{\vk i}}|^2 
+\end{eqnarray}  
+-------------------------------
+
+The integral over the BZ can also be defined in the following way:
+\begin{eqnarray}
+  g_{\mu\nu}^\cb=\frac{1}{2\pi}\int_{BZ} d^3k g_{\mu\nu}(\vk)  =
+  \frac{(2\pi)^2}{V_{cell}} \int_{BZ}\frac{V_{cell} d^3k}{(2\pi)^3} g_{\mu\nu}(\vk) 
+=\frac{(2\pi)^2}{V_{cell}} \frac{1}{N_k} \sum_{\vk}g_{\mu\nu}(\vk) 
+\end{eqnarray}  
+
+
+If the integral is carried out in non-orthogonal lattice systems, we need to take into account matric of the lattice coordinates. We have
+\begin{eqnarray}
+  \eta_{ij}=\vec{b}_i \cdot \vec{b}_j = (BR2^T\cdot BR2)_{ij}\\
+  \eta^{ij} = \left(\eta^{-1}\right)_{ij}
+\end{eqnarray}
+The gradient is computed as
+\begin{eqnarray}
+\sum_i \frac{\partial f}{\partial k_i} \vec{e_i}= \sum_{ij}\frac{\partial f}{\partial b_i}\eta^{ij} \vec{b}_j  
+\end{eqnarray}
+hence
+\begin{eqnarray}
+ M_{\mu\nu}^{\cb}(\vk)  =2\sum_{i\in \cb}
+   \braket{\frac{\partial}{\partial k_{p}}\psi_{\vk i}|(1-\sum_{j\in \cb}\ket{\psi_{\vk j}}\bra{\psi_{\vk j}})|\frac{\partial}{\partial k_{q}}\psi_{\vk i}}\eta^{p r}\eta^{q t} b^{r}_{\mu} b^t_{\nu}
+\end{eqnarray}
+The trace is easier
+\begin{eqnarray}
+ \sum_{\mu}M_{\mu\mu}^{\cb}(\vk)  =2\sum_{i\in \cb}
+   \braket{\frac{\partial}{\partial k_{p}}\psi_{\vk i}|(1-\sum_{j\in \cb}\ket{\psi_{\vk j}}\bra{\psi_{\vk j}})|\frac{\partial}{\partial k_{q}}\psi_{\vk i}}\eta^{p r}\eta^{q t} \eta_{t r}\\
+=2\sum_{i\in \cb}
+   \braket{\frac{\partial}{\partial k_{p}}\psi_{\vk i}|(1-\sum_{j\in \cb}\ket{\psi_{\vk j}}\bra{\psi_{\vk j}})|\frac{\partial}{\partial k_{q}}\psi_{\vk i}}\eta^{p q}
+\end{eqnarray}
+
+
+Relation to Marzari-Vanderbilt:
+
+The integral of the quantum geometric tensor is equal to the
+invariant part of the Marzari-Vanderbilt spread functional $\Omega_{I}$
+\begin{equation}
+\Omega_I = \frac{V}{(2\pi)^3}\int_{BZ}d^3k\sum_\mu g_{\mu\mu}(\vk)
+\end{equation}
+where
+\begin{equation}
+\Omega_I = \sum_n \braket{r^2}_n - \sum_{\vR,m}|\braket{\vR m|\vr|0 n}|^2
+\end{equation}  
+They also point out that the integral along the path of GQT is a cumulative change of character of a band.
+
+
+The Coulomb interaction at small $\vq$ is also related to geometric tensor. The Coulomb interaction between bands can be written as
+\begin{eqnarray}
+V_\vq(\vk i j \vk' i'j') \equiv \braket{\psi_{\vk i}\psi^*_{\vk+\vq j} |\frac{e^{i\vq \vr}}{\sqrt{V}}}  \frac{4\pi}{\vq^2}
+\braket{\frac{e^{i\vq \vr'}}{\sqrt{V}}|\psi_{\vk' i'}\psi^*_{\vk'+\vq j'} } =\braket{u_{\vk i}|u_{\vk+\vq j}}  \frac{4\pi}{\vq^2}
+\braket{u_{\vk'+\vq j'} |u_{\vk' i'}} 
+\end{eqnarray}
+The last Eq. is valid as long as $\vq$ is in the first BZ.
+The diagonal part is
+\begin{eqnarray}
+ \sum_{ij\in \cb} \frac{4\pi}{\vq^2}\delta_{ij}-V_\vq(\vk i j \vk i j) = \sum_{ij\in \cb} \frac{4\pi}{\vq^2}(\delta_{ij}-
+|\braket{u_{\vk+\vq j} |u_{\vk i}}|^2)=2\pi g^\cb_{\vq\vq}(\vk)
+\end{eqnarray}  
+and is valid only for very small $\vq$.
+
+It seems that at small $\vq$, we have
+\begin{eqnarray}
+V_\vq(\vk i i \vk i i)   = \frac{4\pi}{\vq^2}-2\pi g^i_{\vq\vq}(\vk)
+\end{eqnarray}
+
+Motivation. Most common used method to evaluate screened Coulomb interaction is constrained RPA. This just calculates the RPA screened interaction, and cuts out the bands that are treated by the model. If the fully screened Coulomb interaction is
+$$W_{\vq} = (V_\vq^{-1}- P_{\vq})^{-1}$$
+than cRPA interaction is
+$$U_{\vq} = (V_\vq^{-1}-(P_{\vq}-P_{\vq}^\cb))^{-1}$$
+Eventually we need to transform this quantity from product basis to Wannier basis, i.e., it is evaluated in the Wannier basis.
+
+
+
+\end{document}
+
+
+
+\begin{eqnarray}
+M_{\mu\nu}^{\cb}(\vk) \approx 2\sum_{i\in \cb}
+\braket{x_{\mu}\psi_{\vk i}|(1-\sum_{j\in \cb}\ket{\psi_{\vk j}}\bra{\psi_{\vk j}})|x_\nu \psi_{\vk i}}\\
+\end{eqnarray}
+
+\begin{eqnarray}
+u_{\vk i}(\vr) \rightarrow e^{i\beta_i(\vk)}\widetilde{u}_{\vk i}(\vr)  
+\end{eqnarray}
+
+\begin{eqnarray}
+\psi_{\vk j} = e^{i\vk \vr} u_{\vk j}  
+\end{eqnarray}
