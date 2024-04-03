@@ -43,8 +43,10 @@ class KQmesh:
             # WARNING : I think this should be : self.aaa/(2*pi)*latgen.br2 rather than latgen.br2*self.aaa/(2*pi)
             # Because we created latgen.br2 by multiplying dimensionless matrix BR20 by 2*pi/aaa[:] * BR20
             #self.k2icartes = array(round_(self.aaa/(2*pi)*latgen.br2),dtype=int)
-            self.k2icartes = array((self.aaa/(2*pi)*latgen.br2).round(),dtype=int)
-            self.k2cartes = 2*pi/self.aaa*identity(3) # == latgen.pia
+            # This line had a bug: 
+            #self.k2icartes = array((self.aaa/(2*pi)*latgen.br2).round(),dtype=int)
+            self.k2icartes = array((diag(self.aaa/(2*pi)) @ latgen.br2).round(), dtype=int)
+            self.k2cartes = diag(2*pi/self.aaa) # == latgen.pia
             # When apply k2cartes . k2icartes . (i,j,k) we get
             # 2*pi/aaa[:] . BR2 . aaa[:]/(2*pi) (i,j,k) = 1/aaa[:] . BR2 . aaa[:]
         else:

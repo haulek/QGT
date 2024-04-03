@@ -377,13 +377,14 @@ subroutine dmft1_set_lapwcoef(alm,blm,clm, debug, iop, ifrot, kl, kirr,timat_ik,
            igvec(1:3) = gindex(indgkirr(ig)+1,:) ! this should also be index of G for irreducible cell, i.e., indgkirr
            ! note that : kl ~ dot_product(timat_ik, kirr) up to an reciprocal vector
            bk3(:) = igvec(:)+kirr(:)
-           bkrot(:) = matmul(timat_ik, bk3(:) )
+           bkrot(:) = matmul(timat_ik, bk3(:) ) ! transforms to reducible k-point
+           ! This is current version, which might have issues
            arg  =  two_pi * dot_product( bkrot(:), pos_idf ) + two_pi * dot_product(tau_ik(:), bk3(:) )
-           ! Equivalent to arg=two_pi*(dot_product( matmul(rotij,bkrot(:)), pos_first ) + dot_product( bkrot(:), tauij(idf,:)  ) + dot_product(tau_ik(:), bk3(:) ))
-           ! old : arg = two_pi * dot_product(igvec(:)+kl(:), pos(:,idf))
+           ! This is version identical to dmft1, which should work
+           !arg = two_pi*(dot_product(matmul(rotij(idf,:,:),bkrot(:)),pos_first) + dot_product(bkrot(:),tauij(idf,:)) + dot_product(tau_ik(:), bk3(:)))
            phs(ig) = cmplx(dcos(arg),dsin(arg),8)
            if (ifrot) then
-              vec = matmul(rotloc_x_k2cartes_x_rotij, bkrot )
+              vec = matmul(rotloc_x_k2cartes_x_rotij, bkrot ) ! k2cartes*(igvec+kl) == rotloc_x_k2cartes_x_rotij*timat_ik*(igvec+kirr)
               call ylm(yl(1,ig),vec,nt)
            else
               vec(1:3) = matmul(k2cartes, igvec + kl)   ! This is just 2pi/a*Idenity for orthogonal systems

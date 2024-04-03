@@ -87,18 +87,373 @@ def Find_EF(case):
             return EF
     return 0
 
-def Check_Irreducible_wedge(ks, kqm, fout):
-    if (len(ks.all_As)==len(kqm.kirlist)):
-        print('From vector-file we have irreducible wedge k-points only', file=fout)
-        return True
-    elif (len(ks.all_As)==len(kqm.klist)):
-        print('From vector-file we have all k-points (not irreducible wedge)', file=fout)
-        return False
-    else:
-        print('ERROR len(ks.all_As)=', len(ks.all_As), ' is not one of ', len(kqm.kirlist), 'or', len(kqm.klist))
-        print('ERROR len(ks.all_As)=', len(ks.all_As), ' is not one of ', len(kqm.kirlist), 'or', len(kqm.klist), file=fout)
-        sys.exit(1)
+class Orbitals:
+    """ Class which can read dmft.indmfl file and set up rotation matrices and local axes for all atoms.
+    For orbitals which are not in indmfl file, it sets up cubic harmonics in local axis, which is given
+    in wien2k structure file.
+    """
+    def __init__(self, strc, in1): #, in1_nlomax):
+        s2 = sqrt(2.)
+        T2Cs = [[1]]
+        #           pz           px                 py
+        T2Cp = [ [0,1,0], [1/s2, 0, -1/s2], [-1j/s2, 0, -1j/s2]]
+        #           z2          x2-y2             xz                 yz                xy
+        T2Cd = [[0,0,1,0,0],[1/s2,0,0,0,1/s2],[0,1/s2,0,-1/s2,0],[0,1j/s2,0,1j/s2,0],[1j/s2,0,0,0,-1j/s2]]
+        #       fz3              fxz2                  fyz2                    fz(x2-y2)             fxyz                     fx(x2-3y2)             fy(3x2-y2)
+        T2Cf = [[0,0,0,1,0,0,0],[0,0,1/s2,0,-1/s2,0,0],[0,0,1j/s2,0,1j/s2,0,0],[0,1/s2,0,0,0,1/s2,0],[0,1j/s2,0,0,0,-1j/s2,0],[1/s2,0,0,0,0,0,-1/s2],[1j/s2,0,0,0,0,0,1j/s2]]
+        self.S2C_T = [ array(T2Cs).T, array(T2Cp).T, array(T2Cd).T, array(T2Cf).T]
+        self.S2C_N = [['s'],['pz','px','py'],['z2','x2-y2','xz','yz','xy'],['fz3','fxz2','fyz2','fz(x2-y2)','fxyz','fx(x2-3y2)','fy(3x2-y2)']]
 
+        self.aname = []
+        for iat in range(len(strc.mult)):
+            nam = strc.aname[iat].split()[0] # If space appears in struct file, such name is not working in wannier90, so remove anything after space.
+            if strc.mult[iat]==1:
+                self.aname.append( nam )
+            else:
+                self.aname += [ nam+str(ieq+1) for ieq in range(strc.mult[iat])]
+
+        if in1.nlomax > 0:
+            # If we have local orbitals, we will increase np_lo to 2
+            self.np_lo = 2
+        else:
+            self.np_lo = 1
+
+    def ReadIndmflFile(self, case):
+        def divmodulo(x,n):
+            "We want to take modulo and divide in fortran way, so that it is compatible with fortran code"
+            return ( sign(x)* int(abs(x)/n) , sign(x)*mod(abs(x),n))
+        fi = open(case+'.indmfl','r')
+        lines = fi.readlines()
+        fi.close()
+        lines = [line.split('#')[0].strip() for line in lines] # strip comments
+        lines = [line for line in lines if line]  # strip blank lines & create generator expression
+        itr=0
+        dat = lines[itr].split(); itr+=1
+        #print('dat=', dat)
+        hybr_emin, hybr_emax, Qrenorm, projector = float(dat[0]), float(dat[1]), int(dat[2]), int(dat[3])
+        dat = lines[itr].split(); itr+=1
+        #print('dat=', dat)
+        matsubara, broadc, broadnc, om_npts, om_emin, om_emax = int(dat[0]), float(dat[1]), float(dat[2]), int(dat[3]), float(dat[4]), float(dat[5])
+        if projector>=5:
+            hybr_emin = int(hybr_emin)
+            hybr_emax = int(hybr_emax)
+
+        self.atoms={}
+        self.icix={}
+        self.rotloc={}
+        
+        self.Lsa=[]
+        self.icixa=[]
+        natom = int(lines[itr]); itr+=1
+        for i in range(natom):
+            dat=lines[itr].split()
+            itr+=1
+            iatom, nL, locrot_shift = [int(x) for x in dat[:3]]
+            Rmt2=0
+            if len(dat)>3:
+                Rmt2 = float(dat[3])
+            (shift,locrot) = divmodulo(locrot_shift,3)
+            if locrot<0:
+                if locrot==-2:
+                    locrot=3*nL
+                else:
+                    locrot=3
+            Ls, qsplits, icx = zeros(nL,dtype=int), zeros(nL,dtype=int), zeros(nL,dtype=int)
+            for il in range(nL):
+                (Ls[il], qsplits[il], icx[il]) = map(int, lines[itr].split()[:3])
+                itr+=1
+            self.Lsa.append( Ls )
+            self.icixa.append( icx )
+            new_xyz=[]
+            for loro in range(abs(locrot)):
+                new_xyz.append( [float(x) for x in lines[itr].split()] )
+                itr += 1
+            if new_xyz:
+                self.rotloc[iatom-1] = new_xyz                
+            shift_vec = None
+            if shift:
+                shift_vec = [float(x) for x in lines[itr].split()]
+                itr += 1
+            #print( 'new_xyz=', new_xyz)
+            #print( 'shift_vec=', shift_vec)
+            
+            #self.locrot[iatom-1] = (locrot, shift)
+            self.atoms[iatom-1] = (nL, locrot_shift, shift_vec, Rmt2)
+            for ix, L, qsplit in zip(icx, Ls, qsplits):
+                if ix in self.icix:
+                    self.icix[ix] += [(iatom-1, L, qsplit)]
+                else:
+                    self.icix[ix] = [(iatom-1, L, qsplit)]
+            
+        self.legends={}
+        self.legend={}
+        self.siginds={}
+        self.cftrans={}
+        # read the big block of siginds and cftrans
+        ncp, maxdim, maxsize = [int(e) for e in lines[itr].split()]
+        itr+=1
+        for i in range(ncp):
+            icp, dim, size = [int(e) for e in lines[itr].split()]
+            itr+=1
+            self.legends[icp] = lines[itr].split("'")[1::2]
+            #print('legends=', self.legends[icp])
+            (iatom,l,qsplit) = self.icix[icp][0]
+            self.legend[(iatom,l)] = self.legends[icp]
+            #print('legend[('+str(iatom)+','+str(l)+')]=',self.legend[(iatom,l)])
+                                  
+            itr+=1
+            sigi=[]
+            for row in range(dim):
+                sigi.append([int(e) for e in lines[itr].split()])
+                itr+=1
+            self.siginds[icp] = array(sigi,dtype=int)
+            raw_cftrans=[]
+            for row in range(dim):
+                raw_cftrans.append([float(e) for e in lines[itr].split()])
+                itr+=1
+            raw_cftrans=array(raw_cftrans)
+            self.cftrans[icp] = raw_cftrans[:,0::2] + raw_cftrans[:,1::2]*1j
+        #print('atoms=', self.atoms)
+        #print('icix=', self.icix)
+        #print('rotloc=', self.rotloc)
+        #print('Lsa=', self.Lsa)
+        #print('icixa=', self.icixa)
+        #print('legends=', self.legends)
+        #print('sigind=', self.siginds)
+        #print('cftrans=', self.cftrans)
+
+    def FromIndmfl(self):
+        ndf = len(self.aname)
+        #ndf = sum(strc.mult)
+        np_lo = self.np_lo
+        ip_lo=0
+        orbts=[]
+        CFx={}
+        Sigind={}
+        for icx in self.icix:
+            cixs = self.icix[icx]
+            sigind = self.siginds[icx]
+            cFx = self.cftrans[icx]
+            #print('Sigind=', sigind)
+            ii=0
+            for x in cixs:
+                idf,l = x[0:2]
+                orb = [idf + ndf*ip_lo + ndf*np_lo*(l**2 + mr) for mr in range(2*l+1) if sigind[ii+mr,ii+mr]]
+                orbts += orb
+                #print('idf=', idf, 'l=', l, 'ip_lo=', ip_lo, 'ndf=', ndf, 'ind=', orb)
+                CFx[(idf,l)]=cFx
+                #print('l=', l, 'ii=', ii, 'sigind=', sigind)
+                Sigind[(idf,l)]= [sigind[ii+mr,ii+mr] for mr in range(2*l+1)]
+                ii+=2*l+1
+        return (orbts, CFx)
+            
+    def Convert_iorb2text(self, orbs):
+        lmaxp1 = 4
+        ndf = len(self.aname)
+        #print('nn=', lmaxp1**2*self.np_lo*ndf, 'lmaxp1=', lmaxp1, 'np_lo=', self.np_lo, 'ndf=', ndf)
+        names = zeros( (lmaxp1**2,self.np_lo,ndf), dtype=(unicode_, 20))
+        for l in range(lmaxp1):
+            for m in range(-l,l+1):
+                lm = l**2 + l + m
+                for idf in range(ndf):
+                    mr_name = str(l+m+1)
+                    #print('(idf,l)=', (idf,l), 'keys=', self.legend.keys())
+                    if (idf,l) in self.legend:
+                        mr_name = self.legend[(idf,l)][l+m]
+                        #print('mr_name=',mr_name)
+                    nm1 = self.aname[idf]+':l='+str(l)+',mr='+mr_name
+                    names[lm,0,idf] = nm1
+                    if self.np_lo>1 :
+                        nm2 = self.aname[idf]+':l='+str(l)+',mr='+mr_name #+',r=2'
+                        names[lm,1,idf] = nm2
+        names = reshape(names, lmaxp1**2*self.np_lo*ndf)
+
+        #for i in range(len(names)):
+        #    print('names['+str(i)+']=', names[i])
+        #print('orbs=', orbs)
+        #print('nl_lo=', self.np_lo, 'N=', lmaxp1**2*self.np_lo*ndf)
+        orb_names = [names[i] for i in orbs]
+        return orb_names
+    
+    def FindRelevantOrbitals(self,nbs,nbe,k_ind,rotloc,strc,latgen,ks,kqm,pw,in1,radf,fout,debug=False):
+        lmaxp1 = min(4,in1.nt)
+        lomaxp1 = shape(in1.nlo)[0]
+        ndf = sum(strc.mult)
+        if in1.nlomax > 0:
+            # If we have local orbitals, we will increase np_lo to 2
+            self.np_lo = 2
+        else:
+            self.np_lo = 1
+        
+        alfr = zeros((nbe-nbs,lmaxp1**2,self.np_lo,ndf), dtype=complex)
+        asmr = zeros((lmaxp1**2*self.np_lo*ndf), dtype=float)
+        self.largest_ilo = -ones((ndf,lomaxp1),dtype=int)
+        nextra=0
+        orbs=[]
+        for iik,ik in enumerate(k_ind):
+            kil = ks.klist[ik]
+            Aeigk = array(ks.all_As[ik][nbs:nbe,:], dtype=complex)   # eigenvector from vector file
+            
+            #alm,blm,clm = lapwc.gap2_set_lapwcoef(kil, ks.indgkir[ik], 1, True, ks.nv[ik], pw.gindex, radf.abcelo[0], strc.rmt, strc.vpos, strc.mult, radf.umt[0], rotloc, latgen.trotij, latgen.Vol, kqm.k2cartes, in1.nLO_at, in1.nlo, in1.lapw, in1.nlomax)
+
+            timat_ik, tau_ik = identity(3), array([0,0,0])
+            alm,blm,clm = lapwc.dmft1_set_lapwcoef(False,1,True,kil,kil,timat_ik,tau_ik,ks.indgkir[ik],ks.nv[ik],pw.gindex,radf.abcelo[0],strc.rmt,strc.vpos,strc.mult,radf.umt[0],
+                                                   rotloc,latgen.rotij,latgen.tauij,latgen.Vol,kqm.k2cartes,in1.nLO_at,in1.nlo,in1.lapw,in1.nlomax)
+            
+            (ngi,nLOmax,ntnt,ndf) = shape(clm)
+            (ngk,ntnt,ndf) = shape(alm)
+            (nbmax,ngi2) = shape(Aeigk)
+            # And now change alm,blm,clm to band basis, which we call alfa,beta,gama
+            alfa = reshape( la_matmul(Aeigk, reshape(alm, (ngk,ntnt*ndf)) ), (nbmax,ntnt,ndf) )
+            if self.np_lo > 1:
+                beta = reshape( la_matmul(Aeigk, reshape(blm, (ngi,ntnt*ndf)) ), (nbmax,ntnt,ndf) )
+                gama = reshape( la_matmul(Aeigk, reshape(clm, (ngi,ntnt*ndf*nLOmax)) ), (nbmax,nLOmax,ntnt,ndf) )
+                idf2iat = concatenate([[iat]*strc.mult[iat] for iat in range(strc.nat)])
+                for idf in range(ndf):
+                    iat = idf2iat[idf]
+                    for l in range(lomaxp1):
+                        r = zeros(in1.nLO_at[l,iat])
+                        for ilo in range(in1.lapw[l,iat],in1.nLO_at[l,iat]):
+                            s2 = radf.umtlo[0,iat,l,ilo,2]  # <u_l|u_lo>
+                            s3 = radf.umtlo[0,iat,l,ilo,3]  # <udot_l|u_lo>
+                            alfa[:,l**2:(l+1)**2,idf] += s2 * gama[:,ilo,l**2:(l+1)**2,idf]  # 
+                            cg = sqrt(1-s2**2)
+                            cb = s3/cg
+                            gama[:,ilo,l**2:(l+1)**2,idf] = cg*gama[:,ilo,l**2:(l+1)**2,idf] + cb*beta[:,l**2:(l+1)**2,idf]
+                            if iik==0: r[ilo] = sum(abs(gama[:,ilo,l**2:(l+1)**2,idf])**2)
+                        if iik==0 and in1.nLO_at[l,iat]:
+                            print('idf=', idf, 'l=', l, 'ilo=', ilo, 'r=', r, file=fout)
+                            self.largest_ilo[idf,l] = argmax(r)
+                            print('largest_ilo[idf='+str(idf)+',l='+str(l)+']='+str(self.largest_ilo[idf,l]), file=fout)
+                            
+            for idf in range(ndf):
+                for l in range(lmaxp1):
+                    alfr[:,l**2:(l+1)**2,0,idf] = alfa[:,l**2:(l+1)**2,idf] @ self.S2C_T[l].T
+                    if self.largest_ilo[idf,l]>=0 :
+                        ilo = self.largest_ilo[idf,l]
+                        alfr[:,l**2:(l+1)**2,1,idf] = gama[:,ilo,l**2:(l+1)**2,idf] @ self.S2C_T[l].T
+
+            alfr = reshape(alfr,(nbmax,lmaxp1**2*self.np_lo*ndf))
+            asm = sum(abs(alfr)**2, axis=0)
+            asmr += asm
+            alfr = reshape(alfr,(nbmax,lmaxp1**2,self.np_lo,ndf))
+            
+        ind = sorted( range(len(asm)), key=lambda x: -asmr[x] )
+        #print('nbmax=', nbmax, 'ind=', ind)
+        orbs = ind[:nbmax]
+        #print('orbs=', orbs)
+        #print('nn=', lmaxp1**2*self.np_lo*ndf, 'lmaxp1=', lmaxp1, 'np_lo=', self.np_lo, 'ndf=', ndf)
+        #print('orbitals to be used in projection to wanniers=', orbs, file=fout)
+        orb_names = self.Convert_iorb2text(orbs)
+        #for i in range(len(orb_names)):
+        #    print(i,orb_names[i], file=fout)
+        #print('w=', asmr[orbs])
+        #for ii,i in enumerate(orbs):
+        #    print(ii,i,asmr[i])
+            
+        return (orbs, orb_names, asmr[orbs])
+
+def Compute_and_Save_Projection_amn(nbs,nbe,rotloc,k_ind, case, orbits, orbs, CFx, strc, latgen, ks, kqm, pw, in1, radf, fout, debug=False):
+    fo_amn = open(case+'.amn', 'w')
+    print('# code path_gqt2py', date.today().strftime("%B %d, %Y"), file=fo_amn)
+    print(nbe-nbs, len(k_ind), len(orbs), orbits.Convert_iorb2text(orbs), file=fo_amn)
+
+    tfo_amn = open(case+'.amn2', 'w')
+    print('# code path_gqt2py', date.today().strftime("%B %d, %Y"), file=tfo_amn)
+    
+    lmaxp1 = min(4,in1.nt)
+    lomaxp1 = shape(in1.nlo)[0]
+    ndf = sum(strc.mult)
+
+    icartes2f = linalg.inv(kqm.k2icartes)
+    print('icartes2f=', icartes2f, file=fout)
+    
+    #if in1.nlomax > 0:
+    #    # If we have local orbitals, we will increase np_lo to 2
+    #    self.np_lo = 2
+    #else:
+    #    self.np_lo = 1
+    self_np_lo = orbits.np_lo
+    largest_ilo = -ones((ndf,lomaxp1),dtype=int)
+    alfr = zeros((nbe-nbs,lmaxp1**2,self_np_lo,ndf), dtype=complex)
+    asmr = zeros((lmaxp1**2*self_np_lo*ndf), dtype=float)
+    print('The singular values of projection to bands <chi|psi>: ', file=fout)
+    DMFT1 = True
+    for iik,ik in enumerate(k_ind):#range(len(kqm.klist)):
+        kil = ks.klist[ik]
+        Aeigk = array(ks.all_As[ik][nbs:nbe,:], dtype=complex)   # eigenvector from vector file
+        if DMFT1:
+            timat_ik, tau_ik = identity(3), array([0,0,0])
+            alm,blm,clm = lapwc.dmft1_set_lapwcoef(False,1,True,kil,kil,timat_ik,tau_ik,ks.indgkir[ik],ks.nv[ik],pw.gindex,radf.abcelo[0],strc.rmt,strc.vpos,strc.mult,radf.umt[0],
+                                                    rotloc,latgen.rotij,latgen.tauij,latgen.Vol,kqm.k2cartes,in1.nLO_at,in1.nlo,in1.lapw,in1.nlomax)
+        else:
+            alm,blm,clm = lapwc.gap2_set_lapwcoef(kil, ks.indgkir[ik], 1, True, ks.nv[ik], pw.gindex, radf.abcelo[0], strc.rmt, strc.vpos, strc.mult, radf.umt[0], rotloc, latgen.trotij, latgen.Vol, kqm.k2cartes, in1.nLO_at, in1.nlo, in1.lapw, in1.nlomax)
+        
+        (ngi,nLOmax,ntnt,ndf) = shape(clm)
+        (ngk,ntnt,ndf) = shape(alm)
+        (nbmax,ngi2) = shape(Aeigk)
+        # And now change alm,blm,clm to band basis, which we call alfa,beta,gama
+        alfa = reshape( la_matmul(Aeigk, reshape(alm, (ngk,ntnt*ndf)) ), (nbmax,ntnt,ndf) )
+        # We will use two functions, the head and the orthogonalized local orbital, i.e.,
+        #    |1> == |u_l> and |2>= (|u_lo>-|u_l><u_l|u_lo>)/sqrt(1-<u_l|u_lo>^2)
+        # Note that <1|2>=0 and <2|2>=1
+        if self_np_lo > 1:
+            beta = reshape( la_matmul(Aeigk, reshape(blm, (ngk,ntnt*ndf)) ), (nbmax,ntnt,ndf) )
+            gama = reshape( la_matmul(Aeigk, reshape(clm, (ngk,ntnt*ndf*nLOmax)) ), (nbmax,nLOmax,ntnt,ndf) )
+            idf2iat = concatenate([[iat]*strc.mult[iat] for iat in range(strc.nat)])
+            for idf in range(ndf):
+                iat = idf2iat[idf]
+                for l in range(lomaxp1):
+                    r = zeros(in1.nLO_at[l,iat])
+                    for ilo in range(in1.lapw[l,iat],in1.nLO_at[l,iat]):
+                        s2 = radf.umtlo[0,iat,l,ilo,2]  # <u_l|u_lo>
+                        s3 = radf.umtlo[0,iat,l,ilo,3]  # <udot_l|u_lo>
+                        alfa[:,l**2:(l+1)**2,idf] += s2 * gama[:,ilo,l**2:(l+1)**2,idf]  # 
+                        cg = sqrt(1-s2**2)
+                        cb = s3/cg
+                        gama[:,ilo,l**2:(l+1)**2,idf] = cg*gama[:,ilo,l**2:(l+1)**2,idf] + cb*beta[:,l**2:(l+1)**2,idf]
+                        if iik==0: r[ilo] = sum(abs(gama[:,ilo,l**2:(l+1)**2,idf])**2)
+                    if iik==0 and in1.nLO_at[l,iat]:
+                        largest_ilo[idf,l] = argmax(r)
+                        
+        for idf in range(ndf):
+            for l in range(lmaxp1):
+                S2C_T = orbits.S2C_T[l].T
+                if (idf,l) in CFx:
+                    S2C_T = CFx[(idf,l)].T
+                alfr[:,l**2:(l+1)**2,0,idf] = alfa[:,l**2:(l+1)**2,idf] @ S2C_T
+                if largest_ilo[idf,l]>=0 :
+                    ilo = largest_ilo[idf,l]
+                    alfr[:,l**2:(l+1)**2,1,idf] = gama[:,ilo,l**2:(l+1)**2,idf] @ S2C_T
+        
+        alfr = reshape(alfr,(nbmax,lmaxp1**2*self_np_lo*ndf))
+        
+        if iik==0:
+            asm = sum(abs(alfr)**2, axis=0) # sum over all bands, and just retaining orbital indices asm[iorb]
+            ind = sorted( range(len(asm)), key=lambda x: -asm[x] )
+            torbs = ind[:nbe-nbs]
+            print(nbe-nbs, len(k_ind), len(torbs),  orbits.Convert_iorb2text(torbs), file=tfo_amn)
+
+        psi_chi = conj(alfr[:,orbs])    # psi_chi[nbnd,norbs] using fancy indexing, just for orbs in the indmfl list
+        tpsi_chi = conj(alfr[:,torbs])    # psi_chi[nbnd,norbs] using fancy indexing, just for orbs in the indmfl list
+        
+        #asm = sum(abs(alfr)**2, axis=0) # sum over all bands, and just retaining orbital indices asm[iorb]
+        #asmr += asm
+        alfr = reshape(alfr,(nbmax,lmaxp1**2,self_np_lo,ndf))
+        
+        for n in range(len(orbs)):
+            for m in range(nbmax):
+                print('%4d%4d %5d %25.12f%25.12f' % (m+1, n+1, iik+1, psi_chi[m,n].real, psi_chi[m,n].imag), file=fo_amn)
+        for n in range(len(torbs)):
+            for m in range(nbmax):
+                print('%4d%4d %5d %25.12f%25.12f' % (m+1, n+1, iik+1, tpsi_chi[m,n].real, tpsi_chi[m,n].imag), file=tfo_amn)
+
+        u, s, vh = linalg.svd(psi_chi, full_matrices=True)  # uv[nbnd,norb]
+        print('SVD: ik=%3d'%ik, 'k=(%5.3f,%5.3f,%5.3f)' % tuple(icartes2f@kil), 's=', list(s), file=fout)
+
+    fo_amn.close()
+    tfo_amn.close()
+    
 
 def Compute_and_Save_BandOverlap_Mmn(pairs, pair_umklap, s_distances, s_idistance,nbs,nbe,s_Irredk, case, strc, latgen, ks, kqm, pw, in1, radf, fout, DMFT1=False, debug=False):
     def FindInArray(ang, angles):
@@ -597,6 +952,129 @@ def Compute_mmn(nbs,nbe):
             pickle.dump(distances, f)
             pickle.dump(idistance, f)
     return
+
+def Compute_amn():
+    #klist = load('klist.npy')
+    #Ebnd = load('Ebnd.npy')
+    with open('pairs.pkl', 'rb') as f:
+        pairs = pickle.load(f)
+        [nbs,nbe,tnbs,tnbe,latgen_Vol] = pickle.load(f)
+        distances = pickle.load(f)
+        idistance = pickle.load(f)
+    nbs0,nbe0=nbs,nbe
+    (case,fout) = pg3.Initialize('a')
+    #print('shape(klist)=', shape(klist))
+    print('At reading: nbs,nbe,tnbs,tnbe=', nbs,nbe,tnbs,tnbe, file=fout)
+    print('At reading: nbs,nbe,tnbs,tnbe=', nbs,nbe,tnbs,tnbe)
+    
+    nspin = 1
+    kmr=1  # if we want to increase the G-mesh as compared to case.in1 RKmax
+    pwm=2  # plane wave mesh parameter
+    
+    strc = w2k.Struct(case, fout)
+    latgen = w2k.Latgen(strc, fout)
+    in1 = w2k.In1File(case, strc, fout)
+    
+    orbits = Orbitals(strc, in1)
+    orbits.ReadIndmflFile(case)
+    
+    orbts, CFx = orbits.FromIndmfl()
+
+    #print(orbits.Convert_iorb2text(orbts))
+    
+    rotloc = copy(strc.rotloc)
+    for iat in range(len(strc.mult)):
+        idf0 = sum(strc.mult[:iat])
+        rotloci = rotloc[iat]
+        rotlocn = None
+        for ieq in range(strc.mult[iat]):
+            idf = idf0+ieq
+            if idf in orbits.rotloc:
+                #print('str.rotloc=', rotloci, 'indmfl.rotloc=', orbits.rotloc[idf])
+                if rotlocn is None:
+                    rotlocn = orbits.rotloc[idf]
+                else:
+                    if not allclose(orbits.rotloc[idf],rotlocn):
+                        print('WARNING equivalent atoms between ', idf0, 'and', idf0+strc.mult[iat]-1, 'have different rotloc:', file=fout)
+                        print(rotlocn, 'and', orbits.rotloc[idf], file=fout)
+        if rotlocn is not None:
+            rotloc[iat] = rotlocn
+    dirc=['x','y','z']
+    print('rotloc from case.indmfl file for all atom types:', file=fout)
+    for iat in range(len(strc.mult)):
+        nam = strc.aname[iat].split()[0] # If space appears in struct file, such name is not working in wannier90, so remove anything after space.
+        print(nam+':', file=fout)
+        for i in range(3):
+            print(rotloc[iat,i,:].tolist(), '# new '+dirc[i]+' axis', file=fout)
+        
+    latgen.Symoper(strc, fout)
+    #kqm = KQmesh(nkdivs, k0shift, strc, latgen, fout)
+
+    #print('latgen.br2=', latgen.br2)
+    
+    
+    ks = KohnShamSystem(case, strc, nspin, fout)
+    ks.Set_nv(in1.nlo_tot)
+    
+    fklist = open(case+'.klist', 'r')
+    line = fklist.readline()
+    mt = re.search('div:\s*\(\s*(\d+)\s*(\d+)\s*(\d+)\)', line)
+    nkdivs = [int(mt.group(1)),int(mt.group(2)),int(mt.group(3))]
+    k0shift=[0,0,0]
+    if mrank==master: print('kdivs=', nkdivs, file=fout)
+    
+    kqm = KQmesh(nkdivs, k0shift, strc, latgen, fout)
+    #print('kqm.k2icartes=', kqm.k2icartes)
+    pw = PlaneWaves(ks.hsrws, kmr, pwm, case, strc, in1, latgen, kqm, False, fout)
+    
+    nsp, nkp, band_max = shape(ks.Ebnd)
+    print('nsp=', nsp, 'nkp=', nkp, 'band_max=', band_max, file=fout)
+    print('len(klist)=', len(ks.klist), file=fout)
+    ks.PRINT = False
+    ks.VectorFileRead(case, strc, latgen, kqm, pw, fout, in1, HaveFullBZ=False)
+    
+    (Elapw, Elo) = w2k.get_linearization_energies(case, in1, strc, nspin, fout)
+    in1.Add_Linearization_Energy(Elapw, Elo)
+    Vr = w2k.Read_Radial_Potential(case, strc.nat, nspin, strc.nrpt, fout)
+    radf = w2k.RadialFunctions(in1,strc,ks.Elapw,ks.Elo,Vr,nspin,fout)
+    del Vr
+    radf.get_ABC(in1, strc, fout)
+
+    
+    EF=Find_EF(case)
+    print('EF=', EF, file=fout)
+    ks.Ebnd -= EF*Ry2H
+    
+    Irredk = False 
+    
+    k_ind = array(arange(int(len(ks.klist)/7))*7,dtype=int) # k-points in original case.klist_band
+    
+    #for iik,ik in enumerate(k_ind):
+    #    print(iik, ik, ks.klist[ik])
+    
+    #(orbs,orb_names,orb_w) = orbits.FindRelevantOrbitals(tnbs,tnbe,k_ind,rotloc, strc, latgen, ks, kqm, pw, in1, radf, fout, debug=False)
+    #for i,ib in enumerate(orbs):
+    #    print(i,ib, orb_names[i], orb_w[i])
+
+    #print('orbts=', orbts)
+    #print('CFx=', CFx)
+    
+    Compute_and_Save_Projection_amn(tnbs,tnbe, rotloc, k_ind, case, orbits, orbts, CFx, strc, latgen, ks, kqm, pw, in1, radf, fout, debug=False)
+    
+    
+    sys.exit(0)
+    
+    #Compute_and_Save_BandOverlap_Mmn(pairs,None,distances,idistance,tnbs,tnbe,Irredk,case,strc,latgen,ks,kqm, pw, in1, radf, fout, DMFT1=False, debug=False)
+    
+    #if mrank==master:
+    #    save('klist.npy', ks.klist)
+    #    save('Ebnd.npy', ks.Ebnd[0])
+    #    with open('pairs.pkl', 'wb') as f:
+    #        pickle.dump(pairs, f)
+    #        pickle.dump([nbs,nbe,tnbs,tnbe,latgen.Vol], f)
+    #        pickle.dump(distances, f)
+    #        pickle.dump(idistance, f)
+    return
     
 #def Compute_QGT(nbs_nbe=None):
 #    # M[k,b]_{m,n}   = < psi_{m,k} | e^{-i b r} |psi_{n,k+b}>
@@ -720,6 +1198,9 @@ def Back_Rename_klist():
     
     
 if __name__ == '__main__':
+    #Compute_amn()
+    #sys.exit(0)
+    
     Back_Rename_klist()
     Compute_mmn(nbs=0,nbe=0)
     if mrank==master:
