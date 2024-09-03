@@ -1,3 +1,5 @@
+To understand what is implemented, or will be implemented, please read doc/notes.pdf file.
+
 This code works in combination with Wien2k DFT calculation. We need converged DFT-Wien2k electronic structure and k-points
 for a path in momentum space. The latter is called case.klist_band.
 
