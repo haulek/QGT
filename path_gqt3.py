@@ -98,7 +98,7 @@ def Compute_QGT(nbs_nbe=None):
     #print('idistance=', idistance)
     strc = w2k.Struct(case, fout)
     latgen = w2k.Latgen(strc, fout)
-    latgen.Symoper(strc, fout)
+    # latgen.Symoper(strc, fout) I think symope is called in Latgen initialization
     # What W2k uses in stored klist. It is K2icartes@(i/N1,j/N2,k/N3)
     aaa = array([strc.a, strc.b, strc.c])
     if latgen.ortho or strc.lattice[1:3]=='CXZ':
@@ -140,7 +140,8 @@ def Compute_QGT(nbs_nbe=None):
             ibe-=nbs0
             _ibs_ = ibs+nbs0-tnbs
             _ibe_ = ibe+nbs0-tnbs
-            M_c = M_all[iik,:,_ibs_:_ibe_,_ibs_:_ibe_]
+            M_c = M_all[iik,:,_ibs_:_ibe_,_ibs_:_ibe_] # [k,{x,y,z},bands,bands]
+            # M_all[k,idir,m,n] should be <u_m(k)|u_n(k+e_{idir}*small)>
             print('  bands=',[ibs,nbs,nbe,ibe],[_ibs_,nbs+nbs0-tnbs,nbe+nbs0-tnbs,_ibe_],
                       ([i for i in range(nbs-ibs)],[i for i in range(nbs-ibs,nbe-ibs)],[i for i in range(nbe-ibs,ibe-ibs)]),
                       'M_mmn=', 'shape(M_all)=', shape(M_all[iik]), 'shape(M_c)=', shape(M_c), file=fout)
@@ -150,19 +151,22 @@ def Compute_QGT(nbs_nbe=None):
                 PrintMC(M_c[imu,:,:],file=fout)
             tR=zeros((nbe-nbs,3))
             ds=nbs-ibs
-            # bands are arranged in [ibs,nbs,nbe,ibe]
+            # bands are arranged in the following order [ibs,nbs,nbe,ibe]
+            # Note that all bands between [ibs,nbs] are degenerate with the band at nbs, i.e., at the bottom.
+            # Note that all bands between [nbe,ibe] are degenerate with the band at nbe, i.e., at the top.
+            # The bands between [nbs,nbe] constituate our group B, and should be always computed.
             for imu in range(3):  # over x,y,z in lattice coordinates
-                for i in range(nbs-ibs):
+                for i in range(nbs-ibs): # I think this is for those bands that might be degenerate at the bottom
                     tR[0,imu] += 0.5*(1.0-sum(abs(M_c[  2*imu,:,i])**2)) # 1-\sum_m |<psi_{m,k}|psi_{i,k+e_{imu}}>|^2
                     tR[0,imu] += 0.5*(1.0-sum(abs(M_c[2*imu+1,:,i])**2)) # 1-\sum_m |<psi_{m,k}|psi_{i,k-e_{imu}}>|^2
-                for i in range(nbs-ibs,nbe-ibs):
+                for i in range(nbs-ibs,nbe-ibs): # if no degeneracies, this is the only loop
                     tR[i-ds,imu] += 0.5*(1.0-sum(abs(M_c[  2*imu,:,i])**2)) # 1-\sum_m |<psi_{m,k}|psi_{i,k+e_{imu}}>|^2
                     tR[i-ds,imu] += 0.5*(1.0-sum(abs(M_c[2*imu+1,:,i])**2)) # 1-\sum_m |<psi_{m,k}|psi_{i,k-e_{imu}}>|^2
-                for i in range(nbe-ibs,ibe-ibs):
+                for i in range(nbe-ibs,ibe-ibs): # I think this is for those bands that might be degenerate at the top
                     tR[-1,imu] += 0.5*(1.0-sum(abs(M_c[  2*imu,:,i])**2)) # 1-\sum_m |<psi_{m,k}|psi_{i,k+e_{imu}}>|^2
                     tR[-1,imu] += 0.5*(1.0-sum(abs(M_c[2*imu+1,:,i])**2)) # 1-\sum_m |<psi_{m,k}|psi_{i,k-e_{imu}}>|^2
-            tR[0 ,:]  /= (nbs-ibs+1)
-            tR[-1,:] /= (ibe-nbe+1)
+            tR[0 ,:]  /= (nbs-ibs+1) # because we added to the bottom band all degenerate bands, we need to normalize.
+            tR[-1,:] /= (ibe-nbe+1)  # because we added to the top band all degenerate bands, we need to normalize.
             for imu in range(3):
                 #tR[:,imu] *= (8*pi**2/latgen_Vol)/dst[imu]**2
                 tR[:,imu] *= 2.0/dst[imu]**2

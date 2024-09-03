@@ -268,6 +268,11 @@ class KohnShamSystem:
             for ik in range(ankp): # over all k-points, i.e, k_generic
                 irk = kqm.kii_ind[ik]
                 if kqm.k_ind[irk] == ik : # this k-point is irreducible, hence the order of reciprocal vectors stays the same
+
+                    ####BRISI
+                    print('len(self.indgkir)=', len(self.indgkir), 'irk=', irk, 'ik=', ik, 'kqm.k_ind[irk]=', kqm.k_ind[irk])
+                    ####BRISI
+                    
                     self.indgk.append( self.indgkir[irk] )
                     self.phase_arg.append( 0.0 )
                 else:

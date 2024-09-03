@@ -449,8 +449,22 @@ def Compute_mmn(nbs,nbe, cmpEF=True):
     pwm=2  # plane wave mesh parameter
     
     strc = w2k.Struct(case, fout)
+
+
+    #for isym in range(len(strc.tau)):
+    #    print(isym,':')
+    #    for i in range(3):
+    #        print('{:2d}{:2d}{:2d} {:10.8f}'.format(*strc.timat[isym,i,:], strc.tau[isym,i]))
+
+    
     latgen = w2k.Latgen(strc, fout)
-    latgen.Symoper(strc, fout)
+
+    #for isym in range(len(strc.tau)):
+    #    print(isym,':')
+    #    for i in range(3):
+    #        print('{:2d}{:2d}{:2d} {:10.8f}'.format(*strc.timat[isym,i,:], strc.tau[isym,i]))
+
+    
     kqm = KQmesh(nkdivs, k0shift, strc, latgen, fout)
 
     # creates a list of k-point pairs that we will need to compute QGT

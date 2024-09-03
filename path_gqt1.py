@@ -83,7 +83,7 @@ def Compute_derivative_klist(file_end):
     
     strc = w2k.Struct(case, fout)
     latgen = w2k.Latgen(strc, fout)
-    latgen.Symoper(strc, fout)
+    #latgen.Symoper(strc, fout) I think symope is called in Latgen initialization
 
     # What W2k uses in stored klist. It is K2icartes@(i/N1,j/N2,k/N3)
     aaa = array([strc.a, strc.b, strc.c])

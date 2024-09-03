@@ -1,26 +1,46 @@
-To run the code, prepare case.klist_band and start with:
+This code works in combination with Wien2k DFT calculation. We need converged DFT-Wien2k electronic structure and k-points
+for a path in momentum space. The latter is called case.klist_band.
+
+
+To run this code, we prepare case.klist_band and start with:
 
 >path_gqt1.py
 
-which prepares new case.klist_band
+which prepares new case.klist_band, which contains not only original
+k-points on the mesh, but also small dispacement from those k-points,
+namely, [k,k+dkx,k-dkx,k+dky,k-dky,k+dkz,k-dkz].
 
-Next execute wien2k with the new klist:
-
+Next we compute Kohn-Sham wave functions on the new k-list by
+executing lapw1 step of wien2k. This can be done either by Wien2k code
+by:
 >x lapw1 -band
-or using eDMFT
+or using eDMFT implementation of the same code. 
 >x_dmftp.py lapw1 --band
 
-Then run:
+Note that If you are using the eDMFT, you can create "mpi_prefix.dat"
+file with content like "mpirun -n 10", and your code will run on 10
+cores.
+
+
+Once we have Kohn-Sham wave functions, we run:
 
 >mpirun -n 6 path_gqt2.py
 
-to produce ovelaps M_mmn
+to produce ovelaps M_mmn, which are overlaps between Kohn-Sham wave functions.
 
-Next you can plot results by
+Of course, the number of cores (here 6) is arbitrary, and it can be as
+large as the number of points in case.klist_band. This will also
+compute quantum metric tensor in which each band is treated as
+independent.
+
+
+Next we can plot results of the last calculation in which each band
+was treated as indepenent by
 
 >pband1.py
 
 With this, each band is treated as separate unit.
+
 If you want to combine bands, you can execute:
 
 > path_gqt3.py
@@ -29,7 +49,7 @@ Then choose which bands to combine, and than execute
 
 >pband1.py
 
-You can prepare "ppar.dat", which can define the following variables:
+For making a nicer plot, you can prepare "ppar.dat", which can define the following variables:
 """
 Logarithmic = True
 maxv = None
@@ -38,3 +58,16 @@ ymin,ymax = -8.7,8.7
 """
 
 
+For simple tests and to learn how to use the code, please run examples in test subdirectory.
+For example, go inside Si/14x14x14 directory, in which converged Si files are located.
+Check that Si.klist_band exists and contains the path we want.
+Execute 
+>../../../path_gqt1.py
+and you should have mesh with all finite displacements in Si.klist_band.
+Next execute lapw1. As described above, it can be done with wien2k or eDMFT. Let's use eDMFT
+>x_dmft.py lapw1 --band
+Next we execute
+>mpirun -n 6 ../../../path_gqt2.py
+to get all necessary overlaps <u_{n,k}|u_{m,k+b}>.
+Finally we plot results with
+>../../../pband1.py

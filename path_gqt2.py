@@ -803,8 +803,9 @@ def Compute_and_Save_BandOverlap_Mmn(pairs, pair_umklap, s_distances, s_idistanc
         
     if mrank==master:
         save('M_all.npy', M_all)
-    
+        
     # M_{m,n}   = < psi_{m,k} | e^{-i b r} |psi_{n,k+b}>
+    # M_all[k,idir,m,n] ~ <u_m(k)|u_n(k+e_{idir}*small)>
     #return M_all
     
 def Save_Eigenvalues(case, ks_Ebnd_isp, nbs, nbe):
@@ -854,7 +855,7 @@ def Compute_mmn(nbs,nbe):
     
     strc = w2k.Struct(case, fout)
     latgen = w2k.Latgen(strc, fout)
-    latgen.Symoper(strc, fout)
+    #latgen.Symoper(strc, fout) #latgen.Symoper(strc, fout) I think symope is called in Latgen initialization
     #kqm = KQmesh(nkdivs, k0shift, strc, latgen, fout)
     
     ks = KohnShamSystem(case, strc, nspin, fout)

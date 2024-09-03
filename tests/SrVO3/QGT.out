@@ -24496,3 +24496,68 @@ R[ik=150,i=16]= [6.175628156257637, 6.175628156241516, 6.175628156252895]
 R[ik=150,i=17]= [2.2857315865441983, 2.285731586529975, 2.285731586523337]
 R[ik=150,i=18]= [6.656277468375858, 6.6562774683606865, 6.656277468350256]
 R[ik=150,i=19]= [6.656277468376807, 6.656277468359738, 6.656277468335084]
+At reading: nbs,nbe,tnbs,tnbe= 11 31 11 32
+primitive or simple lattice
+Ortho= True
+BR2= [[ 8.65638765e-01 -5.30050871e-17 -5.30050871e-17]
+ [ 0.00000000e+00  8.65638765e-01 -5.30050871e-17]
+ [ 0.00000000e+00  0.00000000e+00  8.65638765e-01]]
+Unit cell volume= 382.41024132239124
+gbas= [[ 1.37770688e-01 -8.43602163e-18 -8.43602163e-18]
+ [ 0.00000000e+00  1.37770688e-01 -8.43602163e-18]
+ [ 0.00000000e+00  0.00000000e+00  1.37770688e-01]]
+rbas= [[7.258438 0.       0.      ]
+ [0.       7.258438 0.      ]
+ [0.       0.       7.258438]]
+For atom V ieq=0 at pos= [0.5, 0.5, 0.5] found tauij= [0. 0. 0.] rotij.T= [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]
+For atom Sr ieq=0 at pos= [0.0, 0.0, 0.0] found tauij= [0. 0. 0.] rotij.T= [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]
+For atom O ieq=0 at pos= [0.0, 0.5, 0.5] found tauij= [0. 0. 0.] rotij.T= [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]
+For atom O ieq=1 at pos= [0.5, 0.0, 0.5] found tauij= [0. 0. 0.] rotij.T= [[0.0, -1.0, 0.0], [-1.0, 0.0, 0.0], [0.0, 0.0, -1.0]]
+For atom O ieq=2 at pos= [0.5, 0.5, 0.0] found tauij= [0. 0. 0.] rotij.T= [[0.0, -1.0, 0.0], [0.0, 0.0, -1.0], [-1.0, 0.0, 0.0]]
+lomax increased to 3 because l=0 has APW+lo
+lomax increased to 3 because l=0 repeated
+lomax increased to 3 because l=0 has APW+lo
+lomax increased to 3 because l=1 has APW+lo
+lomax increased to 3 because l=1 repeated
+lomax increased to 3 because l=1 has APW+lo
+lomax increased to 3 because l=2 has APW+lo
+lomax increased to 3 because l=0 has APW+lo
+lomax increased to 3 because l=0 repeated
+lomax increased to 3 because l=0 has APW+lo
+lomax increased to 3 because l=1 has APW+lo
+lomax increased to 3 because l=1 repeated
+lomax increased to 3 because l=1 has APW+lo
+lomax increased to 3 because l=0 has APW+lo
+lomax increased to 3 because l=0 repeated
+lomax increased to 3 because l=0 has APW+lo
+lomax increased to 3 because l=1 has APW+lo
+lomax set to 3  make sure that this is  compatible with wien2k case.energy file
+rkmax= 7.0 lmax= 10 lnsmax= 4 nat= 3
+atom= V E= 0.4284046541 lapw with n.cases= 5
+          l= 0             APW+lo
+          l= 0      Local Orbital
+          l= 1             APW+lo
+          l= 1      Local Orbital
+          l= 2             APW+lo
+atom= Sr E= 0.4284046541 lapw with n.cases= 4
+          l= 0             APW+lo
+          l= 0      Local Orbital
+          l= 1             APW+lo
+          l= 1      Local Orbital
+atom= O E= 0.4284046541 lapw with n.cases= 3
+          l= 0             APW+lo
+          l= 0      Local Orbital
+          l= 1             APW+lo
+nLO_at_ind= [[[1], [1], [], []], [[1], [1], [], []], [[1], [], [], []]]
+nLO_at= [[1 1 1]
+ [1 1 0]
+ [0 0 0]
+ [0 0 0]] == [[1, 1, 0, 0], [1, 1, 0, 0], [1, 0, 0, 0]]
+Max. number of LO's per l per atom  ( nlomax): 1
+Information on Local Orbitals (LO or lo)  
+  lomax= 3
+l= 0 LO? #lo #LO         l= 1 LO? #lo #LO         l= 2 LO? #lo #LO         
+       1   2   1                1   2   1                0   1   0         
+       1   2   1                1   2   1                0   0   0         
+       1   2   1                0   1   0                0   0   0         
+ Total number of local orbitals (nlo_tot)=  36
