@@ -2,6 +2,7 @@ import sys, os, re
 from datetime import date
 from numpy import *
 import glob
+import pickle
 
 from cmn import Ry2H,H2eV,Ry2eV,H2Ry,Br2Ang
 from pylab import *
@@ -43,18 +44,20 @@ def Get_case():
 
 if __name__ == '__main__':
     Ene = loadtxt('eQGT.dat').T
-    _qgt_ = loadtxt('QGT.dat').T
     nbs_nbe = array(loadtxt('nbs_nbe.dat'),dtype=int)
-    qgt = _qgt_[2:,:]
     xk = Ene[0,:]
     Ene = Ene[1:,:]
     maxv = None
+    with open('pairs.pkl', 'rb') as f:
+        pairs = pickle.load(f)
+        [nbs0,nbe0,tnbs,tnbe,latgen_Vol] = pickle.load(f)
     
-    Logarithmic = True
+    Logarithmic = [True,False,False]
+    percent_removed=[0,0,0]
     Qcolor = [True for i in range(len(nbs_nbe))]
     #Qcolor = [False,True,False]
     #ymin,ymax = -12,12
-    ymin,ymax = -7.4,7.4
+    ymin,ymax = -12,7.4
     #ymin,ymax=-3,3
     #ymin,ymax=-2.,2.6
     #ymin,ymax=-2.5,2.5
@@ -67,27 +70,6 @@ if __name__ == '__main__':
         #print('Qcolor=', Qcolor)
         print('ymin,ymax=', ymin,ymax)
     
-    ne = 100
-    
-    ne = min(min(ne,len(Ene)), int(round((len(qgt))/3)))
-    
-    print('shape(Ene)=', shape(Ene))
-    print('shape(gqt)=', shape(qgt))
-    print('Qcolor=', Qcolor)
-
-    miv,mav = 1e10,0
-    for i in range(len(nbs_nbe)):
-        if Qcolor[i]:
-            m = min(qgt[3*nbs_nbe[i,0]:3*nbs_nbe[i,1],:].ravel())
-            miv = min(miv,m)
-            m = max(qgt[3*nbs_nbe[i,0]:3*nbs_nbe[i,1],:].ravel())
-            mav = max(mav,m)
-    
-    if maxv is not None:
-        mav=maxv
-        
-    print('min=', miv,'max=', mav, 'ne=', ne)
-
     QColor=[]
     for i in range(len(nbs_nbe)):
         if Qcolor[i]:
@@ -95,55 +77,190 @@ if __name__ == '__main__':
         else:
             QColor += [False for j in range(nbs_nbe[i,0],nbs_nbe[i,1])]
             
-    fig,ax = subplots(nrows=4,ncols=1,figsize=(7,10), # (15,10)
-                        gridspec_kw={'width_ratios': [1], 'height_ratios': [10,10,10,1], 'wspace' : 0.3, 'hspace' : 0.2})
-    for i in range(0,ne):
-        if (QColor[i]):
-            if Logarithmic:
-                rx = log(qgt[3*i+0,:])/log(mav)
-                ry = log(qgt[3*i+1,:])/log(mav)
-                rz = log(qgt[3*i+2,:])/log(mav)
-            else:
-                rx = qgt[3*i+0,:]/mav
-                ry = qgt[3*i+1,:]/mav
-                rz = qgt[3*i+2,:]/mav
-            colx=cmap([0.5*(rx[ik]+rx[ik+1]) for ik in range(len(xk)-1)])
-            coly=cmap([0.5*(ry[ik]+ry[ik+1]) for ik in range(len(xk)-1)])
-            colz=cmap([0.5*(rz[ik]+rz[ik+1]) for ik in range(len(xk)-1)])
-            for ik in range(len(xk)-1):
-                ax[0].plot([xk[ik],xk[ik+1]],[Ene[i,ik],Ene[i,ik+1]],color=colx[ik])
-                ax[1].plot([xk[ik],xk[ik+1]],[Ene[i,ik],Ene[i,ik+1]],color=coly[ik])
-                ax[2].plot([xk[ik],xk[ik+1]],[Ene[i,ik],Ene[i,ik+1]],color=colz[ik])
-        else:
-            ax[0].plot(xk,Ene[i],'k-')
-            ax[1].plot(xk,Ene[i],'k-')
-            ax[2].plot(xk,Ene[i],'k-')
-            
-    
-    dire=['$M_{XX}$','$M_{YY}$','$M_{ZZ}$']
-    for i in range(3):
-        tax = ax[i]
-        tax.set_ylim([ymin,ymax])
-        tax.set_xlim([xk[0],xk[-1]])
-        tax.set_ylabel(dire[i])
-
     case = Get_case()
     (kpnt,name_kp) = Read_klist(case+'.klist_band')
-    if ymin is not None:
-        _col_ = 'k'
+    
+    print('Qcolor=', Qcolor)
+    print('shape(Ene)=', shape(Ene))
+    
+    ne = 100
+    
+    Nplots=3
+    Ratio=True
+    
+    _qgt_ = loadtxt('QGT.dat').T
+    qgt = [_qgt_[2:,:]]
+    if not (os.path.isfile('GeD.dat') and os.path.isfile('CoD.dat')):
+        Nplots=1
+        Ratio=False
+        
+    if Nplots>=2:
+        _qpm_ = loadtxt('GeD.dat').T
+        geD = _qpm_[2:,:]
+        qgt+= [geD]
+    if Nplots>=3:
+        _cod_ = loadtxt('CoD.dat').T
+        coD = _cod_[2:,:]
+        qgt += [coD]
+    
+    ne = min(min(ne,len(Ene)), int(round((len(qgt[0]))/3)))
+    
+    print('shape(gqt)=', shape(qgt[0]), len(qgt))
+    print('nbs_nbe=', nbs_nbe)
+    print('nbs0=', nbs0, 'nbe0=', nbe0)
+    lbl = ['QMT', 'D_geom', 'D_conv']
+    
+    fig,ax = subplots(nrows=4,ncols=Nplots,figsize=(7*Nplots,10), # (15,10)
+                        gridspec_kw={'width_ratios': [1/Nplots]*Nplots, 'height_ratios': [10,10,10,1], 'wspace' : 0.3, 'hspace' : 0.2})
+    
+    if Nplots==1:
+        ax=[[ax[0]],[ax[1]],[ax[2]],[ax[3]]]
+
+    for ipl in range(Nplots):
+        miv,mav = 1e10,0
+        nb_start = nbs_nbe[0,0]
+        print('nb_start=', nb_start)
+
+        n1 = nbs_nbe[-1,1]-nbs_nbe[0,0]
+        miv = min(qgt[ipl][:3*n1,:].ravel())
+        mav = max(qgt[ipl][:3*n1,:].ravel())
+        ht, bin_edges = histogram(qgt[ipl][:3*n1,:].ravel(),bins=5000)
+        xh = 0.5*(bin_edges[1:]+bin_edges[:-1])
+        cums = cumsum(ht)/sum(ht)
+        iis = searchsorted(cums, percent_removed[ipl])
+        iie = searchsorted(cums, 1-percent_removed[ipl])
+        print(ipl, 'with percent_removed=', percent_removed[ipl], 'we determine cutoff at =', str(xh[iis])+':'+str(xh[iie]), 'instead of', str(miv)+':'+str(mav))
+        miv = xh[iis]
+        mav = xh[iie]
+        
+        if maxv is not None:
+            mav=maxv
+        
+        #for i in range(len(nbs_nbe)):
+            #if Qcolor[i]:
+            #    n0, n1 = nbs_nbe[i,0]-nb_start, nbs_nbe[i,1]-nb_start
+            #    m = min(qgt[ipl][3*n0:3*n1,:].ravel())
+            #    miv = min(miv,m)
+            #    m = max(qgt[ipl][3*n0:3*n1,:].ravel())
+            #    mav = max(mav,m)
+            #
+            #    ht, bin_edges = histogram(qgt[ipl][3*n0:3*n1,:].ravel(),bins=5000)
+            #    xh = 0.5*(bin_edges[1:]+bin_edges[:-1])
+            #    cums = cumsum(ht)/sum(ht)
+            #    iic = searchsorted(cums, 1-percent_removed[ipl])
+            #    print(nbs_nbe[i], 'with percent_removed=', percent_removed[ipl], 'we determine cutoff at =', xh[iic], 'instead of max', mav)
+            #    mav = xh[iic]
+                
+        small=1e-6
+        print('min=', miv,'max=', mav, 'ne=', ne)
+        #mav = mav*(1.-percent_removed[ipl])
+        #print('changed to : min=', miv, 'max=', mav, 'ne=', ne)
+        
+        for i in range(0,ne):
+            if (QColor[i]):
+                if Logarithmic[ipl]:
+                    rx = log(abs(qgt[ipl][3*i+0,:])+small)/log(mav+small)
+                    ry = log(abs(qgt[ipl][3*i+1,:])+small)/log(mav+small)
+                    rz = log(abs(qgt[ipl][3*i+2,:])+small)/log(mav+small)
+                else:
+                    rx = qgt[ipl][3*i+0,:]/mav
+                    ry = qgt[ipl][3*i+1,:]/mav
+                    rz = qgt[ipl][3*i+2,:]/mav
+                colx=cmap([0.5*(rx[ik]+rx[ik+1]) for ik in range(len(xk)-1)])
+                coly=cmap([0.5*(ry[ik]+ry[ik+1]) for ik in range(len(xk)-1)])
+                colz=cmap([0.5*(rz[ik]+rz[ik+1]) for ik in range(len(xk)-1)])
+                for ik in range(len(xk)-1):
+                    ax[0][ipl].plot([xk[ik],xk[ik+1]],[Ene[i,ik],Ene[i,ik+1]],color=colx[ik])
+                    ax[1][ipl].plot([xk[ik],xk[ik+1]],[Ene[i,ik],Ene[i,ik+1]],color=coly[ik])
+                    ax[2][ipl].plot([xk[ik],xk[ik+1]],[Ene[i,ik],Ene[i,ik+1]],color=colz[ik])
+            else:
+                ax[0][ipl].plot(xk,Ene[i],'k-')
+                ax[1][ipl].plot(xk,Ene[i],'k-')
+                ax[2][ipl].plot(xk,Ene[i],'k-')
+                
+        
+        dire=['$M_{XX}$','$M_{YY}$','$M_{ZZ}$']
         for i in range(3):
-            tax = ax[i]
+            tax = ax[i][ipl]
+            tax.set_ylim([ymin,ymax])
+            tax.set_xlim([xk[0],xk[-1]])
+            tax.set_ylabel(dire[i])
+        
+        if ymin is not None:
+            _col_ = 'k'
+            for i in range(3):
+                tax = ax[i][ipl]
+                for wi,name in name_kp.items():
+                    cs=tax.plot([xk[wi],xk[wi]], [ymin,ymax], _col_+'-')
+                tax.plot([xk[0],xk[-1]],[0,0], _col_+':')
+                tax.set_ylim([ymin,ymax])
+                
+                tax.set_xticks( [xk[wi] for wi in name_kp], [name_kp[wi] for wi in name_kp], fontsize='x-large' )
+        
+        if Logarithmic[ipl]:
+            _miv_ = miv
+            if miv<0: _miv_=0
+            norm = mpl.colors.LogNorm(vmin=_miv_+small, vmax=mav+small)
+        else:
+            norm = mpl.colors.Normalize(vmin=miv, vmax=mav)
+        fig.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=cmap),cax=ax[3][ipl], orientation='horizontal', label=lbl[ipl])    
+    
+    show()
+
+
+    if Ratio:
+        Percent=zeros(((nbs_nbe[-1][1]-nbs_nbe[0][0]),shape(qgt[1])[1]))
+        nb_start = nbs_nbe[0,0]
+        miv,mav = 1e10,0
+        for i in range(len(nbs_nbe)):
+            n0, n1 = nbs_nbe[i,0]-nb_start, nbs_nbe[i,1]-nb_start
+            for l in range(n0,n1):
+                Dgeom=(qgt[1][3*l,:]+qgt[1][3*l+1,:]+qgt[1][3*l+2,:])
+                Dconv=(qgt[2][3*l,:]+qgt[2][3*l+1,:]+qgt[2][3*l+2,:])
+                Pc = Dgeom/(Dgeom+Dconv)
+                m = min(Pc.ravel())
+                miv = min(miv,m)
+                m = max(Pc.ravel())
+                mav = max(mav,m)
+                Percent[l,:] = Pc
+        print('min=', miv, 'max=', mav)
+                
+        fig,ax = subplots(nrows=2,ncols=1,gridspec_kw={'height_ratios': [10,1]})
+
+        #for i in range(len(nbs_nbe)):
+        #    if Qcolor[i]:
+        #        n0, n1 = nbs_nbe[i,0]-nb_start, nbs_nbe[i,1]-nb_start
+        #        for l in range(n0,n1):
+        #            t = (qgt[ipl][3*l,:]+qgt[ipl][3*l+1,:]+qgt[ipl][3*l+2,:])
+        #            m = min(t.ravel())
+        #            miv = min(miv,m)
+        #            m = max(t.ravel())
+        #            mav = max(mav,m)
+        
+        for i in range(0,ne):
+            if (QColor[i]):
+                rt = Percent[i,:]/mav
+                colt=cmap([0.5*(rt[ik]+rt[ik+1]) for ik in range(len(xk)-1)])
+                for ik in range(len(xk)-1):
+                    ax[0].plot([xk[ik],xk[ik+1]],[Ene[i,ik],Ene[i,ik+1]],color=colt[ik])
+            else:
+                ax[0].plot(xk,Ene[i],'k-')
+
+        tax = ax[0]
+        tax.set_ylim([ymin,ymax])
+        tax.set_xlim([xk[0],xk[-1]])
+        tax.set_ylabel('D_geom/(D_geom+D_conv)')
+        
+        if ymin is not None:
+            _col_ = 'k'
             for wi,name in name_kp.items():
                 cs=tax.plot([xk[wi],xk[wi]], [ymin,ymax], _col_+'-')
             tax.plot([xk[0],xk[-1]],[0,0], _col_+':')
             tax.set_ylim([ymin,ymax])
-            
             tax.set_xticks( [xk[wi] for wi in name_kp], [name_kp[wi] for wi in name_kp], fontsize='x-large' )
-
-    if Logarithmic:
-        norm = mpl.colors.LogNorm(vmin=1+miv, vmax=1+mav)
-    else:
+        
         norm = mpl.colors.Normalize(vmin=miv, vmax=mav)
-    fig.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=cmap),cax=ax[3], orientation='horizontal', label='QMT')    
-    
-    show()
+        fig.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=cmap),cax=ax[1], orientation='horizontal', label='percent')
+        
+        show()
+

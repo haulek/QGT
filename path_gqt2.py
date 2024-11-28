@@ -900,7 +900,8 @@ def Compute_mmn(nbs,nbe):
             if (nbe<=nbs):
                 print('band i=%3d has range %12.6f : %12.6f eV' %(ib,Emin,Emax))
         if (nbe<=nbs):
-            band_range = input('For which bands do you want to compute Quantum geometric tensor?  istart : iend  ')
+            print('For which bands do you want to compute Quantum geometric tensor? Give the answer in   istart:iend')
+            band_range = input('For which bands do you want to compute Quantum geometric tensor?  istart:iend  ')
             mm = re.search('(\d+)\s*:(\d+)', band_range)
             nbs,nbe = int(mm.group(1)),int(mm.group(2))+1
             print(str(nbs)+'<= i_band <'+str(nbe))
@@ -1201,11 +1202,16 @@ def Back_Rename_klist():
 if __name__ == '__main__':
     #Compute_amn()
     #sys.exit(0)
+
     
     Back_Rename_klist()
     Compute_mmn(nbs=0,nbe=0)
     if mrank==master:
-        pg3.Compute_QGT() 
+        pg3.Compute_QGT()
+
+
+
+    
     
     # SrVO3: [(0,9),(9,12),(12,20)]
     # MnO:  [(0,3),(3,8)]

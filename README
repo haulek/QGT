@@ -17,16 +17,19 @@ executing lapw1 step of wien2k. This can be done either by Wien2k code
 by:
 >x lapw1 -band
 or using eDMFT implementation of the same code. 
->x_dmftp.py lapw1 --band
+>x_dmft.py lapw1 --band
 
 Note that If you are using the eDMFT, you can create "mpi_prefix.dat"
 file with content like "mpirun -n 10", and your code will run on 10
-cores.
+cores. For example:
+echo "mpirun -n 10" > mpi_prefix.dat
+In this case it is a good idea to set "export OMP_NUM_THREADS=1".
+
 
 
 Once we have Kohn-Sham wave functions, we run:
 
->mpirun -n 6 path_gqt2.py
+>mpirun -n 10 path_gqt2.py
 
 to produce ovelaps M_mmn, which are overlaps between Kohn-Sham wave functions.
 
@@ -53,11 +56,19 @@ Then choose which bands to combine, and than execute
 
 For making a nicer plot, you can prepare "ppar.dat", which can define the following variables:
 """
-Logarithmic = True
-maxv = None
-Qcolor = [False,True,False]
-ymin,ymax = -8.7,8.7
+Logarithmic = [True,False,False]        # should color be logarithmic or linear in the three plots
+percent_removed=[0,0,0]  # color will be determined by a small percent of datapoints that are the largest or the smallest removed.
+ymin,ymax = -8.7,8.7  # min,max in y direction
 """
+
+------------------
+To run for geometric and conventional superfluid weight, one should execute 
+> path_gqt3_b.py
+This can only be run after "path_gqt2.py" was finished and matrix M_mmn is available.
+The results are plotted with the same script:
+>pband1.py
+------------------
+
 
 
 For simple tests and to learn how to use the code, please run examples in test subdirectory.
