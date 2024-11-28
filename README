@@ -70,7 +70,6 @@ The results are plotted with the same script:
 ------------------
 
 
-
 For simple tests and to learn how to use the code, please run examples in test subdirectory.
 For example, go inside Si/14x14x14 directory, in which converged Si files are located.
 Check that Si.klist_band exists and contains the path we want.
