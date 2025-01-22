@@ -33,9 +33,9 @@ Once we have Kohn-Sham wave functions, we run:
 
 to produce ovelaps M_mmn, which are overlaps between Kohn-Sham wave functions.
 
-Of course, the number of cores (here 6) is arbitrary, and it can be as
-large as the number of points in case.klist_band. This will also
-compute quantum metric tensor in which each band is treated as
+Of course, the number of cores (here 10) is arbitrary, and it can be as
+large as the number of points in case.klist_band but not larger than number of available cores.
+This will also compute quantum metric tensor in which each band is treated as
 independent.
 
 
@@ -45,6 +45,25 @@ was treated as indepenent by
 >pband1.py
 
 With this, each band is treated as separate unit.
+
+------------------
+To run for geometric and conventional superfluid weight, one should execute 
+> path_gqt3_b.py
+This can only be run after "path_gqt2.py" was finished and matrix M_mmn is available.
+The results are plotted with the script:
+>pband1.py
+
+To make plots look better, you can create "ppar.dat", which can contain python code to set a few variable, for example:
+"""
+Logarithmic = [True,True,True]  # should color be logarithmic or linear in the three plots
+percent_removed=[0.01,0.01,0.01]  # color will be determined by removing 1% of datapoints that are the largest or the smallest.
+ymin,ymax = -2,2  # min,max in y direction
+"""
+------------------
+
+
+
+
 
 If you want to combine bands, you can execute:
 
@@ -61,13 +80,6 @@ percent_removed=[0,0,0]  # color will be determined by a small percent of datapo
 ymin,ymax = -8.7,8.7  # min,max in y direction
 """
 
-------------------
-To run for geometric and conventional superfluid weight, one should execute 
-> path_gqt3_b.py
-This can only be run after "path_gqt2.py" was finished and matrix M_mmn is available.
-The results are plotted with the same script:
->pband1.py
-------------------
 
 
 For simple tests and to learn how to use the code, please run examples in test subdirectory.

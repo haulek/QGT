@@ -531,7 +531,7 @@ class In1File:
         
         Ef = 0.5
         str_float = "[-+]?\d*\.?\d*[e|E]?\d*"
-        m = re.search('EF=('+str_float+')',lines[0])
+        m = re.search('EF=\s*('+str_float+')',lines[0])
         if m is not None:
             Ef = float(m.group(1))
         line_dat=lines[1].split()
