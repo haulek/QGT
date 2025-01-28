@@ -321,10 +321,16 @@ back to Eq.20 in PRB 95, 024515 (2017). It shows that
 \end{eqnarray}
 Here energies are measured from the Fermi level.
 
-We will adopt the second line in this expression as the modified
-metric tensor, i.e.,
+We will take $T\rightarrow 0$ and compute:
+%and adopt the second line in this expression as the modified
+%metric tensor, i.e.,
 \begin{eqnarray}
-\widetilde{g}_{\mu\nu}=  \sum_{m\in\cb,n\notin\cb}\frac{\varepsilon_n-\varepsilon_m}{\varepsilon_n+\varepsilon_m}
+  D^{\mu\nu}_{geom} =\Delta^2
+  \sum_{m\in\cb,n\notin\cb}
+  \left( \frac{1}{\sqrt{\varepsilon_m^2+\Delta^2}}-
+  \frac{1}{\sqrt{\varepsilon_n^2+\Delta^2}}
+  \right)
+  \frac{\varepsilon_n-\varepsilon_m}{\varepsilon_n+\varepsilon_m}
     \left[ \braket{\partial_\nu\psi_{\vk m}|\psi_{\vk n}}\braket{\psi_{\vk n}|\partial_\mu \psi_{\vk m}}
    +\braket{\partial_\mu \psi_{\vk m}|\psi_{\vk n}}\braket{\psi_{\vk n}|\partial_\nu \psi_{\vk m}}\right]
 \end{eqnarray}  
@@ -338,14 +344,19 @@ is of the order of the gap.
 Next we prove that the gauge invariant formula has similar form to the
 one used before, namely,
 \begin{eqnarray}
-\widetilde{g}_{\mu\nu}=  \sum_{m\in\cb,n\notin\cb}\frac{\varepsilon_m-\varepsilon_n}{\varepsilon_m+\varepsilon_n}
+  D_{geom,\mu\nu}=  \sum_{m\in\cb,n\notin\cb}
+ \left( \frac{\Delta^2}{\sqrt{\varepsilon_m^2+\Delta^2}}-
+  \frac{\Delta^2}{\sqrt{\varepsilon_n^2+\Delta^2}}
+  \right)
+  \frac{\varepsilon_m-\varepsilon_n}{\varepsilon_m+\varepsilon_n}
   \Tr\left[ \partial_\mu(\ket{\psi_{\vk n}}\bra{\psi_{\vk n}})  \partial_\nu (\ket{\psi_{\vk m}}\bra{\psi_{\vk m}})
   \right]
 \end{eqnarray}  
 The proof goes in the same way as in Eq.~\ref{Eq:projectorProof}, the
 only difference being that sums over $n,m$ are different than before,
 and therefore $\delta_{n,m}$ here vanishes.
-But let us repeat the proof:
+But let us repeat the proof. Here we will omit $\frac{1}{\sqrt{...}}$,
+and get them back at the end.
 \begin{eqnarray}
   \widetilde{g}_{\mu\nu}&=&  \sum_{m\in\cb,n\notin\cb}
   \frac{\varepsilon_m-\varepsilon_n}{\varepsilon_m+\varepsilon_n}
@@ -398,14 +409,25 @@ which concludes the proof.
 
 The finite difference formula for $\widetilde{g}_{\mu\nu}$ is
 \begin{eqnarray}
-\widetilde{g}_{\mu\nu}&=&  \frac{1}{\Delta_\mu\Delta_\nu}\sum_{m\in\cb,n\notin\cb}\frac{\varepsilon_m-\varepsilon_n}{\varepsilon_m+\varepsilon_n}
-  \Tr\left[
+D_{geom,\mu\nu}&=&
+                   \frac{1}{\Delta_\mu\Delta_\nu}\sum_{m\in\cb,n\notin\cb}
+\left( \frac{\Delta^2}{\sqrt{\varepsilon_m^2+\Delta^2}}-
+  \frac{\Delta^2}{\sqrt{\varepsilon_n^2+\Delta^2}}
+  \right)
+  \frac{\varepsilon_m-\varepsilon_n}{\varepsilon_m+\varepsilon_n}
+  \\                 
+  &&\qquad \Tr\left[
   (\ket{u_{n,\vk+\Delta_\mu}}\bra{u_{n,\vk+\Delta_\mu}}-\ket{u_{n,\vk}}\bra{u_{n,\vk}})
   (\ket{u_{m,\vk+\Delta_\nu}}\bra{u_{m,\vk+\Delta_\nu}}-\ket{u_{m,\vk}}\bra{u_{m,\vk}})
   \right] \nonumber\\
 &=&\frac{1}{\Delta_\mu\Delta_\nu}
-\sum_{m\in\cb,n\notin\cb}\frac{\varepsilon_n-\varepsilon_m}{\varepsilon_n+\varepsilon_m}
-  \left[
+    \sum_{m\in\cb,n\notin\cb}
+\left( \frac{\Delta^2}{\sqrt{\varepsilon_m^2+\Delta^2}}-
+  \frac{\Delta^2}{\sqrt{\varepsilon_n^2+\Delta^2}}
+  \right)
+    \frac{\varepsilon_n-\varepsilon_m}{\varepsilon_n+\varepsilon_m}\\
+  &&
+  \qquad\times\left[
     |\braket{u_{m,\vk+\Delta_\nu}|u_{n,\vk}}|^2
     +|\braket{u_{n,\vk+\Delta_\mu}|u_{m,\vk}}|^2
     -|\braket{u_{n,\vk+\Delta_\mu}|u_{m,\vk+\Delta_\nu}}|^2
@@ -415,9 +437,13 @@ The finite difference formula for $\widetilde{g}_{\mu\nu}$ is
 \end{eqnarray}  
 The diagonal expression is than
 \begin{eqnarray}
-  \widetilde{g}_{\mu\mu}=
+  D_{geom,\mu\mu}=
 \frac{1}{\Delta_\mu\Delta_\mu}
-\sum_{m\in\cb,n\notin\cb}\frac{\varepsilon_n-\varepsilon_m}{\varepsilon_n+\varepsilon_m}
+  \sum_{m\in\cb,n\notin\cb}
+\left( \frac{\Delta^2}{\sqrt{\varepsilon_m^2+\Delta^2}}-
+  \frac{\Delta^2}{\sqrt{\varepsilon_n^2+\Delta^2}}
+  \right)
+  \frac{\varepsilon_n-\varepsilon_m}{\varepsilon_n+\varepsilon_m}
   \left[
     |\braket{u_{m,\vk+\Delta_\mu}|u_{n,\vk}}|^2
     +|\braket{u_{n,\vk+\Delta_\mu}|u_{m,\vk}}|^2
@@ -626,6 +652,15 @@ interaction by exactly the quantum metric. If the lattice is absent,
 of course we just have the first term. But introduction of the lattice
 screens the long-range Coulomb interaction of the band $i$ for its
 quantum metric. Large quantum metric thus reduces log range Coulomb interaction.
+
+
+
+
+Conventional contribution to D:
+\begin{eqnarray}
+  D_{conv,\mu\nu}=\sum_{m}\frac{\Delta^2}{({\varepsilon_m(\vk)^2+\Delta^2})^{3/2}}
+  \partial_\nu \varepsilon_m(\vk) \partial_\mu \varepsilon_m(\vk)
+\end{eqnarray}
 
 \end{document}
 

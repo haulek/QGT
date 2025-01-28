@@ -209,12 +209,14 @@ def Compute_QGT(Delta, nbs_nbe=None):
             ds=nbs-ibs
 
             #print('ik=', ik, 'shape(M_a)=', shape(M_a), 'shape(E_out)=', shape(E_out), 'shape(E_in)=', shape(E_in))
-            
+            # Note: tG is geometric stifness, tC is conventional stifness, and tR is Metric tensor
+            # Note: tQ and tS are not really plotted now... tS is similar to tG, but withouth 1/E-1/E in front
             # bands are arranged in the following order [ibs,nbs,nbe,ibe]
             # Note that all bands between [ibs,nbs] are degenerate with the band at nbs, i.e., at the bottom.
             # Note that all bands between [nbe,ibe] are degenerate with the band at nbe, i.e., at the top.
             # The bands between [nbs,nbe] constituate our group B, and should be always computed.
             for imu in range(3):  # over x,y,z in lattice coordinates
+                ###### This is for Metric tensor calculation only
                 for i in range(nbs-ibs): # This is for those bands that might be degenerate at the bottom
                     tR[0,imu] += 0.25*(2.0-sum(abs(M_c[  2*imu,:,i])**2)-sum(abs(M_c[  2*imu,i,:])**2))# 2-\sum_m(|<psi_{m,k}|psi_{i,k+e_{imu}}>|^2+|<psi_{i,k}|psi_{m,k+e_{imu}}>|^2)
                     tR[0,imu] += 0.25*(2.0-sum(abs(M_c[2*imu+1,:,i])**2)-sum(abs(M_c[2*imu+1,i,:])**2))# 2-\sum_m(|<psi_{m,k}|psi_{i,k-e_{imu}}>|^2+|<psi_{i,k}|psi_{m,k-e_{imu}}>|^2)
@@ -224,7 +226,8 @@ def Compute_QGT(Delta, nbs_nbe=None):
                 for i in range(nbe-ibs,ibe-ibs): # I think this is for those bands that might be degenerate at the top
                     tR[-1,imu] += 0.25*(2.0-sum(abs(M_c[  2*imu,:,i])**2)-sum(abs(M_c[  2*imu,i,:])**2)) # 2-\sum_m(|<psi_{m,k}|psi_{i,k+e_{imu}}>|^2+|<psi_{i,k}|psi_{m,k+e_{imu}}>|^2)
                     tR[-1,imu] += 0.25*(2.0-sum(abs(M_c[2*imu+1,:,i])**2)-sum(abs(M_c[2*imu+1,i,:])**2)) # 2-\sum_m(|<psi_{m,k}|psi_{i,k-e_{imu}}>|^2+|<psi_{i,k}|psi_{m,k-e_{imu}}>|^2)
-                    
+                ####### Metric tensor is finished, now other types
+                ### tG is geometric stifness.
                 for i in range(nbs-ibs):
                     tQ[0,imu] += 0.25*(sum(abs(M_a[:,2*imu,i])**2)+sum(abs(M_a[:,2*imu+1,i])**2))  # sum_{n\in\complement}(|<psi_{n,k}|psi_{i,k+e_imu}>|^2+|<psi_{n,k}|psi_{i,k-e_imu}>|^2)
                     tQ[0,imu] += 0.25*(sum(abs(M_b[:,2*imu,i])**2)+sum(abs(M_b[:,2*imu+1,i])**2))  # sum_{n\in\complement}(|<psi_{i,k}|psi_{n,k+e_imu}>|^2+|<psi_{i,k}|psi_{n,k-e_imu}>|^2)
@@ -284,19 +287,19 @@ def Compute_QGT(Delta, nbs_nbe=None):
             tGeD.append(tG)
             tQSM.append(tS)
             tCD.append(tC)
-        QGM.append(tQGM)
-        QGR.append(tQRM)
-        GeD.append(tGeD)
-        QSM.append(tQSM)
-        CoD.append(tCD)
+        QGM.append(tQGM)  # Metric tensor
+        QGR.append(tQRM)  # Not really used
+        GeD.append(tGeD)  # Geometric stiffness 
+        QSM.append(tQSM)  # Not really used
+        CoD.append(tCD)   # Conventional stifness
         
     savetxt('nbs_nbe.dat', array(nbs_nbe,dtype=int))
-    fq = open('QGT.dat','w')
+    fq = open('QGT.dat','w')   # Metric tensor
     fr = open('QGR.dat','w')
-    fp = open('GeD.dat','w')
-    fs = open('QSM.dat','w')
+    fp = open('GeD.dat','w')   # Geometric stifness
+    fs = open('QSM.dat','w')   # Note really used?
     fe = open('eQGT.dat','w')
-    fc = open('CoD.dat', 'w')
+    fc = open('CoD.dat', 'w')  # Conventional stifness
     dire=['x','y','z']
     for fileh in [fq,fr,fp,fs,fc]:
         print('# %2s %8s' % ('ik', '|d|'), end='',file=fileh)

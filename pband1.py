@@ -61,7 +61,7 @@ if __name__ == '__main__':
     #ymin,ymax=-3,3
     #ymin,ymax=-2.,2.6
     #ymin,ymax=-2.5,2.5
-    cmap = mpl.cm.jet
+    cmap = mpl.cm.coolwarm
 
     if os.path.isfile('ppar.dat'):
         exec(open("ppar.dat").read())
@@ -86,20 +86,20 @@ if __name__ == '__main__':
     ne = 100
     
     Nplots=3
-    Ratio=True
+    Ratio=False
     
-    _qgt_ = loadtxt('QGT.dat').T
+    _qgt_ = loadtxt('QGT.dat').T    # QGT is just quantum metric
     qgt = [_qgt_[2:,:]]
     if not (os.path.isfile('GeD.dat') and os.path.isfile('CoD.dat')):
         Nplots=1
         Ratio=False
         
     if Nplots>=2:
-        _qpm_ = loadtxt('GeD.dat').T
+        _qpm_ = loadtxt('GeD.dat').T    # GeD is geometric stifness
         geD = _qpm_[2:,:]
         qgt+= [geD]
     if Nplots>=3:
-        _cod_ = loadtxt('CoD.dat').T
+        _cod_ = loadtxt('CoD.dat').T   # CoD is conventional sifness
         coD = _cod_[2:,:]
         qgt += [coD]
     
